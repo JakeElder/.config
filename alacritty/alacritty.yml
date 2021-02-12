@@ -157,7 +157,7 @@ font:
   # spacing.
   offset:
     x: 0
-    y: 8
+    y: 6
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -248,6 +248,27 @@ colors:
   #  text: CellBackground
   #  background: CellForeground
 
+  normal:
+    black: "#000000"
+    red: "#cd3c3c"
+    green: "#75c478"
+    yellow: "#eed961"
+    blue: "#62d4ff"
+    magenta: "#c397d8"
+    cyan: "#53c2bd"
+    white: "#ffffff"
+
+  # Bright colors
+  bright:
+    black: "#999999"
+    red: "#ffa5a5"
+    green: "#9ae99d"
+    yellow: "#f8ea93"
+    blue: "#b6d8f9"
+    magenta: "#b77ee0"
+    cyan: "#54ced6"
+    white: "#ffffff"
+
   # Normal colors
   #normal:
   #  black:   '#1d1f21'
@@ -292,7 +313,16 @@ colors:
   # Example:
   #   `- { index: 16, color: '#ff00ff' }`
   #
-  #indexed_colors: []
+  indexed_colors:
+    [
+      { index: 16, color: "#2a2a2a" },
+      { index: 17, color: "#595959" },
+      { index: 18, color: "#242424" },
+      { index: 19, color: "#222222" },
+      { index: 20, color: "#333333" },
+      { index: 21, color: "#555555" },
+      { index: 22, color: "#3c2a2a" }
+    ]
 
 # Bell
 #
