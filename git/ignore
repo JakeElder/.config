@@ -1,0 +1,25 @@
+# node packages
+node_modules
+
+# yarn files
+yarn-error.log
+
+# os and editor files
+._*
+.DS_Store
+Thumbs.db
+tags
+
+# dev env files
+.env
+
+# build dirs
+build
+
+# config dirs
+.vercel
+
+# temp dirs
+.cache
+.tmp
+.localdb
