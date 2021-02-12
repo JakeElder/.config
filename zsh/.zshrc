@@ -1,3 +1,8 @@
+# set XDG dirs
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # show colors in ls and grep
 alias ls='ls -G'
 alias grep='grep --color=auto --exclude-dir={.git}'
@@ -16,7 +21,7 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
 
-HISTFILE="$HOME/.zsh/.zsh_history"
+HISTFILE="${XDG_DATA_HOME}/zsh/zsh_history"
 
 # use vim bindings
 bindkey -v
@@ -30,11 +35,11 @@ fi
 # set up tab completion
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$HOME/.zsh/.zcompcache"
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME}/zsh/zcompcache"
 
 # enable tab completions
 autoload -Uz compinit
-compinit -d "$HOME/.zsh/.zcompdump"
+compinit -d "${XDG_DATA_HOME}/zsh/zcompdump"
 
 # set session dir
-SHELL_SESSION_DIR="${HOME}/.zsh/.zsh_sessions"
+SHELL_SESSION_DIR="${XDG_DATA_HOME}/zsh/zsh_sessions"
