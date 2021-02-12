@@ -20,6 +20,7 @@ HISTFILE="$HOME/.zsh/.zsh_history"
 
 # use vim bindings
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # set up homebrew completions
 if type brew &>/dev/null; then
