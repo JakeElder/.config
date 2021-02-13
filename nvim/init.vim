@@ -49,6 +49,9 @@ Plug 'alvan/vim-closetag'
 " for editing tables
 Plug 'dhruvasagar/vim-table-mode' " <leader>t[mrt], <leader>tic
 
+" snippets
+Plug 'SirVer/ultisnips'
+
 " syntax highligting
 Plug 'styled-components/vim-styled-components'
 Plug 'jparise/vim-graphql'
@@ -135,6 +138,12 @@ let g:fzf_preview_window = ''
 
 " syntax highligt embedded lua
 let g:vimsyn_embed= 'l'
+
+" configure ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
