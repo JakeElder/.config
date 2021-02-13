@@ -43,6 +43,9 @@ Plug 'junegunn/fzf.vim'
 " auto close pairs
 Plug 'jiangmiao/auto-pairs'
 
+" close xml tags
+Plug 'alvan/vim-closetag'
+
 " for editing tables
 Plug 'dhruvasagar/vim-table-mode' " <leader>t[mrt], <leader>tic
 
@@ -113,6 +116,11 @@ set hlsearch
 
 " <esc> to remove search highlights
 nnoremap <silent> <esc> :nohls<return><esc>
+
+" Enable auto close tags with <tag|>
+" Skip with <leader>>
+let g:closetag_filetypes = 'html,xhtml,typescript.tsx'
+let g:closetag_close_shortcut = '<leader>>'
 
 " stop ghost netrw buffers
 let g:netrw_fastbrowse=0
