@@ -210,6 +210,19 @@ for _, lsp in ipairs(servers) do
     },
   }
 end
+
+require'lspconfig'.jsonls.setup {
+  commands = {
+    Format = {
+      function()
+        vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+      end
+    }
+  },
+  on_attach = function(client, bufnr)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", ":Format<CR>", { silent = true, noremap = true })
+  end
+}
 EOF
 
 
