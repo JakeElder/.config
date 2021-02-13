@@ -196,9 +196,9 @@ local on_attach = function(client, bufnr)
   -- set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
-      hi LspReferenceRead ctermbg=20
-      hi LspReferenceText ctermbg=20
-      hi LspReferenceWrite ctermbg=20
+      hi LspReferenceRead ctermbg=236
+      hi LspReferenceText ctermbg=236
+      hi LspReferenceWrite ctermbg=236
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -257,20 +257,16 @@ syntax on
 colorscheme noctu
 
 " theme tweaks
-hi CursorLine ctermbg=18 cterm=NONE
-hi LineNr ctermfg=17 ctermbg=NONE
+hi CursorLine ctermbg=235 cterm=NONE
+hi LineNr ctermfg=240 ctermbg=NONE
 hi CursorLineNr ctermfg=8 ctermbg=NONE cterm=NONE
-hi StatusLine ctermfg=7 ctermbg=16 cterm=bold
-hi StatusLineNC ctermfg=8 ctermbg=16 cterm=bold
-hi VertSplit ctermfg=5 ctermbg=16 cterm=NONE
+hi StatusLine ctermfg=7 ctermbg=236 cterm=NONE
+hi StatusLineNC ctermfg=8 ctermbg=236 cterm=NONE
+hi VertSplit ctermfg=5 ctermbg=236 cterm=NONE
 hi Type ctermfg=12
-hi Search ctermfg=7 ctermbg=20
+hi Search ctermfg=7 ctermbg=236
 
 hi jsxTag ctermbg=NONE 
-
-hi TabLine ctermfg=17 ctermbg=16
-hi BufTabLineActive ctermfg=17 ctermbg=16
-hi TabLineSel ctermfg=8 ctermbg=19
 
 hi LspDiagnosticsUnderlineError cterm=underline
 hi LspDiagnosticsUnderlineWarning cterm=underline

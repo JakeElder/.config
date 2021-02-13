@@ -313,16 +313,7 @@ colors:
   # Example:
   #   `- { index: 16, color: '#ff00ff' }`
   #
-  indexed_colors:
-    [
-      { index: 16, color: "#2a2a2a" },
-      { index: 17, color: "#595959" },
-      { index: 18, color: "#242424" },
-      { index: 19, color: "#222222" },
-      { index: 20, color: "#333333" },
-      { index: 21, color: "#555555" },
-      { index: 22, color: "#3c2a2a" }
-    ]
+  # indexed_colors: [ ]
 
 # Bell
 #
