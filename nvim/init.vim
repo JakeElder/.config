@@ -122,7 +122,7 @@ let g:netrw_fastbrowse=0
 autocmd filetype qf wincmd J
 
 " configure fzf
-set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/opt/fzf
 let g:fzf_preview_window = ''
 
 " syntax highligt embedded lua

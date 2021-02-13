@@ -3,6 +3,10 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+# set fzf defaults
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
 # show colors in ls and grep
 alias ls='ls -G'
 alias grep='grep --color=auto --exclude-dir={.git}'
