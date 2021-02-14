@@ -8,6 +8,9 @@ call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 
+" coc for formatting
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " use terminal colors
 Plug 'noahfrederick/vim-noctu'
 
@@ -150,6 +153,9 @@ let g:UltiSnipsEditSplit="vertical"
 " set up lsp                                                                   " 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+command! -nargs=0 Format :call CocAction('format')
+nmap <leader>f :Format<cr>
+
 lua << EOF
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
@@ -185,30 +191,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts={show_header=false} })<CR>', opts)
   buf_set_keymap('n', '<c-j>', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts={show_header=false} })<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-  -- set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
-
-  -- set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      hi LspReferenceRead ctermbg=236
-      hi LspReferenceText ctermbg=236
-      hi LspReferenceWrite ctermbg=236
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
-
-  -- format buffers before save
-  vim.api.nvim_command[[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 end
 
 -- and map buffer local keybindings when the language server attaches
@@ -227,19 +209,6 @@ for _, lsp in ipairs(servers) do
     },
   }
 end
-
-require'lspconfig'.jsonls.setup {
-  commands = {
-    Format = {
-      function()
-        vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
-      end
-    }
-  },
-  on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", ":Format<CR>", { silent = true, noremap = true })
-  end
-}
 EOF
 
 

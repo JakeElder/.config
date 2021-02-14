@@ -1,0 +1,12 @@
+{
+  "diagnostic.enable": false,
+  "diagnostic.enableSign": false,
+  "diagnostic.enableMessage": "never",
+  "signature.enable": false,
+  "codeLens.enable": false,
+  "suggest.autoTrigger": "none",
+  "coc.preferences.formatOnSaveFiletypes": ["typescriptreact", "json"],
+  "suggest.noselect": false,
+  "signature.hideOnTextChange": true,
+  "coc.preferences.messageLevel": "warning"
+}
