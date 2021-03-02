@@ -29,20 +29,18 @@ import React from "react";
 
 export type Props = {$2};
 
-function ${1:Component}({}: Props) {
-  return <>$0</>;
+const ${1:Component} = ({$2}: {}) => {
+	return ${3:null}
 }
+$0
 
 export default $1;
 endsnippet
 
 snippet fc "Function Component" b
-const ${1:Component} = ({ $2 }: ${3:any}) => {
-	return (
-		<${4:div}></$4>
-	)
+const ${1:Component} = ({$2}: {}) => {
+	return ${3:null}
 }
-$0
 endsnippet
 
 snippet t "Test"
@@ -76,60 +74,27 @@ export default function ${1:Function}() {
 endsnippet
 
 snippet i "Import Module" b
-import $2 from "$1"
+import ${2:_} from "$1"
 endsnippet
 
 snippet ir "Import React" b
 import React from "react"
-$0
 endsnippet
 
 snippet is "Import styled" b
 import styled from "@emotion/styled"
-$0
 endsnippet
 
 snippet s "Styled Component" b
-const ${1:Component} = styled("${2:div}")(
-	$0
-);
-endsnippet
-
-snippet sh1 "Styled Component" b
-const ${1:Component} = styled.h1\`
-	$0
-\`;
-endsnippet
-
-snippet sh2 "Styled Component" b
-const ${1:Component} = styled.h2\`
-	$0
-\`;
-endsnippet
-
-snippet sdiv "Styled Component" b
-const ${1:Component} = styled.div\`
-	$0
-\`;
-endsnippet
-
-snippet ic "Import Component" b
-import ${1:Component} from "@mindfulstudio/${2:project}-components/$1"
-$0
+const $1 = styled.${2:div}\`
+  $0
+\`
 endsnippet
 
 snippet type "Type Definition" b
 type ${1:Props} = {
-	$2
+	$0
 }
-endsnippet
-
-snippet fc "Functional Component" b
-const ${1:Component}: React.FC<${2:Props}> = (${3:\{ children \}}) => {
-  return $4
-}
-
-$0
 endsnippet
 
 snippet ed "Export Default" b
@@ -142,7 +107,7 @@ function ${1:fn}($2)$3 {
 }
 endsnippet
 
-snippet cl "Console.log" i
+snippet cl "console.log" i
 console.log($0)
 endsnippet
 
@@ -181,7 +146,7 @@ css={css({
 })}
 endsnippet
 
-snippet ife "IIFE" i
+snippet iife "IIFE" i
 (() => {
 	$0;
 })()

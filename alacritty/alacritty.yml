@@ -179,8 +179,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#222222'
-    foreground: '#ffffff'
+    background: "#1f1f1f"
+    foreground: "#ffffff"
 
     # Bright and dim foreground colors
     #
@@ -704,6 +704,9 @@ colors:
 key_bindings:
   # Insert hash on Alt+3
   - { key: Key3, mods: Alt, chars: "\x23" }
+  # enable <m-p>
+  - { key: P, mods: Alt, chars: "\x1bp" }
+  - { key: N, mods: Alt, chars: "\x1bn" }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

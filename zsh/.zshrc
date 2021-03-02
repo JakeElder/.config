@@ -5,7 +5,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # set fzf defaults
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git'
 
 # show colors in ls and grep
 alias ls='ls -G'
@@ -16,6 +16,9 @@ alias cat='bat'
 
 # alias vim to neovim
 alias vim='nvim'
+
+# alias mux to tmuxinator
+alias mux='tmuxinator'
 
 # set a custom prompt, ${short wd} >
 PROMPT='%2~ %F{blue}>%f '

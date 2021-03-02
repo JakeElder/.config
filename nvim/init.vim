@@ -2,14 +2,16 @@
 " Plugins                                                                      " 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" TODO: this uses literal ~/$XDG_DATA_HOME dir. fix
 call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 
-" lsp plugin
+" nvim lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 
-" coc for formatting
+" coc lsp
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
 " use terminal colors
 Plug 'noahfrederick/vim-noctu'
@@ -55,6 +57,9 @@ Plug 'dhruvasagar/vim-table-mode' " <leader>t[mrt], <leader>tic
 " snippets
 Plug 'SirVer/ultisnips'
 
+" close buffers without closing window
+Plug 'qpkorr/vim-bufkill'
+
 " syntax highligting
 Plug 'styled-components/vim-styled-components'
 Plug 'jparise/vim-graphql'
@@ -68,7 +73,7 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " fix syntax highlighting issue
-" autocmd BufEnter * :syntax sync fromstart
+autocmd BufEnter * :syntax sync fromstart
 
 " persist undo operations
 set undodir=$XDG_DATA_HOME/nvim/undo
@@ -78,7 +83,11 @@ set undofile
 set directory=$XDG_DATA_HOME/nvim/tmp//
 
 " allow hidden buffers
-set hidden
+set nohidden
+augroup netrw_buf_hidden_fix
+  autocmd!
+  autocmd BufWinEnter * if &ft != 'netrw' | set bufhidden=hide | endif
+augroup end
 
 " share os clipboard
 set clipboard=unnamed
@@ -128,9 +137,6 @@ nnoremap <silent> <esc> :nohls<return><esc>
 let g:closetag_filetypes = 'html,xhtml,typescript.tsx'
 let g:closetag_close_shortcut = '<leader>>'
 
-" stop ghost netrw buffers
-let g:netrw_fastbrowse=0
-
 " open :copen window full width
 " https://github.com/tpope/vim-dispatch/issues/4#issuecomment-15777035
 autocmd filetype qf wincmd J
@@ -146,7 +152,15 @@ let g:vimsyn_embed= 'l'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsEditSplit="vertical"
+
+" <leader>es edits snippets for current file type
+nmap <silent> <leader>es :UltiSnipsEdit<cr>
+
+" <leader>tw toggles wrapping
+nmap <silent> <leader>tw :set wrap!<cr>
+
+" <leader>ev edits vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,7 +168,19 @@ let g:UltiSnipsEditSplit="vertical"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 command! -nargs=0 Format :call CocAction('format')
-nmap <leader>f :Format<cr>
+autocmd FileType json,typescript.tsx nmap <silent> <leader>f :Format<cr>
+
+nmap <silent> <s-k> :call CocAction('doHover')<cr>
+inoremap <silent><expr> <c-n> coc#refresh()
+
+inoremap <expr> <c-y> pumvisible() ? "\<c-y>" : "\<c-y>"
+
+nnoremap <silent> <c-s> :<c-u>CocFzfList symbols<cr>
+let g:coc_fzf_opts=['--layout=reverse']
+
+" let g:completion_confirm_key = "\<c-y>"
+" nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
+" nmap <silent> <c-k> <Plug>(coc-diagnostic-prev)
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
@@ -163,22 +189,22 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  require'completion'.on_attach()
+  -- require'completion'.on_attach()
 
-  vim.api.nvim_set_var('completion_enable_auto_hover', 0)
-  vim.api.nvim_set_var('completion_enable_auto_signature', 0)
-  vim.api.nvim_set_var('completion_enable_auto_popup', 0)
-  vim.api.nvim_set_option('completeopt', 'menuone,noinsert')
+  -- vim.api.nvim_set_var('completion_enable_auto_hover', 0)
+  -- vim.api.nvim_set_var('completion_enable_auto_signature', 0)
+  -- vim.api.nvim_set_var('completion_enable_auto_popup', 0)
+  -- vim.api.nvim_set_option('completeopt', 'menuone,noinsert')
 
-  buf_set_keymap('i', '<c-n>', '<Plug>(completion_trigger)', { silent=true })
+  -- buf_set_keymap('i', '<c-n>', '<Plug>(completion_trigger)', { silent=true })
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- mappings
   local opts = { noremap=true, silent=true }
   -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('i', '<c-j>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -186,7 +212,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   -- buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts={show_header=false} })<CR>', opts)
   buf_set_keymap('n', '<c-j>', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts={show_header=false} })<CR>', opts)
@@ -283,11 +309,12 @@ augroup netrw_nav_helpers
 augroup END
 
 " close buffer but maintain window layout
-nnoremap <c-c> :bp\|bd #<cr>
+nnoremap <c-c> :BD<cr>
 
-" <ctrl-p> shows fzf git files, <alt-p> shows all, <ctrl-n> shows open buffers
-nnoremap <c-p> :GFiles<cr>
-nnoremap π :Files<cr>
+" <ctrl-p> shows files in fzf. <ctrl-n> shows open buffers. <alt-p> for rg
+let g:AutoPairsShortcutToggle = '' " don't let autopairs take <alt-p>
+nnoremap <c-p> :Files<cr>
+nnoremap <m-p> :Rg<cr>
 nnoremap <c-n> :Buffers<cr>
 
 function! s:list_buffers()
@@ -301,13 +328,13 @@ function! s:delete_buffers(lines)
   execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
 endfunction
 
-command! BD call fzf#run(fzf#wrap({
+command! Bdelete call fzf#run(fzf#wrap({
   \ 'source': s:list_buffers(),
   \ 'sink*': { lines -> s:delete_buffers(lines) },
   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 \ }))
 
-nnoremap <leader>b :BD<cr>
+nnoremap <leader>b :Bdelete<cr>
 
 " :VG term to vimgrep using rg
 command! -nargs=1 VG vimgrep /<args>/gj `rg . -l --hidden`
@@ -328,10 +355,6 @@ nmap <leader>A :vs<cr> <c-w><c-l>:A<cr>
 
 " gp visually selects previously pasted text
 nnoremap gp `[v`]
-
-" stop junk netrw buffers accumulating
-" https://vi.stackexchange.com/questions/14622
-autocmd FileType netrw setl bufhidden=wipe
 
 " <leader>\ resets (closes all buffers)
 nnoremap <silent> <leader>\ :bufdo bd<cr>
