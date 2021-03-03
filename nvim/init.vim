@@ -173,7 +173,7 @@ autocmd FileType json,typescript.tsx nmap <silent> <leader>f :Format<cr>
 nmap <silent> <s-k> :call CocAction('doHover')<cr>
 inoremap <silent><expr> <c-n> coc#refresh()
 
-inoremap <expr> <c-y> pumvisible() ? "\<c-y>" : "\<c-y>"
+inoremap <expr> <c-y> pumvisible() ? "\<c-y>" : "\<c-x>\<c-o>\<c-y>"
 
 nnoremap <silent> <c-s> :<c-u>CocFzfList symbols<cr>
 let g:coc_fzf_opts=['--layout=reverse']
@@ -198,7 +198,7 @@ local on_attach = function(client, bufnr)
 
   -- buf_set_keymap('i', '<c-n>', '<Plug>(completion_trigger)', { silent=true })
 
-  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- mappings
   local opts = { noremap=true, silent=true }
