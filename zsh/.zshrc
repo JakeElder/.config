@@ -20,8 +20,12 @@ alias vim='nvim'
 # alias mux to tmuxinator
 alias mux='tmuxinator'
 
-# set a custom prompt, ${short wd} >
-PROMPT='%2~ %F{blue}>%f '
+# set a custom prompt
+prompt_color=$(case "$MACHINE_ID" in
+  "jwserver") echo magenta;;
+  *) echo blue;;
+esac)
+PROMPT="%2~ %F{${prompt_color}}>%f "
 
 # set up history
 setopt extended_history       # record timestamp of command in HISTFILE
@@ -64,11 +68,12 @@ autoload -Uz compinit
 compinit -d "${XDG_DATA_HOME}/zsh/zcompdump"
 
 # set up zplug
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
+export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source "${ZPLUG_HOME}/init.zsh"
 
 # add plugins
 zplug "g-plane/zsh-yarn-autocompletions", hook-build:"./zplug.zsh", defer:2
+zplug "lukechilds/zsh-nvm"
 
 # load zplug
 zplug load
