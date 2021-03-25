@@ -43,6 +43,7 @@ Plug 'christoomey/vim-titlecase' " gt[text-obj], gT
 Plug 'vim-scripts/ReplaceWithRegister'
 
 " fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " auto close pairs
