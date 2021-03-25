@@ -29,18 +29,17 @@ import React from "react";
 
 type Props = {$2};
 
-const ${1:Component} = ({$2}: Props) => {
-	return ${3:null}
-}
+const ${1:`!p snip.rv = snip.basename`} = ({$2}: Props) => {
+	return ${3:null};
+};
 $0
-
 export default $1;
 endsnippet
 
 snippet fc "Function Component" b
 const ${1:Component} = ({$2}: {}) => {
 	return ${3:null}
-}
+};
 endsnippet
 
 snippet t "Test"
@@ -68,7 +67,7 @@ it('$1', () => {
 endsnippet
 
 snippet e "expect"
-expect($1).toBe($0)
+expect($1).toBe($0);
 endsnippet
 
 snippet edf "Export Default Function" b
@@ -78,15 +77,15 @@ export default function ${1:Function}() {
 endsnippet
 
 snippet i "Import Module" b
-import ${2:_} from "$1"
+import ${2:_} from "$1";
 endsnippet
 
 snippet ir "Import React" b
-import React from "react"
+import React from "react";
 endsnippet
 
 snippet is "Import styled" b
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 endsnippet
 
 snippet s "Styled Component" b
@@ -124,7 +123,7 @@ endsnippet
 snippet sm "Story Module" b
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import $1 from "../src/${2:components}/$1";
+import ${1:`!p snip.rv = snip.basename.replace('.stories', '')`} from "../src/${2:components}/$1";
 
 export default {
   title: "`!p snip.rv = t[2].title()` / $1",
@@ -172,4 +171,14 @@ snippet if "if" b
 if ($1) {
 	$0
 }
+endsnippet
+
+snippet us "useState" b
+const [${1:prop}, set${1/.*/\u$0/}] = useState(${2:null});
+endsnippet
+
+snippet ue "useEffect" b
+useEffect(() => {
+	$0
+}, [$1]);
 endsnippet
