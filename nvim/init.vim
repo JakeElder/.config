@@ -162,6 +162,9 @@ nmap <silent> <leader>tw :set wrap!<cr>
 " <leader>ev edits vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<cr>
 
+" gdf deletes fills (from svg)
+nmap gdf :%s/fill=".\{-}"\s*<cr>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set up lsp                                                                   " 
