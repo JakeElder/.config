@@ -27,13 +27,13 @@
 snippet rm "React Module" b
 import React from "react";
 
-type Props = {$2};
+type Props = {$1};
 
-const ${1:`!p snip.rv = snip.basename`} = ({$2}: Props) => {
+const ${4:`!p snip.rv = snip.basename`} = ({$2}: Props) => {
 	return ${3:null};
 };
 $0
-export default $1;
+export default $4;
 endsnippet
 
 snippet fc "Function Component" b
