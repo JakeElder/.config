@@ -36,7 +36,7 @@ $0
 export default $4;
 endsnippet
 
-snippet fc "Function Component" b
+snippet rc "React Component" b
 const ${1:Component} = ({$2}: {}) => {
 	return ${3:null}
 };
@@ -181,4 +181,8 @@ snippet ue "useEffect" b
 useEffect(() => {
 	$0
 }, [$1]);
+endsnippet
+
+snippet ur "useRef" b
+const $1Ref = useRef(${2:null});
 endsnippet

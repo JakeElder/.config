@@ -7,6 +7,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob !.git'
 
+# set editor
+export EDITOR='nvim'
+
 # show colors in ls and grep
 alias ls='ls -G'
 alias grep='grep --color=auto --exclude-dir={.git}'
