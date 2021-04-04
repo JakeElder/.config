@@ -26,6 +26,7 @@ Plug 'tpope/vim-surround' " ys, ds, cs
 Plug 'tpope/vim-vinegar' " - (netrw)
 Plug 'tpope/vim-abolish' " :Subvert
 Plug 'tpope/vim-projectionist' " :A
+Plug 'tpope/vim-dispatch' " :Dispatch
 
 " custom text objects
 Plug 'kana/vim-textobj-user' 
@@ -201,6 +202,24 @@ nnoremap <silent><nowait><expr> <c-y> coc#float#has_scroll() ? coc#float#scroll(
 " let g:completion_confirm_key = "\<c-y>"
 " nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
 " nmap <silent> <c-k> <Plug>(coc-diagnostic-prev)
+
+" typechecking and quickfix nav
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast | catch | endtry
+
+nmap <silent><leader>; :Dispatch tsc --noEmit --pretty false<cr>
+nmap <silent>]] :Cnext<cr>
+nmap <silent>[[ :Cprev<cr>
+
+nmap <silent><leader>' :call ToggleQuickFix()<cr>
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
