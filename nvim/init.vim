@@ -171,16 +171,32 @@ nmap gdf :%s/fill=".\{-}"\s*<cr>
 " set up lsp                                                                   " 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" <leader>f formats the document
 command! -nargs=0 Format :call CocAction('format')
 autocmd FileType json,typescript.tsx nmap <silent> <leader>f :Format<cr>
 
+" <s-k> shows hover for word under cursor
 nmap <silent> <s-k> :call CocAction('doHover')<cr>
+
+" <c-n> triggers autocomplete
 inoremap <silent><expr> <c-n> coc#refresh()
 
+" <c-y> enters first autocomplete
 inoremap <expr> <c-y> pumvisible() ? "\<c-y>" : "\<c-x>\<c-o>\<c-y>"
 
-nnoremap <silent> <c-s> :<c-u>CocFzfList symbols<cr>
+" <space>s lists symbols
+nnoremap <silent> <space>s :<c-u>CocFzfList symbols<cr>
 let g:coc_fzf_opts=['--layout=reverse']
+
+" function text objects
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+
+" scroll popups with <c-e>, <c-y>
+nnoremap <silent><nowait><expr> <c-e> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-e>"
+nnoremap <silent><nowait><expr> <c-y> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-y>"
 
 " let g:completion_confirm_key = "\<c-y>"
 " nmap <silent> <c-j> <Plug>(coc-diagnostic-next)
@@ -210,11 +226,11 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('i', '<c-j>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  -- buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
