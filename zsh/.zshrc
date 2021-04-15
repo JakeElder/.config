@@ -23,6 +23,9 @@ alias vim='nvim'
 # alias mux to tmuxinator
 alias mux='tmuxinator'
 
+# project aliases
+alias ms-web="cd '${HOME}/Projects/Mindful Studio/Code/ms-web' && ./start"
+
 # set a custom prompt
 prompt_color=$(case "$MACHINE_ID" in
   "jwserver") echo magenta;;
@@ -59,6 +62,16 @@ compinit -d "${XDG_DATA_HOME}/zsh/zcompdump"
 
 # load direnv
 eval "$(direnv hook zsh)"
+
+# set u pet
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^n' pet-select
 
 # set up zplug
 if [[ "$(uname)" == "Darwin" ]]; then

@@ -37,8 +37,8 @@ export default $4;
 endsnippet
 
 snippet rc "React Component" b
-const ${1:Component} = ({$2}: {}) => {
-	return ${3:null}
+const ${1:Component} = ({$2}: {$3}) => {
+	return ${4:null}
 };
 endsnippet
 
@@ -184,5 +184,9 @@ useEffect(() => {
 endsnippet
 
 snippet ur "useRef" b
-const $1Ref = useRef(${2:null});
+const $1 = useRef(${2:null});
+endsnippet
+
+snippet c "const" b
+const $1 = $0;
 endsnippet

@@ -1,0 +1,9 @@
+[[snippets]]
+  description = "git commit a new ui feature"
+  command = "git commit -am \"feat(ui): <message>\""
+  output = ""
+
+[[snippets]]
+  description = "recursively delete node_modules"
+  command = "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+  output = ""
