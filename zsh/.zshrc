@@ -73,6 +73,11 @@ zle -N pet-select
 stty -ixon
 bindkey '^n' pet-select
 
+# enable esc v to edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # set up zplug
 if [[ "$(uname)" == "Darwin" ]]; then
   export ZPLUG_HOME=$(brew --prefix)/opt/zplug

@@ -223,6 +223,7 @@ nmap <silent><leader>' :call ToggleQuickFix()<cr>
 
 " <leader>q fixes current error
 nmap <leader>q  <Plug>(coc-fix-current)
+" nmap <silent> gd <Plug>(coc-definition)
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
