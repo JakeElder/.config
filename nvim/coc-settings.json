@@ -5,7 +5,7 @@
   "signature.enable": false,
   "codeLens.enable": false,
   "suggest.autoTrigger": "none",
-  "coc.preferences.formatOnSaveFiletypes": ["typescriptreact", "json"],
+  "coc.preferences.formatOnSaveFiletypes": ["typescriptreact", "json", "html"],
   "suggest.noselect": false,
   "suggest.floatEnable": true,
   "signature.hideOnTextChange": true,

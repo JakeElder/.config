@@ -3,3 +3,7 @@ configstore
 coc/commands
 coc/list-commands-history.json
 coc/list-symbols-history.json
+coc/extensions/db.json
+coc/list-extensions-history.json
+git/gitk
+fontforge
