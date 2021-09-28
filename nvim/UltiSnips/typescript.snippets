@@ -173,6 +173,12 @@ if ($1) {
 }
 endsnippet
 
+snippet else "else"
+else {
+	$0
+}
+endsnippet
+
 snippet us "useState" b
 const [${1:prop}, set${1/.*/\u$0/}] = useState(${2:null});
 endsnippet
