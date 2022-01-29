@@ -36,7 +36,7 @@ $0
 export default $4;
 endsnippet
 
-snippet rc "React Component" b
+snippet rc "React Component"
 const ${1:Component} = ({$2}: {$3}) => {
 	return ${4:null}
 };
@@ -173,6 +173,13 @@ if ($1) {
 }
 endsnippet
 
+snippet bhc "Block Header Comment" b
+////////////////////////////////////////////////////////////////////////////////
+// $0
+////////////////////////////////////////////////////////////////////////////////
+endsnippet
+
+
 snippet us "useState" b
 const [${1:prop}, set${1/.*/\u$0/}] = useState(${2:null});
 endsnippet
@@ -189,4 +196,12 @@ endsnippet
 
 snippet c "const" b
 const $1 = $0;
+endsnippet
+
+snippet tpl "template string" i
+\`\$\{${VISUAL}\}\`
+endsnippet
+
+snippet tpp "template partial" i
+\$\{${VISUAL}\}
 endsnippet
