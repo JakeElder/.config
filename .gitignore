@@ -7,3 +7,5 @@ coc/extensions/db.json
 coc/list-extensions-history.json
 git/gitk
 fontforge
+coc/suggest.txt
+gatsby

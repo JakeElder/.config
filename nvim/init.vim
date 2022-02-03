@@ -256,9 +256,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gR', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts={show_header=false} })<CR>', opts)
-  buf_set_keymap('n', '<c-j>', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts={show_header=false} })<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '<c-k>', '<cmd>lua vim.diagnostic.goto_prev({ float={show_header=false} })<CR>', opts)
+  buf_set_keymap('n', '<c-j>', '<cmd>lua vim.diagnostic.goto_next({ float={show_header=false} })<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 end
 
@@ -329,7 +329,7 @@ augroup END
 " set filetype=typescript.tsx (required by coc-tsserver)
 " set syntax as typescriptreact (for default vim ts syntax)
 " set the same for js, jsx, ts, tsx so highlighting is consistent
-autocmd BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx
+autocmd BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.mjs
       \ set filetype=typescript.tsx |
       \ set syntax=typescriptreact
 
@@ -357,7 +357,7 @@ nnoremap <c-c> :BD<cr>
 " <ctrl-p> shows files in fzf. <ctrl-n> shows open buffers. <alt-p> for rg
 let g:AutoPairsShortcutToggle = '' " don't let autopairs take <alt-p>
 nnoremap <c-p> :Files<cr>
-nnoremap <m-p> :Rg<cr>
+nnoremap <m-p> :RG<cr>
 nnoremap <c-n> :Buffers<cr>
 
 function! s:list_buffers()
@@ -377,10 +377,20 @@ command! Bdelete call fzf#run(fzf#wrap({
   \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
 \ }))
 
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
 nnoremap <leader>b :Bdelete<cr>
 
 " :VG term to vimgrep using rg
-command! -nargs=1 VG vimgrep /<args>/gj `rg . -l --hidden`
+command! -nargs=1 VG vimgrep /<args>/gj `rg . -l --hidden --glob '!.git/'`
 
 " <leader>: shows fzf vim command history
 nnoremap <leader>: :History:<cr>
