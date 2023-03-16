@@ -92,3 +92,10 @@ zplug "lukechilds/zsh-nvm"
 
 # load zplug
 zplug load
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+
+if [ -d "$HOME/Library/Python/3.10/bin/" ] ; then
+    PATH="$HOME/Library/Python/3.10/bin/:$PATH"
+fi

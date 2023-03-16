@@ -9,3 +9,5 @@ git/gitk
 fontforge
 coc/suggest.txt
 gatsby
+alacritty/catppuccin
+.zsh_history
