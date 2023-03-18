@@ -24,3 +24,6 @@ build
 .cache
 .tmp
 .localdb
+
+# Editor dirs
+.vscode

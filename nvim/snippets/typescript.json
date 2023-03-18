@@ -1,0 +1,14 @@
+{
+  "Console Log": {
+    "prefix": "cl",
+    "body": [
+      "console.log($0)"
+    ]
+  },
+  "Import React": {
+    "prefix": "ir",
+    "body": [
+      "import React from \"react\";"
+    ]
+  }
+}

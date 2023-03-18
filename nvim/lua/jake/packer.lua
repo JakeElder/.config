@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
   use('tpope/vim-commentary')
   use('tpope/vim-surround')
   use('tpope/vim-repeat')
+  use('tpope/vim-fugitive')
+  use('tpope/vim-eunuch')
 
   -- Custom text objects
   use('kana/vim-textobj-user')
@@ -40,7 +42,7 @@ return require('packer').startup(function(use)
   use('qpkorr/vim-bufkill')
 
   -- LSP
-  use {
+  use({
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
     requires = {
@@ -50,10 +52,7 @@ return require('packer').startup(function(use)
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
       -- Autocompletion
-      {
-        'hrsh7th/nvim-cmp',
-        requires = { 'quangnguyen30192/cmp-nvim-ultisnips' }
-      },                              -- Required
+      { 'hrsh7th/nvim-cmp', },        -- Required
       { 'hrsh7th/cmp-nvim-lsp' },     -- Required
       { 'hrsh7th/cmp-buffer' },       -- Optional
       { 'hrsh7th/cmp-path' },         -- Optional
@@ -61,10 +60,12 @@ return require('packer').startup(function(use)
       { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
       -- Snippets
-      { 'L3MON4D3/LuaSnip' },             -- Required
-      { 'rafamadriz/friendly-snippets' }, -- Optional
+      { 'L3MON4D3/LuaSnip' }, -- Required
     }
-  }
+  })
+
+  -- Prettier LSP
+  use('jose-elias-alvarez/null-ls.nvim')
 
   use {
     "windwp/nvim-autopairs",

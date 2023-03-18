@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
     url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
-  ["cmp-nvim-ultisnips"] = {
-    loaded = true,
-    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/cmp-nvim-ultisnips",
-    url = "https://github.com/quangnguyen30192/cmp-nvim-ultisnips"
-  },
   ["cmp-path"] = {
     loaded = true,
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/cmp-path",
@@ -118,11 +113,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  ["friendly-snippets"] = {
-    loaded = true,
-    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -138,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
@@ -185,15 +180,20 @@ _G.packer_plugins = {
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/rose-pine",
     url = "https://github.com/rose-pine/neovim"
   },
+  ["snippet-converter.nvim"] = {
+    loaded = true,
+    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/snippet-converter.nvim",
+    url = "https://github.com/smjonas/snippet-converter.nvim"
+  },
+  ["telescope-lsp-handlers.nvim"] = {
+    loaded = true,
+    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/telescope-lsp-handlers.nvim",
+    url = "https://github.com/gbrlsnchs/telescope-lsp-handlers.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ultisnips = {
-    loaded = true,
-    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/ultisnips",
-    url = "https://github.com/SirVer/ultisnips"
   },
   undotree = {
     loaded = true,
@@ -214,6 +214,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
+  },
+  ["vim-eunuch"] = {
+    loaded = true,
+    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/vim-eunuch",
+    url = "https://github.com/tpope/vim-eunuch"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-indent-object"] = {
     loaded = true,
