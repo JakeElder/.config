@@ -33,15 +33,15 @@ vim.keymap.set('n', '<leader>v', ':vs<cr> <c-w><c-l>')
 
 -- Stop "No information available" on hover
 -- https://github.com/neovim/nvim-lspconfig/issues/1931
-local banned_messages = { "No information available" }
-vim.notify = function(msg, ...)
-  for _, banned in ipairs(banned_messages) do
-    if msg == banned then
-      return
-    end
-  end
-  require("notify")(msg, ...)
-end
+-- local banned_messages = { "No information available" }
+-- vim.notify = function(msg, ...)
+--   for _, banned in ipairs(banned_messages) do
+--     if msg == banned then
+--       return
+--     end
+--   end
+--   require("notify")(msg, ...)
+-- end
 
 -- Window resizing
 vim.keymap.set('n', '<leader><', '20<c-w><')

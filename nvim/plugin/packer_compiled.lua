@@ -129,6 +129,16 @@ _G.packer_plugins = {
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  monokai = {
+    loaded = true,
+    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/monokai",
+    url = "https://github.com/tanvirtin/monokai.nvim"
+  },
+  noctu = {
+    loaded = true,
+    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/noctu",
+    url = "https://github.com/noahfrederick/vim-noctu"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -179,16 +189,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jake/.local/share/nvim/site/pack/packer/start/rose-pine",
     url = "https://github.com/rose-pine/neovim"
-  },
-  ["snippet-converter.nvim"] = {
-    loaded = true,
-    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/snippet-converter.nvim",
-    url = "https://github.com/smjonas/snippet-converter.nvim"
-  },
-  ["telescope-lsp-handlers.nvim"] = {
-    loaded = true,
-    path = "/Users/jake/.local/share/nvim/site/pack/packer/start/telescope-lsp-handlers.nvim",
-    url = "https://github.com/gbrlsnchs/telescope-lsp-handlers.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

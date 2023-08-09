@@ -10,6 +10,8 @@ return require('packer').startup(function(use)
 
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use({ "catppuccin/nvim", as = "catppuccin" })
+  use({ "noahfrederick/vim-noctu", as = "noctu" })
+  use({ 'tanvirtin/monokai.nvim', as = 'monokai' })
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')

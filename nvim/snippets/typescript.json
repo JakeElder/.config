@@ -5,10 +5,64 @@
       "console.log($0)"
     ]
   },
+  "Import": {
+    "prefix": "i",
+    "body": [
+      "import $0 from \"$1\";"
+    ]
+  },
   "Import React": {
     "prefix": "ir",
     "body": [
       "import React from \"react\";"
+    ]
+  },
+  "Try/Catch": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "\t$1",
+      "} catch(e) {",
+      "\tconsole.error(e)",
+      "}"
+    ]
+  },
+  "React Module": {
+    "prefix": "rm",
+    "body": [
+      "import React from \"react\";",
+      "",
+      "type Props = {$1};",
+      "",
+      "const ${4:$TM_FILENAME_BASE} = ({${2: }}: Props) => {",
+      "\treturn ${3:<></>};",
+      "};",
+      "$0",
+      "export default $4;"
+    ]
+  },
+  "Story Module": {
+    "prefix": "sm",
+    "body": [
+      "import type { Meta, StoryObj } from \"@storybook/react\";",
+      "import ${1:Component} from \"./$1\";",
+      "",
+      "const meta: Meta<typeof $1> = {",
+        "\ttitle: \"$2/$1\",",
+        "\tcomponent: $1,",
+        "\ttags: [\"autodocs\"],",
+        "\tparameters: {",
+        "\t\tlayout: \"fullscreen\"",
+        "\t}",
+      "};",
+      "",
+      "type Story = StoryObj<typeof $1>;",
+      "",
+      "export const Default: Story = {",
+      "\targs: {$0}",
+      "};",
+      "",
+      "export default meta;"
     ]
   }
 }

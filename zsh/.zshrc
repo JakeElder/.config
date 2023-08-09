@@ -39,7 +39,13 @@ setopt hist_expire_dups_first # delete duplicates first when HISTFILE size excee
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
+setopt appendhistory
+setopt no_share_history
 setopt share_history          # share command history data
+
+# set history size
+HISTSIZE=10000
+SAVEHIST=10000
 
 # set session and histfile location
 SHELL_SESSION_DIR="${XDG_DATA_HOME}/zsh/zsh_sessions"
