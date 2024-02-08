@@ -105,3 +105,13 @@ export NVM_DIR="$HOME/.nvm"
 if [ -d "$HOME/Library/Python/3.10/bin/" ] ; then
     PATH="$HOME/Library/Python/3.10/bin/:$PATH"
 fi
+
+# who knows
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+# bun completions
+[ -s "/Users/jake/.bun/_bun" ] && source "/Users/jake/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

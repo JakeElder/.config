@@ -1,30 +1,28 @@
 {
   "Console Log": {
     "prefix": "cl",
-    "body": [
-      "console.log($0)"
-    ]
+    "body": ["console.log($0)"]
   },
   "Import": {
     "prefix": "i",
-    "body": [
-      "import $0 from \"$1\";"
-    ]
+    "body": ["import $0 from \"$1\";"]
   },
   "Import React": {
     "prefix": "ir",
-    "body": [
-      "import React from \"react\";"
-    ]
+    "body": ["import React from \"react\";"]
   },
   "Try/Catch": {
     "prefix": "try",
+    "body": ["try {", "\t$1", "} catch(e) {", "\tconsole.error(e)", "}"]
+  },
+  "React Component": {
+    "prefix": "rc",
     "body": [
-      "try {",
-      "\t$1",
-      "} catch(e) {",
-      "\tconsole.error(e)",
-      "}"
+      "interface ${1}Props = {};",
+      "",
+      "const ${1:Component} = (props: ${1}Props) => {",
+      "\treturn ${2:<></>};",
+      "};"
     ]
   },
   "React Module": {
@@ -48,12 +46,12 @@
       "import ${1:Component} from \"./$1\";",
       "",
       "const meta: Meta<typeof $1> = {",
-        "\ttitle: \"$2/$1\",",
-        "\tcomponent: $1,",
-        "\ttags: [\"autodocs\"],",
-        "\tparameters: {",
-        "\t\tlayout: \"fullscreen\"",
-        "\t}",
+      "\ttitle: \"$2/$1\",",
+      "\tcomponent: $1,",
+      "\ttags: [\"autodocs\"],",
+      "\tparameters: {",
+      "\t\tlayout: \"fullscreen\"",
+      "\t}",
       "};",
       "",
       "type Story = StoryObj<typeof $1>;",

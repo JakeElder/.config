@@ -1,6 +1,9 @@
 # node packages
 node_modules
 
+
+*.tsbuildinfo
+
 # yarn files
 yarn-error.log
 
