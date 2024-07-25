@@ -11,9 +11,9 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   [[blocks.segments]]
     type = 'session'
     style = 'plain'
-    template = '{{ if .SSHSession }}󰣀 {{ end }}'
     background = 'transparent'
     foreground = 'magenta'
+    template = "{{ if eq .HostName \"pi\" }} {{ end }}"
 
   [[blocks.segments]]
     type = 'path'
