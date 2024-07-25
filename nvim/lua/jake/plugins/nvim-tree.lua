@@ -28,6 +28,7 @@ return {
 			vim.keymap.set("n", "<CR>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
 			vim.keymap.set("n", "<ESC>", cancel, opts("Close: Cancel"))
 			vim.keymap.set("n", "<C-c>", cancel, opts("Close: Cancel"))
+			vim.keymap.set("n", "q", cancel, opts("Close: Cancel"))
 		end
 
 		nvimtree.setup({
@@ -38,10 +39,10 @@ return {
 			},
 			renderer = {
 				icons = {
-					show = {
-						file = false,
-						folder = false,
-					},
+					-- show = {
+					-- 	file = false,
+					-- 	folder = false,
+					-- },
 					glyphs = {
 						git = {
 							untracked = "",
