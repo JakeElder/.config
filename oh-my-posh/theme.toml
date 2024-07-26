@@ -12,7 +12,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     type = 'session'
     style = 'plain'
     background = 'transparent'
-    foreground = 'magenta'
+    foreground = 'yellow'
     template = "{{ if eq .HostName \"relay\" }}󰒍 {{ end }}"
 
   [[blocks.segments]]
