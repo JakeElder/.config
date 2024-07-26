@@ -12,6 +12,14 @@ return {
 				lualine_a = {
 					{
 						function()
+							return "󰒍"
+						end,
+						cond = function()
+							return os.getenv("HOST") == "relay"
+						end,
+					},
+					{
+						function()
 							return ""
 						end,
 						cond = function()
