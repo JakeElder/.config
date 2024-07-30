@@ -19,20 +19,30 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
+# Load modules
+autoload edit-command-line; zle -N edit-command-line
+zle -N cancel-completion
+
 # Enable vim mode
 bindkey -v
-autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd V edit-command-line
 
 # Load completions
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+zmodload -i zsh/complist
+compinit
 zinit cdreplay -q
+
+# Speed up escape key to cancel selection
+KEYTIMEOUT=10
 
 # Key bindings
 bindkey '' history-search-backward
 bindkey '' history-search-forward
 bindkey '' autosuggest-accept
 bindkey '^ ' forward-word
+bindkey '^[[Z' reverse-menu-complete
+bindkey -M menuselect '^[' undo
 
 # History
 HISTSIZE=5000
@@ -50,6 +60,7 @@ setopt hist_find_no_dups
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu select
 
 # Aliases
 alias ls='eza'
