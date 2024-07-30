@@ -18,11 +18,19 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Add in zsh plugins
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+
+# Enable vim mode
+bindkey -v
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd V edit-command-line
 
 # Load completions
 autoload -Uz compinit && compinit
 zinit cdreplay -q
+
+# Key bindings
+bindkey '' history-search-backward
+bindkey '' history-search-forward
 
 # History
 HISTSIZE=5000
@@ -46,11 +54,7 @@ alias ls='eza'
 alias vim='nvim'
 
 # Shell integrations
-zvm_after_init() {
-  source <(fzf --zsh)
-  bindkey '' history-search-backward
-  bindkey '' history-search-forward
-}
+source <(fzf --zsh)
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.toml)"
