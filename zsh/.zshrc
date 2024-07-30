@@ -32,6 +32,7 @@ zinit cdreplay -q
 bindkey '' history-search-backward
 bindkey '' history-search-forward
 bindkey '' autosuggest-accept
+bindkey '^ ' forward-word
 
 # History
 HISTSIZE=5000
