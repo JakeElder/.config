@@ -24,10 +24,6 @@ zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
-# Keybindings
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-
 # History
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -50,7 +46,11 @@ alias ls='eza'
 alias vim='nvim'
 
 # Shell integrations
-source <(fzf --zsh)
+zvm_after_init() {
+  source <(fzf --zsh)
+  bindkey '' history-search-backward
+  bindkey '' history-search-forward
+}
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.toml)"
