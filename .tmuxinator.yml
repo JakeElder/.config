@@ -1,0 +1,5 @@
+name: "Config"
+
+windows:
+  - Vim: vim
+  - Terminal:

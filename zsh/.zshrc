@@ -65,6 +65,7 @@ zstyle ':completion:*' menu select
 # Aliases
 alias ls='eza'
 alias vim='nvim'
+alias mux='tmuxinator'
 
 # Shell integrations
 source <(fzf --zsh)
