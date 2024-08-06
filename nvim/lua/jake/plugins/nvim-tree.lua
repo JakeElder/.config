@@ -37,16 +37,14 @@ return {
 				number = true,
 				relativenumber = true,
 			},
+			git = {
+				enable = false,
+			},
 			renderer = {
 				icons = {
-					-- show = {
-					-- 	file = false,
-					-- 	folder = false,
-					-- },
-					glyphs = {
-						git = {
-							untracked = "",
-						},
+					show = {
+						file = false,
+						folder = false,
 					},
 				},
 			},
