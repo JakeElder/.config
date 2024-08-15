@@ -18,8 +18,6 @@ return {
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
 
-		require("luasnip.loaders.from_vscode").lazy_load()
-
 		cmp.setup({
 			completion = {
 				autocomplete = false,
@@ -34,20 +32,13 @@ return {
 				["<C-j>"] = cmp.mapping.scroll_docs(-4),
 				["<C-k>"] = cmp.mapping.scroll_docs(4),
 				["<Esc>"] = cmp.mapping.abort(),
-				["<C-Space>"] = cmp.mapping(function()
-					if cmp.visible() then
-						cmp.confirm({ select = true })
-					else
-						cmp.complete()
-					end
-				end),
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "emmet_vim" },
+				{ name = "nvim_lsp" },
 				{ name = "buffer" },
 				{ name = "path" },
-				{ name = "emmet_vim" },
 			}),
 
 			formatting = {
