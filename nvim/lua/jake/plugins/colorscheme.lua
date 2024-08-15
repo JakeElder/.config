@@ -1,14 +1,14 @@
 return {
-  "catppuccin/nvim",
-  name = "catpuccin",
-  priority = 1000,
-  config = function()
-    local catpuccin = require("catppuccin")
+	"catppuccin/nvim",
+	name = "catpuccin",
+	priority = 1000,
+	config = function()
+		local catpuccin = require("catppuccin")
 
-    catpuccin.setup({
-      flavour = "mocha"
-    })
+		catpuccin.setup({
+			flavour = "mocha",
+		})
 
-    vim.cmd.colorscheme "catppuccin"
-  end
+		vim.cmd.colorscheme("catppuccin")
+	end,
 }
