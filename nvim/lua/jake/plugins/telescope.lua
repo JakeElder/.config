@@ -17,7 +17,7 @@ return {
 				mappings = {
 					i = {
 						["<C-d>"] = actions.delete_buffer + actions.move_to_top,
-						["<esc>"] = actions.close,
+						["<Esc>"] = actions.close,
 						["<C-u>"] = false,
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-e>"] = { "<esc>", type = "command" },
@@ -34,7 +34,10 @@ return {
 		local builtin = require("telescope.builtin")
 
 		keymap.set("n", "<CR>", builtin.find_files, { desc = "Find files in cwd" })
-		keymap.set("n", "<M-CR>", builtin.buffers, { desc = "Fuzzy find open buffers" })
+		keymap.set("n", "<M-CR>", function()
+			builtin.find_files({ hidden = true })
+		end, { desc = "Find files (inc hidden) in cwd" })
+		keymap.set("n", ";", builtin.buffers, { desc = "Fuzzy find open buffers" })
 		keymap.set("n", "<C-p>", builtin.git_files, { desc = "Find git files in cwd" })
 		keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>G", builtin.grep_string, { desc = "Find string under cursor in cwd" })
