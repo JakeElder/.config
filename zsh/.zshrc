@@ -67,6 +67,9 @@ alias ls='eza'
 alias vim='nvim'
 alias mux='tmuxinator'
 
+alias gst='git status'
+alias gd='git difftool'
+
 # Shell integrations
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
