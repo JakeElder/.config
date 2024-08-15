@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
+		"dcampos/cmp-emmet-vim",
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
@@ -22,7 +23,7 @@ return {
 		cmp.setup({
 			completion = {
 				autocomplete = false,
-				completeopt = "menu,menuone,preview,noselect",
+				completeopt = "menu,menuone,preview",
 			},
 			snippet = {
 				expand = function(args)
@@ -30,24 +31,28 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<C-k>"] = cmp.mapping.select_prev_item(),
-				["<C-j>"] = cmp.mapping.select_next_item(),
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<C-j>"] = cmp.mapping.scroll_docs(-4),
+				["<C-k>"] = cmp.mapping.scroll_docs(4),
+				["<Esc>"] = cmp.mapping.abort(),
+				["<C-Space>"] = cmp.mapping(function()
+					if cmp.visible() then
+						cmp.confirm({ select = true })
+					else
+						cmp.complete()
+					end
+				end),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
+				{ name = "emmet_vim" },
 			}),
 
 			formatting = {
 				format = lspkind.cmp_format({
-					maxwidth = 50,
+					maxwidth = 80,
 					ellipsis_char = "...",
 				}),
 			},
