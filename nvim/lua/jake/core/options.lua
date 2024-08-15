@@ -6,7 +6,7 @@ opt.number = true
 opt.wrap = false
 opt.cursorline = true
 opt.termguicolors = true
-opt.signcolumn = "yes"
+opt.signcolumn = "no"
 
 -- tabs & indentation
 opt.tabstop = 2
