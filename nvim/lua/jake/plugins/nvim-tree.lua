@@ -40,6 +40,11 @@ return {
 			git = {
 				enable = false,
 			},
+			filters = {
+				custom = {
+					".DS_Store",
+				},
+			},
 			renderer = {
 				icons = {
 					show = {
