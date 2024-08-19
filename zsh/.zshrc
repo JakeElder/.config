@@ -69,6 +69,7 @@ alias mux='tmuxinator'
 
 alias gst='git status'
 alias gd='git difftool'
+alias gd='git difftool --cached'
 
 # Shell integrations
 source <(fzf --zsh)

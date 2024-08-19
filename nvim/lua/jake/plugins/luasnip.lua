@@ -6,6 +6,7 @@ return {
 		local i = ls.insert_node
 		local t = ls.text_node
 		local f = ls.function_node
+		local rep = require("luasnip.extras").rep
 
 		-- Snippets
 		ls.add_snippets("typescriptreact", {
@@ -23,6 +24,48 @@ return {
 				t(" from '"),
 				i(1),
 				t("';"),
+			}),
+		})
+
+		ls.add_snippets("typescriptreact", {
+			s("rc", {
+				t({ "/*", " * " }),
+				i(1),
+				t({ "", " */", "" }),
+				t({ "", "interface " }),
+				rep(1),
+				t({ "Props {};", "" }),
+				t({ "", "export const " }),
+				rep(1),
+				t(" = (props: "),
+				rep(1),
+				t("Props) => {"),
+				t({ "", "\treturn " }),
+				i(2, "<></>"),
+				t({ ";", "};" }),
+			}),
+		})
+
+		ls.add_snippets("typescriptreact", {
+			s("rcc", {
+				t({ "/*", " * " }),
+				i(1),
+				t({ "", " */", "" }),
+				t({ "", "interface " }),
+				rep(1),
+				t({ "Props { children: React.ReactNode };", "" }),
+				t({ "", "export const " }),
+				rep(1),
+				t(" = ({ children }: "),
+				rep(1),
+				t("Props) => {"),
+				t({ "", "\treturn " }),
+				t('<div className={css["'),
+				f(function(args)
+					return args[1][1]:lower()
+				end, { 1 }),
+				t('"]}>{children}</div>'),
+				t({ "", "};" }),
 			}),
 		})
 
@@ -56,7 +99,7 @@ return {
 			})
 		end
 
-		-- Add snippets to LuaSnip
+		-- Add CSS snippets
 		ls.add_snippets("css", {
 			create_css_var_snippet("b"),
 			create_css_var_snippet("ff"),
