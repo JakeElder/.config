@@ -5,7 +5,7 @@ return {
 	},
 	init = function()
 		vim.g.user_emmet_install_global = 0
-		vim.g.user_emmet_leader_key = "<C-M>"
+		vim.g.user_emmet_leader_key = "<C-q>"
 
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "css",
@@ -90,6 +90,7 @@ return {
 			ff = "font-family",
 			ts = "text-shadow",
 			bg = "background",
+			br = "border-radius",
 		}
 
 		-- function to generate the snippet
@@ -120,13 +121,14 @@ return {
 			create_css_var_snippet("ff"),
 			create_css_var_snippet("ts"),
 			create_css_var_snippet("bg"),
+			create_css_var_snippet("br"),
 		})
 
 		-- Keymaps
 		vim.keymap.set("i", "<Tab>", function()
 			if ls.expand_or_locally_jumpable() then
 				ls.expand_or_jump()
-			elseif vim.fn["emmet#isExpandable"]() == 1 then
+			elseif vim.bo.filetype == "css" and vim.fn["emmet#isExpandable"]() == 1 then
 				vim.api.nvim_feedkeys(
 					vim.api.nvim_replace_termcodes("<Plug>(emmet-expand-abbr)", true, true, true),
 					"",
