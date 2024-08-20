@@ -37,9 +37,9 @@ return {
 				{ name = "path" },
 				{
 					name = "nvim_lsp",
-					entry_filter = function(entry)
-						return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
-					end,
+					-- entry_filter = function(entry)
+					-- 	return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
+					-- end,
 				},
 				{ name = "luasnip" },
 				{ name = "emmet_vim" },

@@ -8,22 +8,23 @@ return {
 		local f = ls.function_node
 		local rep = require("luasnip.extras").rep
 
+		local import_snippet = s("i", {
+			t("import "),
+			i(2),
+			t(" from '"),
+			i(1),
+			t("';"),
+		})
+
 		-- Snippets
+		ls.add_snippets("typescriptreact", { import_snippet })
+		ls.add_snippets("typescript", { import_snippet })
+
 		ls.add_snippets("typescriptreact", {
 			s("cn", {
 				t('className={css["'),
 				i(1),
 				t('"]}'),
-			}),
-		})
-
-		ls.add_snippets("typescriptreact", {
-			s("i", {
-				t("import "),
-				i(2),
-				t(" from '"),
-				i(1),
-				t("';"),
 			}),
 		})
 
@@ -34,7 +35,7 @@ return {
 				t({ "", " */", "" }),
 				t({ "", "interface " }),
 				rep(1),
-				t({ "Props {};", "" }),
+				t({ "Props {}", "" }),
 				t({ "", "export const " }),
 				rep(1),
 				t(" = (props: "),
@@ -53,7 +54,7 @@ return {
 				t({ "", " */", "" }),
 				t({ "", "interface " }),
 				rep(1),
-				t({ "Props { children: React.ReactNode };", "" }),
+				t({ "Props {", "\tchildren: React.ReactNode", "}", "" }),
 				t({ "", "export const " }),
 				rep(1),
 				t(" = ({ children }: "),
