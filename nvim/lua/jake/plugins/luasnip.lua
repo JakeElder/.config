@@ -1,5 +1,19 @@
 return {
 	"L3MON4D3/LuaSnip",
+	dependencies = {
+		"mattn/emmet-vim",
+	},
+	init = function()
+		vim.g.user_emmet_install_global = 0
+		vim.g.user_emmet_leader_key = "<C-M>"
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "css",
+			callback = function()
+				vim.cmd("EmmetInstall")
+			end,
+		})
+	end,
 	config = function()
 		local ls = require("luasnip")
 		local s = ls.snippet
@@ -112,6 +126,12 @@ return {
 		vim.keymap.set("i", "<Tab>", function()
 			if ls.expand_or_locally_jumpable() then
 				ls.expand_or_jump()
+			elseif vim.fn["emmet#isExpandable"]() == 1 then
+				vim.api.nvim_feedkeys(
+					vim.api.nvim_replace_termcodes("<Plug>(emmet-expand-abbr)", true, true, true),
+					"",
+					true
+				)
 			else
 				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true)
 			end

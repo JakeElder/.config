@@ -4,7 +4,6 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		"dcampos/cmp-emmet-vim",
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
@@ -42,7 +41,6 @@ return {
 					-- end,
 				},
 				{ name = "luasnip" },
-				{ name = "emmet_vim" },
 				{ name = "buffer" },
 			}),
 
