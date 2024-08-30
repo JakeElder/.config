@@ -30,9 +30,17 @@ return {
 			t("';"),
 		})
 
+		local export_snippet = s("e", {
+			t("export "),
+			i(2),
+			t(" from '"),
+			i(1),
+			t("';"),
+		})
+
 		-- Snippets
-		ls.add_snippets("typescriptreact", { import_snippet })
-		ls.add_snippets("typescript", { import_snippet })
+		ls.add_snippets("typescriptreact", { import_snippet, export_snippet })
+		ls.add_snippets("typescript", { import_snippet, export_snippet })
 
 		ls.add_snippets("typescriptreact", {
 			s("cn", {
