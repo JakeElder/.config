@@ -1,8 +1,11 @@
 return {
 	"chrisgrieser/nvim-various-textobjs",
-	lazy = false,
-	opts = { useDefaultKeymaps = false },
 	config = function()
+		require("various-textobjs").setup({
+			useDefaultKeymaps = true,
+			disabledKeymaps = { "gG" },
+		})
+
 		-- Delete surrounding indentation
 		vim.keymap.set("n", "dsi", function()
 			-- select outer indentation
