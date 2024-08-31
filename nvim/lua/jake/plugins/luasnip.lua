@@ -38,15 +38,33 @@ return {
 			t("';"),
 		})
 
+		local console_log_snippet = s("cl", {
+			t("console.log("),
+			i(1),
+			t(");"),
+		})
+
+		local console_dir_snippet = s("cd", {
+			t("console.dir("),
+			i(1),
+			t(", { depth: null, colors: true });"),
+		})
+
 		-- Snippets
-		ls.add_snippets("typescriptreact", { import_snippet, export_snippet })
-		ls.add_snippets("typescript", { import_snippet, export_snippet })
+		ls.add_snippets("typescriptreact", { import_snippet, export_snippet, console_log_snippet, console_dir_snippet })
+		ls.add_snippets("typescript", { import_snippet, export_snippet, console_log_snippet, console_dir_snippet })
 
 		ls.add_snippets("typescriptreact", {
 			s("cn", {
 				t('className={css["'),
 				i(1),
 				t('"]}'),
+			}),
+		})
+
+		ls.add_snippets("typescriptreact", {
+			s("c", {
+				t("children: React.ReactNode;"),
 			}),
 		})
 
