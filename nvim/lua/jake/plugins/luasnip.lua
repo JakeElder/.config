@@ -22,6 +22,10 @@ return {
 		local f = ls.function_node
 		local rep = require("luasnip.extras").rep
 
+		local function to_kebab_case(str)
+			return str:gsub("(%l)(%u)", "%1-%2"):gsub("(%u)(%u%l)", "%1-%2"):lower()
+		end
+
 		local import_snippet = s("i", {
 			t("import "),
 			i(2),
@@ -103,7 +107,7 @@ return {
 				t({ "", "\treturn " }),
 				t('<div className={css["'),
 				f(function(args)
-					return args[1][1]:lower()
+					return to_kebab_case(args[1][1])
 				end, { 1 }),
 				t('"]}>{children}</div>'),
 				t({ "", "};" }),
@@ -112,6 +116,7 @@ return {
 
 		-- CSS Snippets
 		local css_var_properties = {
+			c = "color",
 			b = "border",
 			ff = "font-family",
 			ts = "text-shadow",
@@ -143,6 +148,7 @@ return {
 
 		-- Add CSS snippets
 		ls.add_snippets("css", {
+			create_css_var_snippet("c"),
 			create_css_var_snippet("b"),
 			create_css_var_snippet("ff"),
 			create_css_var_snippet("ts"),

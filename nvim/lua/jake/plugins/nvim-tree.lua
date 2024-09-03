@@ -26,7 +26,13 @@ return {
 
 			api.config.mappings.default_on_attach(bufnr)
 			vim.keymap.set("n", "<CR>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
-			vim.keymap.set("n", "<ESC>", cancel, opts("Close: Cancel"))
+			vim.keymap.set("n", "<esc>", function()
+				if vim.v.hlsearch == 1 then
+					vim.cmd("nohlsearch")
+				else
+					cancel()
+				end
+			end, opts("Close: Cancel"))
 			vim.keymap.set("n", "<C-c>", cancel, opts("Close: Cancel"))
 			vim.keymap.set("n", "q", cancel, opts("Close: Cancel"))
 		end

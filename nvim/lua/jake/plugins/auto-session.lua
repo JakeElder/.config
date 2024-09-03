@@ -10,7 +10,7 @@ return {
 
 		local keymap = vim.keymap
 
-		keymap.set("n", "<leader>s", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" })
+		-- keymap.set("n", "<leader>s", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" })
 		keymap.set("n", "<leader>Q", function()
 			vim.cmd("SessionSave")
 			vim.cmd("qall")

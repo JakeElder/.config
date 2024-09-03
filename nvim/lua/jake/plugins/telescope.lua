@@ -43,5 +43,8 @@ return {
 		keymap.set("n", "<leader>G", builtin.grep_string, { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>t", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 		keymap.set("n", "<leader>k", builtin.keymaps, { desc = "Find keymaps" })
+		keymap.set("n", "<leader>s", builtin.lsp_document_symbols, { desc = "Find document symbols" })
+		keymap.set("n", "<leader>S", builtin.lsp_workspace_symbols, { desc = "Find workspace symbols" })
+		keymap.set("n", "<leader>*", builtin.lsp_references, { desc = "Find workspace symbols" })
 	end,
 }

@@ -17,3 +17,4 @@ keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
 
 -- clear search highlights
 keymap.set("n", "<esc>", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
+keymap.set("n", "<leader>n", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
