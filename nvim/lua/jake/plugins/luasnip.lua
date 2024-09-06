@@ -57,6 +57,7 @@ return {
 		-- Snippets
 		ls.add_snippets("typescriptreact", { import_snippet, export_snippet, console_log_snippet, console_dir_snippet })
 		ls.add_snippets("typescript", { import_snippet, export_snippet, console_log_snippet, console_dir_snippet })
+		ls.add_snippets("javascript", { console_log_snippet, console_dir_snippet })
 
 		ls.add_snippets("typescriptreact", {
 			s("cn", {

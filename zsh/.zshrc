@@ -74,6 +74,7 @@ alias gd='git difftool --cached'
 # Shell integrations
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(direnv hook zsh)"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.toml)"
