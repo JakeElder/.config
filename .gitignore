@@ -3,6 +3,7 @@ fontforge
 cache
 tmux/plugins
 zsh/.zcompdump
+zsh/.zsh_sessions
 nvim/lazy-lock.json
 ookla
 neofetch
