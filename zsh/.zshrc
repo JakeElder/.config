@@ -70,6 +70,7 @@ alias mux='tmuxinator'
 alias gst='git status'
 alias gd='git difftool'
 alias gp='git push'
+alias gc='git commit'
 
 # Shell integrations
 source <(fzf --zsh)
