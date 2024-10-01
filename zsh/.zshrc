@@ -68,11 +68,13 @@ alias vim='nvim'
 alias mux='tmuxinator'
 
 alias gst='git status'
-alias gd='git difftool'
+alias gd='git diff'
+alias gdt='git difftool'
 alias gp='git push'
 alias gc='git commit'
 
 # Shell integrations
+export FZF_CTRL_R_OPTS="--layout=reverse"
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(direnv hook zsh)"
