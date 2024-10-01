@@ -46,7 +46,7 @@ return {
 		keymap.set("n", "<leader>.", function()
 			builtin.find_files({ hidden = true })
 		end, { desc = "Find files (inc hidden) in cwd" })
-		keymap.set("n", "<M-CR>", builtin.buffers, { desc = "Fuzzy find open buffers" })
+		keymap.set("n", "<leader>b", builtin.buffers, { desc = "Fuzzy find open buffers" })
 		keymap.set("n", "<C-p>", builtin.git_files, { desc = "Find git files in cwd" })
 		keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>t", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
