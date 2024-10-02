@@ -67,9 +67,10 @@ alias ls='eza'
 alias vim='nvim'
 alias mux='tmuxinator'
 
+# Git
 alias gst='git status'
-alias gd='git diff'
-alias gdt='git difftool'
+alias ga='git add'
+alias gd='git difftool'
 alias gp='git push'
 alias gc='git commit'
 

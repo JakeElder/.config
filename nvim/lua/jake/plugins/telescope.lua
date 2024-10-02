@@ -13,6 +13,16 @@ return {
 		local actions = require("telescope.actions")
 		local open_with_trouble = require("trouble.sources.telescope").open
 
+		local yank_and_paste_file_contents = function(prompt_bufnr)
+			local entry = require("telescope.actions.state").get_selected_entry()
+			local file_path = entry.path or entry.filename
+			actions.close(prompt_bufnr)
+			local file_contents = vim.fn.readfile(file_path)
+			local row = unpack(vim.api.nvim_win_get_cursor(0))
+			vim.api.nvim_buf_set_lines(0, row - 1, row, false, file_contents)
+			vim.notify("File contents inserted at cursor position!", vim.log.levels.INFO)
+		end
+
 		telescope.setup({
 			defaults = {
 				path_display = { "smart" },
@@ -32,6 +42,7 @@ return {
 						["<C-j>"] = actions.move_selection_next,
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 						["<C-t>"] = open_with_trouble,
+						["<C-y>"] = yank_and_paste_file_contents,
 					},
 				},
 			},
