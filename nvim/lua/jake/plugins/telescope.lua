@@ -12,6 +12,7 @@ return {
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 		local open_with_trouble = require("trouble.sources.telescope").open
+		local trouble = require("trouble")
 
 		local yank_and_paste_file_contents = function(prompt_bufnr)
 			local entry = require("telescope.actions.state").get_selected_entry()
@@ -40,7 +41,10 @@ return {
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-e>"] = { "<esc>", type = "command" },
 						["<C-j>"] = actions.move_selection_next,
-						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						["<C-q>"] = function(prompt_bufnr)
+							actions.send_to_qflist(prompt_bufnr)
+							trouble.refresh()
+						end,
 						["<C-t>"] = open_with_trouble,
 						["<C-y>"] = yank_and_paste_file_contents,
 					},

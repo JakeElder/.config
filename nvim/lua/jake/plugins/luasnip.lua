@@ -26,6 +26,28 @@ return {
 			return str:gsub("(%l)(%u)", "%1-%2"):gsub("(%u)(%u%l)", "%1-%2"):lower()
 		end
 
+		local function_snippet = s("af", {
+			t("const "),
+			i(1),
+			t(" = ("),
+			i(2),
+			t(") => {"),
+			t({ "", "\t" }),
+			i(3),
+			t({ "", "};" }),
+		})
+
+		local async_function_snippet = s("aaf", {
+			t("const "),
+			i(1),
+			t(" = async ("),
+			i(2),
+			t(") => {"),
+			t({ "", "\t" }),
+			i(3),
+			t({ "", "};" }),
+		})
+
 		local import_snippet = s("i", {
 			t("import "),
 			i(2),
@@ -54,10 +76,40 @@ return {
 			t(", { depth: null, colors: true });"),
 		})
 
+		local if_statement_snippet = s("if", {
+			t("if ("),
+			i(1),
+			t({ ") {", "\t" }),
+			i(2),
+			t({ "", "}" }),
+		})
+
 		-- Snippets
-		ls.add_snippets("typescriptreact", { import_snippet, export_snippet, console_log_snippet, console_dir_snippet })
-		ls.add_snippets("typescript", { import_snippet, export_snippet, console_log_snippet, console_dir_snippet })
-		ls.add_snippets("javascript", { console_log_snippet, console_dir_snippet })
+		ls.add_snippets("typescriptreact", {
+			import_snippet,
+			export_snippet,
+			console_log_snippet,
+			console_dir_snippet,
+			if_statement_snippet,
+			function_snippet,
+			async_function_snippet,
+		})
+		ls.add_snippets("typescript", {
+			import_snippet,
+			export_snippet,
+			console_log_snippet,
+			console_dir_snippet,
+			if_statement_snippet,
+			function_snippet,
+			async_function_snippet,
+		})
+		ls.add_snippets("javascript", {
+			console_log_snippet,
+			console_dir_snippet,
+			if_statement_snippet,
+			function_snippet,
+			async_function_snippet,
+		})
 
 		ls.add_snippets("typescriptreact", {
 			s("cn", {

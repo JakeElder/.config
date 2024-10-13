@@ -27,7 +27,6 @@ return {
 				"cssls",
 				"lua_ls",
 				"graphql",
-				"prismals",
 				"pyright",
 			},
 		})

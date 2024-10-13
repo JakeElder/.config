@@ -71,6 +71,7 @@ alias mux='tmuxinator'
 alias gst='git status'
 alias ga='git add'
 alias gd='git difftool'
+alias gdc='git difftool --cached'
 alias gp='git push'
 alias gc='git commit'
 
