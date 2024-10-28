@@ -79,7 +79,9 @@ alias gc='git commit'
 export FZF_CTRL_R_OPTS="--layout=reverse"
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
-eval "$(direnv hook zsh)"
+if command -v direnv &> /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.toml)"
