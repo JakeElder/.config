@@ -197,10 +197,6 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-# [[on-window-detected]]
-# if.app-id = 'com.blackpixel.kaleidoscope'
-# run = 'move-node-to-workspace D'
-
 [[on-window-detected]]
 if.app-id = 'com.bohemiancoding.sketch3'
 run = 'move-node-to-workspace S'
@@ -229,4 +225,6 @@ run = 'move-node-to-workspace T'
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace B'
 
-
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace M'

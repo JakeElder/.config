@@ -50,6 +50,9 @@ end
 -- 	NavigateQuickfixFile("prev")
 -- end, { noremap = true, silent = true, desc = "Previous file in quickfix list" })
 
+keymap.set({ "n", "v" }, "<leader>d", "<c-x>", { desc = "Decrement" })
+keymap.set({ "n", "v" }, "<leader>i", "<c-a>", { desc = "Increment" })
+
 keymap.set("n", "]]", function()
 	vim.cmd("silent! cnext")
 end, { desc = "Next quickfix item", silent = true, noremap = true })

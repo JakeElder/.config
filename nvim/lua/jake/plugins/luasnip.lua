@@ -128,11 +128,11 @@ return {
 		ls.add_snippets("typescriptreact", {
 			s("rc", {
 				t({ "/*", " * " }),
-				i(1),
+				i(1, "Component"),
 				t({ "", " */", "" }),
-				t({ "", "interface " }),
+				t({ "", "type " }),
 				rep(1),
-				t({ "Props {}", "" }),
+				t({ "Props = {};", "" }),
 				t({ "", "export const " }),
 				rep(1),
 				t(" = (props: "),
@@ -147,11 +147,11 @@ return {
 		ls.add_snippets("typescriptreact", {
 			s("rcc", {
 				t({ "/*", " * " }),
-				i(1),
+				i(1, "Component"),
 				t({ "", " */", "" }),
-				t({ "", "interface " }),
+				t({ "", "type " }),
 				rep(1),
-				t({ "Props {", "\tchildren: React.ReactNode", "}", "" }),
+				t({ "Props = {", "\tchildren: React.ReactNode", "};", "" }),
 				t({ "", "export const " }),
 				rep(1),
 				t(" = ({ children }: "),
