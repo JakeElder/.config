@@ -1,33 +1,41 @@
-#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-
-version = 2
-final_space = true
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '  󰄾 '
+  foreground = 'blue'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '{{ .PWD }} 󰅂 '
+  foreground = 'darkGray'
+  background = 'transparent'
 
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
 
   [[blocks.segments]]
-    type = 'session'
-    style = 'plain'
-    background = 'transparent'
+    template = '{{ if eq .HostName "relay" }}󰒍 {{ end }}'
     foreground = 'yellow'
-    template = "{{ if eq .HostName \"relay\" }}󰒍 {{ end }}"
-
-  [[blocks.segments]]
+    background = 'transparent'
     type = 'session'
     style = 'plain'
-    background = 'transparent'
-    foreground = 'magenta'
-    template = "{{ if eq .HostName \"pi\" }} {{ end }}"
 
   [[blocks.segments]]
+    template = '{{ if eq .HostName "pi" }} {{ end }}'
+    foreground = 'magenta'
+    background = 'transparent'
+    type = 'session'
+    style = 'plain'
+
+  [[blocks.segments]]
+    template = '{{ .Path }} '
+    foreground = 'white'
+    background = 'transparent'
     type = 'path'
     style = 'plain'
-    background = 'transparent'
-    foreground = 'white'
-    template = '{{ .Path }} '
 
     [blocks.segments.properties]
       style = 'full'
@@ -37,18 +45,8 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   alignment = 'left'
 
   [[blocks.segments]]
+    template = '󰅂'
+    foreground = 'blue'
+    background = 'transparent'
     type = 'text'
     style = 'plain'
-    background = 'transparent'
-    foreground = 'blue'
-    template = '󰅂'
-
-[transient_prompt]
-  foreground = 'darkGray'
-  background = 'transparent'
-  template = '{{ .PWD }} 󰅂 '
-
-[secondary_prompt]
-  foreground = 'blue'
-  background = 'transparent'
-  template = '  󰄾 '
