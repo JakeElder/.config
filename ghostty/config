@@ -1,0 +1,17 @@
+# theme
+theme = catppuccin-mocha
+background = #212121
+foreground = #dddddd
+font-size = 14
+macos-titlebar-style = hidden
+
+# padding
+window-padding-x = 2
+window-padding-y = 4
+window-padding-balance = true
+
+# misc
+confirm-close-surface = false
+cursor-style = bar
+cursor-style-blink = true
+cursor-invert-fg-bg = true
