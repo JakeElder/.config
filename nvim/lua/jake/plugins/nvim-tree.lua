@@ -14,8 +14,7 @@ return {
 
 		local function cancel()
 			if previous_bufnr and vim.api.nvim_buf_is_valid(previous_bufnr) then
-				require("nvim-tree.view").abandon_current_window()
-				vim.api.nvim_set_current_buf(previous_bufnr)
+				api.node.open.replace_tree_buffer()
 			end
 		end
 

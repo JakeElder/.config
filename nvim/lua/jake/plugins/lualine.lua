@@ -8,6 +8,9 @@ return {
 		local mocha = require("catppuccin.palettes").get_palette("mocha")
 
 		lualine.setup({
+			options = {
+				disabled_filetypes = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
+			},
 			sections = {
 				lualine_a = {
 					{
