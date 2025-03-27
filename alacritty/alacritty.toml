@@ -19,4 +19,4 @@ offset = { x = 0, y = 4 }
 normal = { family = "SFMono Nerd Font", style = "Regular" }
 bold = { family = "SFMono Nerd Font", style = "SemiBold" }
 italic = { family = "SFMono Nerd Font", style = "Italic" }
-bold_italic = { family = "SFMono Nerd Font", style = "SemiBold Italic" }
+bold_italic = { family = "SFMono Nerd Font", style = "SemiBold Italic" }            

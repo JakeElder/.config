@@ -1,9 +1,12 @@
 # theme
-theme = catppuccin-mocha
-background = #212121
-foreground = #dddddd
-font-size = 14
+theme = catppuccin-frappe
+# background = #212121
+# foreground = #dddddd
 macos-titlebar-style = hidden
+
+# font
+font-size = 14
+font-family = "SFMono Nerd Font"
 
 # padding
 window-padding-x = 2
@@ -12,6 +15,4 @@ window-padding-balance = true
 
 # misc
 confirm-close-surface = false
-cursor-style = bar
-cursor-style-blink = true
 cursor-invert-fg-bg = true
