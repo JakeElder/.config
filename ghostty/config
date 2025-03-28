@@ -1,7 +1,5 @@
 # theme
 theme = catppuccin-frappe
-# background = #212121
-# foreground = #dddddd
 macos-titlebar-style = hidden
 
 # font
@@ -16,3 +14,5 @@ window-padding-balance = true
 # misc
 confirm-close-surface = false
 cursor-invert-fg-bg = true
+cursor-style-blink = false
+cursor-style = underline
