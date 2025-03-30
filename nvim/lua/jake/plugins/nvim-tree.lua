@@ -61,6 +61,6 @@ return {
 		})
 
 		vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "NONE" })
-		vim.keymap.set("n", "-", open_tree, { desc = "Open File Explorer" })
+		vim.keymap.set("n", "<leader>-", open_tree, { desc = "Open File Explorer" })
 	end,
 }
