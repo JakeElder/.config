@@ -5,6 +5,23 @@ return {
 		local catpuccin = require("catppuccin")
 
 		catpuccin.setup({
+			custom_highlights = function(colors)
+				return {
+					-- Snacks
+					SnacksInputTitle = { fg = colors.peach },
+					SnacksInputIcon = { fg = colors.peach },
+					SnacksInputBorder = { fg = colors.peach },
+					SnacksPicker = { bg = colors.base },
+
+					-- Neo Tree
+					NeoTreeNormal = { link = "Normal" },
+					NeoTreeNormalNC = { link = "Normal" },
+					NeoTreeEndOfBuffer = { link = "EndOfBuffer" },
+					NeoTreeRootName = { link = "Comment" },
+					NeoTreeDirectoryIcon = { link = "Conceal" },
+					NeoTreeExpander = { link = "Conceal" },
+				}
+			end,
 			flavour = "frappe",
 			color_overrides = {
 				frappe = {
@@ -31,7 +48,7 @@ return {
 					-- surface2 = "#626880",
 					-- surface1 = "#51576d",
 					-- surface0 = "#414559",
-					-- base = "#252525",
+					-- base = "#303446",
 					-- mantle = "#292c3c",
 					-- crust = "#232634",
 				},

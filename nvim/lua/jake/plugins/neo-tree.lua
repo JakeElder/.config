@@ -22,6 +22,7 @@ return {
 	lazy = false,
 	config = function()
 		require("neo-tree").setup({
+			use_popups_for_input = false,
 			popup_border_style = "rounded",
 			enable_git_status = false,
 			filesystem = {
@@ -57,10 +58,16 @@ return {
 				mappings = {
 					["/"] = "noop",
 					["<esc>"] = function()
-						if vim.v.hlsearch == 1 then
-							vim.cmd("nohlsearch")
+						if vim.api.nvim_get_mode().mode:match("i") then
+							-- In insert mode, let Escape work normally
+							return require("neo-tree.command").execute({}) -- Do nothing (pass through)
 						else
-							vim.cmd("Neotree close")
+							-- Not in insert mode, normal behavior (clear search or close Neo-tree)
+							if vim.v.hlsearch == 1 then
+								vim.cmd("nohlsearch")
+							else
+								vim.cmd("Neotree close")
+							end
 						end
 					end,
 					["W"] = function(state)
@@ -96,14 +103,6 @@ return {
 				},
 			},
 		})
-
-		vim.api.nvim_set_hl(0, "NeoTreeNormal", { link = "Normal" })
-		vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { link = "Normal" })
-		vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { link = "EndOfBuffer" })
-
-		-- vim.api.nvim_set_hl(0, "NeoTreeRootName", { link = "Comment" })
-		vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { link = "Conceal" })
-		vim.api.nvim_set_hl(0, "NeoTreeExpander", { link = "Conceal" })
 
 		vim.keymap.set("n", "-", "<Cmd>Neotree reveal position=current<CR>")
 	end,
