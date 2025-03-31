@@ -1,4 +1,5 @@
 return {
+	enabled = false,
 	"L3MON4D3/LuaSnip",
 	dependencies = {
 		"mattn/emmet-vim",
