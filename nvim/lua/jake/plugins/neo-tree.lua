@@ -35,8 +35,6 @@ return {
 			default_component_configs = {
 				indent = {
 					with_markers = false,
-					expander_collapsed = ">",
-					expander_expanded = "∨",
 				},
 				icon = {
 					enabled = true,
