@@ -3,8 +3,8 @@ return {
 	config = function()
 		require("various-textobjs").setup({
 			keymaps = {
-				useDefaults = true,
-				disabledDefaults = { "gG" },
+				useDefaults = false,
+				-- disabledDefaults = { "gG" },
 			},
 		})
 

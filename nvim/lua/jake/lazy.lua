@@ -27,4 +27,4 @@ require("lazy").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Open Lazy plugin manager" })
+vim.keymap.set("n", "<leader>i", "<cmd>Lazy<cr>", { desc = "Open Lazy plugin manager" })
