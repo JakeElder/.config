@@ -1,20 +1,5 @@
 return {
-	enabled = false,
 	"L3MON4D3/LuaSnip",
-	dependencies = {
-		"mattn/emmet-vim",
-	},
-	init = function()
-		vim.g.user_emmet_install_global = 0
-		vim.g.user_emmet_leader_key = "<C-q>"
-
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = "css",
-			callback = function()
-				vim.cmd("EmmetInstall")
-			end,
-		})
-	end,
 	config = function()
 		local ls = require("luasnip")
 		local s = ls.snippet
@@ -209,34 +194,5 @@ return {
 			create_css_var_snippet("bg"),
 			create_css_var_snippet("br"),
 		})
-
-		-- Keymaps
-		vim.keymap.set("i", "<Tab>", function()
-			if ls.expand_or_locally_jumpable() then
-				ls.expand_or_jump()
-			elseif vim.bo.filetype == "css" and vim.fn["emmet#isExpandable"]() == 1 then
-				vim.api.nvim_feedkeys(
-					vim.api.nvim_replace_termcodes("<Plug>(emmet-expand-abbr)", true, true, true),
-					"",
-					true
-				)
-			else
-				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true)
-			end
-		end, { silent = true })
-
-		vim.keymap.set("i", "<S-Tab>", function()
-			if ls.expand_or_locally_jumpable() then
-				ls.jump(-1)
-			else
-				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true), "n", true)
-			end
-		end, { silent = true })
-
-		vim.keymap.set({ "i", "s" }, "<C-e>", function()
-			if ls.choice_active() then
-				ls.change_choice(1)
-			end
-		end, { silent = true })
 	end,
 }

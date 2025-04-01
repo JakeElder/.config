@@ -4,20 +4,24 @@ return {
 	build = ":TSUpdate",
 	dependencies = {
 		"windwp/nvim-ts-autotag",
+		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
+		local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
-		require("nvim-ts-autotag").setup({
-			enable = true,
-			filetypes = { "html", "xml", "tsx" },
-		})
+		vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+		vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
 
 		treesitter.setup({
 			highlight = {
 				enable = true,
 			},
 			indent = { enable = true },
+			autotag = {
+				enable = true,
+				filetypes = { "html", "xml", "tsx", "jsx" },
+			},
 			ensure_installed = {
 				"json",
 				"javascript",
@@ -47,6 +51,32 @@ return {
 					-- node_incremental = "<leader>a",
 					scope_incremental = false,
 					node_decremental = "<bs>",
+				},
+			},
+			textobjects = {
+				select = {
+					enable = true,
+					lookahead = true,
+					keymaps = {
+						["af"] = "@function.outer",
+						["if"] = "@function.inner",
+					},
+				},
+				move = {
+					enable = true,
+					set_jumps = true,
+					goto_next_start = {
+						["]f"] = "@function.outer",
+					},
+					goto_next_end = {
+						["]F"] = "@function.outer",
+					},
+					goto_previous_start = {
+						["[f"] = "@function.outer",
+					},
+					goto_previous_end = {
+						["[F"] = "@function.outer",
+					},
 				},
 			},
 		})
