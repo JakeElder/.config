@@ -93,7 +93,7 @@ return {
 					sections = {
 						lualine_a = { mode },
 						lualine_b = {},
-						ualine_c = {},
+						lualine_c = {},
 						lualine_x = { codecompanion_current_model_name },
 						lualine_y = { codecompanion_adapter_name },
 						lualine_z = { "location" },

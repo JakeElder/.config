@@ -78,7 +78,11 @@ alias gc='git commit'
 # Shell integrations
 export FZF_CTRL_R_OPTS="--layout=reverse"
 source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init --cmd cd zsh)"
+fi
+
 if command -v direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
 fi
