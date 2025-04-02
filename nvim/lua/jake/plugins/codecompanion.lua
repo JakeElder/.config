@@ -37,6 +37,11 @@ return {
 				},
 			},
 			display = {
+				chat = {
+					window = {
+						width = 0.5,
+					},
+				},
 				diff = {
 					enabled = true,
 					provider = "mini_diff",

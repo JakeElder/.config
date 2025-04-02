@@ -22,7 +22,7 @@ return {
 		{
 			"<CR>",
 			function()
-				Snacks.picker.files()
+				Snacks.picker.smart()
 			end,
 			mode = { "n" },
 		},
@@ -104,6 +104,13 @@ return {
 				Snacks.picker.lsp_workspace_symbols()
 			end,
 			desc = "Find workspace symbols",
+		},
+		{
+			"<leader>G",
+			function()
+				Snacks.lazygit()
+			end,
+			desc = "Find references",
 		},
 		{
 			"<leader>*",
