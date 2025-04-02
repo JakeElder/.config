@@ -76,7 +76,7 @@ alias gp='git push'
 alias gc='git commit'
 
 # Shell integrations
-export FZF_CTRL_R_OPTS="--layout=reverse"
+export FZF_CTRL_R_OPTS="--layout=reverse --bind=ctrl-y:accept"
 source <(fzf --zsh)
 
 if command -v zoxide &> /dev/null; then
