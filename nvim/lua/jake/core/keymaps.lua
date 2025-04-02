@@ -20,7 +20,7 @@ keymap.set("n", "<esc>", ":nohl<CR>", { desc = "Clear search highlights", silent
 keymap.set("n", "<leader>n", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
 
 -- Inspect
-keymap.set({ "n", "v" }, "<leader>h", "<cmd>Inspect<cr>")
+-- keymap.set({ "n", "v" }, "<leader>h", "<cmd>Inspect<cr>")
 
 -- quickfix
 keymap.set("n", "]]", function()

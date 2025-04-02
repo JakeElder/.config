@@ -5,6 +5,9 @@ return {
 	---@type snacks.Config
 	opts = {
 		input = { enabled = true },
+		picker = {
+			ui_select = true,
+		},
 	},
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
@@ -73,6 +76,13 @@ return {
 				Snacks.picker.grep()
 			end,
 			desc = "Find string in cwd",
+		},
+		{
+			"<leader>h",
+			function()
+				Snacks.picker.help()
+			end,
+			desc = "Find help",
 		},
 		{
 			"<leader>k",

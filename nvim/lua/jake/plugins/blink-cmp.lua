@@ -26,6 +26,9 @@ return {
 		completion = {
 			keyword = { range = "full" },
 			menu = { auto_show = false },
+			documentation = {
+				window = { border = "rounded" },
+			},
 		},
 		signature = { enabled = true },
 		keymap = {

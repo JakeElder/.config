@@ -198,36 +198,36 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'com.bohemiancoding.sketch3'
-run = 'move-node-to-workspace S'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = 'move-node-to-workspace F'
-
-[[on-window-detected]]
-if.app-id = 'com.adobe.Photoshop'
-run = 'move-node-to-workspace P'
-
-[[on-window-detected]]
 if.app-id = 'com.openai.chat'
 run = 'move-node-to-workspace A'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Notes'
-run = 'move-node-to-workspace N'
-
-[[on-window-detected]]
-if.app-id = 'com.tinyapp.TablePlus'
-run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace B'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace F'
+
+[[on-window-detected]]
 if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace M'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Notes'
+run = 'move-node-to-workspace N'
+
+[[on-window-detected]]
+if.app-id = 'com.adobe.Photoshop'
+run = 'move-node-to-workspace P'
+
+[[on-window-detected]]
+if.app-id = 'com.bohemiancoding.sketch3'
+run = 'move-node-to-workspace S'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
+run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
 if.app-id = 'org.chromium.Chromium'

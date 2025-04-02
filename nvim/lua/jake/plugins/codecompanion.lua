@@ -5,29 +5,29 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"echasnovski/mini.diff",
+		"j-hui/fidget.nvim",
 	},
 	init = function()
+		require("plugins.codecompanion.fidget"):init()
+
 		require("mini.diff").setup({
-			view = {
-				style = "sign",
-				signs = { add = "+", change = "~", delete = "-" },
-			},
+			view = { style = "sign" },
 		})
+
 		require("codecompanion").setup({
-			adapters = {
-				anthropic = function()
-					return require("codecompanion.adapters").extend("anthropic", {
-						schema = {
-							model = {
-								-- default = "claude-3-5-sonnet-20241022",
-							},
-						},
-					})
-				end,
-			},
 			strategies = {
 				chat = {
 					adapter = "anthropic",
+					slash_commands = {
+						["file"] = {
+							callback = "strategies.chat.slash_commands.file",
+							description = "Select a file using Telescope",
+							opts = {
+								provider = "snacks",
+								contains_code = true,
+							},
+						},
+					},
 				},
 				inline = {
 					adapter = "anthropic",
@@ -46,7 +46,8 @@ return {
 			},
 		})
 
-		-- vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+		-- Rest of your code remains the same
+		vim.keymap.set({ "n", "v" }, "<leader>A", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 		vim.keymap.set(
 			{ "n", "v" },
 			"<leader><leader>",
@@ -55,7 +56,6 @@ return {
 		)
 		vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
-		-- Expand 'cc' into 'CodeCompanion' in the command line
 		vim.cmd([[cab cc CodeCompanion]])
 	end,
 }
