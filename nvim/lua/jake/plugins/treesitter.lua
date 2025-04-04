@@ -8,20 +8,16 @@ return {
 	},
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
-		local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+		-- local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 
-		vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
-		vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+		-- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+		-- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
 
 		treesitter.setup({
 			highlight = {
 				enable = true,
 			},
 			indent = { enable = true },
-			autotag = {
-				enable = true,
-				filetypes = { "html", "xml", "tsx", "jsx" },
-			},
 			ensure_installed = {
 				"json",
 				"javascript",

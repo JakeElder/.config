@@ -1,6 +1,26 @@
-# theme
 theme = catppuccin-frappe
-macos-titlebar-style = hidden
+
+# Gemini contrast
+# background = 2d3040
+# foreground = ced6f9
+# selection-background = 777d97
+# selection-foreground = ced6f9
+# palette = 0=#555a71 
+# palette = 1=#ea8487 
+# palette = 2=#a9d58c 
+# palette = 3=#e8cc94 
+# palette = 4=#90aef0 
+# palette = 5=#cda1e9 
+# palette = 6=#84ccc2 
+# palette = 7=#bec6e6 
+# palette = 8=#666b84 
+# palette = 9=#ea8487 
+# palette = 10=#a9d58c
+# palette = 11=#e8cc94
+# palette = 12=#90aef0
+# palette = 13=#cda1e9
+# palette = 14=#84ccc2
+# palette = 15=#ced6f9
 
 # font
 font-size = 14
@@ -12,6 +32,7 @@ window-padding-y = 4
 window-padding-balance = true
 
 # misc
+macos-titlebar-style = hidden
 confirm-close-surface = false
 cursor-invert-fg-bg = true
 cursor-style-blink = false
