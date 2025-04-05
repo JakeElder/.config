@@ -37,7 +37,7 @@ zinit cdreplay -q
 KEYTIMEOUT=10
 
 # Key bindings
-bindkey '^p' autosuggest-accept
+bindkey '^y' autosuggest-accept
 bindkey '^ ' forward-word
 bindkey '^[[Z' reverse-menu-complete
 bindkey -M menuselect '^[' undo
