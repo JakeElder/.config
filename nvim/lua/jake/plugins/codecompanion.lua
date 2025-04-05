@@ -5,11 +5,8 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"echasnovski/mini.diff",
-		"j-hui/fidget.nvim",
 	},
 	init = function()
-		require("plugins.codecompanion.fidget"):init()
-
 		require("mini.diff").setup({
 			view = { style = "sign" },
 		})
@@ -30,9 +27,16 @@ return {
 				chat = {
 					adapter = "gemini",
 					slash_commands = {
+						["buffer"] = {
+							callback = "strategies.chat.slash_commands.buffer",
+							opts = { provider = "snacks" },
+						},
+						["help"] = {
+							callback = "strategies.chat.slash_commands.help",
+							opts = { provider = "snacks" },
+						},
 						["file"] = {
 							callback = "strategies.chat.slash_commands.file",
-							description = "Select a file using Telescope",
 							opts = {
 								provider = "snacks",
 								contains_code = true,

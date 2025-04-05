@@ -73,6 +73,12 @@ alias gdc='git difftool --cached'
 alias gp='git push'
 alias gc='git commit'
 
+# Bat
+if command -v bat &> /dev/null; then
+  export BAT_THEME='Catppuccin Frappe'
+  alias cat='bat'
+fi
+
 # Shell integrations
 export FZF_CTRL_R_OPTS="--layout=reverse --bind=ctrl-y:accept"
 source <(fzf --zsh)
@@ -85,10 +91,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.toml)"
 fi
 
-if [[ -f  "$HOME/.zshrc" ]] then
-  source "$HOME/.zshrc"
-fi
-
 # FZF
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
@@ -96,3 +98,8 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284 \
 --color=selected-bg:#51576d \
 --color=border:#414559,label:#c6d0f5"
+
+# Source system specific config
+if [[ -f  "$HOME/.zshrc" ]] then
+  source "$HOME/.zshrc"
+fi

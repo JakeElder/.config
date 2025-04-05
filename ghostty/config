@@ -1,39 +1,30 @@
+# theme
 theme = catppuccin-frappe
-
-# Gemini contrast
-# background = 2d3040
-# foreground = ced6f9
-# selection-background = 777d97
-# selection-foreground = ced6f9
-# palette = 0=#555a71 
-# palette = 1=#ea8487 
-# palette = 2=#a9d58c 
-# palette = 3=#e8cc94 
-# palette = 4=#90aef0 
-# palette = 5=#cda1e9 
-# palette = 6=#84ccc2 
-# palette = 7=#bec6e6 
-# palette = 8=#666b84 
-# palette = 9=#ea8487 
-# palette = 10=#a9d58c
-# palette = 11=#e8cc94
-# palette = 12=#90aef0
-# palette = 13=#cda1e9
-# palette = 14=#84ccc2
-# palette = 15=#ced6f9
+# background-opacity = 0.95
+# background-blur = true
 
 # font
 font-size = 14
 font-family = "SFMono Nerd Font"
+font-thicken = true
+font-thicken-strength = 0
 
 # padding
-window-padding-x = 2
+window-padding-x = 0
 window-padding-y = 4
-window-padding-balance = true
+
+# window
+macos-titlebar-style = hidden
+macos-window-shadow = false
+
+# behaviour
+confirm-close-surface = false
+
+# cursor
+cursor-invert-fg-bg = true
+shell-integration-features = no-cursor
+cursor-style-blink = false
+cursor-style = block
 
 # misc
-macos-titlebar-style = hidden
-confirm-close-surface = false
-cursor-invert-fg-bg = true
-cursor-style-blink = false
-cursor-style = underline
+adjust-cell-height = 5%

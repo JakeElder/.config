@@ -9,6 +9,7 @@ keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
 -- window management
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
+keymap.set("n", "<leader>o", "<C-w>o", { desc = "Close other buffers" })
 keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Close window" })
 keymap.set("n", "<leader>w", ":write<CR>", { desc = "Save buffer" })
 keymap.set("n", "<leader>W", ":wall<CR>", { desc = "Save all buffers" })

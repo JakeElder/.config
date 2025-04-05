@@ -5,9 +5,7 @@ return {
 	---@type snacks.Config
 	opts = {
 		input = { enabled = true },
-		picker = {
-			ui_select = true,
-		},
+		picker = { ui_select = true },
 	},
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
