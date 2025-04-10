@@ -39,6 +39,7 @@ return {
 				"query",
 				"vimdoc",
 				"c",
+				"sql",
 			},
 			incremental_selection = {
 				enable = true,

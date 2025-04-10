@@ -7,6 +7,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
+		"b0o/schemastore.nvim",
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -101,6 +102,7 @@ return {
 				"lua_ls",
 				"graphql",
 				"pyright",
+				"jsonls",
 			},
 			automatic_installation = true,
 			handlers = {
@@ -116,6 +118,17 @@ return {
 					lspconfig["graphql"].setup({
 						capabilities = capabilities,
 						filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+					})
+				end,
+				["jsonls"] = function()
+					lspconfig["jsonls"].setup({
+						capabilities = capabilities,
+						settings = {
+							json = {
+								schemas = require("schemastore").json.schemas(),
+								validate = { enable = true },
+							},
+						},
 					})
 				end,
 				["lua_ls"] = function()

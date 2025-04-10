@@ -22,8 +22,11 @@ keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<esc>", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
 keymap.set("n", "<leader>n", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
 
+-- display full file path
+keymap.set("n", "<leader>p", ":echo expand('%:p')<CR>", { desc = "Show full file path" })
+
 -- Inspect
--- keymap.set({ "n", "v" }, "<leader>h", "<cmd>Inspect<cr>")
+keymap.set({ "n", "v" }, "<leader>I", "<cmd>InspectTree<cr>")
 
 -- quickfix
 keymap.set("n", "]]", function()
