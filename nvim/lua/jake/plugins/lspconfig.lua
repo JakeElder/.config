@@ -20,8 +20,8 @@ return {
 			callback = function(ev)
 				local opts = { buffer = ev.buf, silent = true }
 
-				opts.desc = "Show LSP references"
-				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+				-- opts.desc = "Show LSP references"
+				-- keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
 				opts.desc = "Go to definition"
 				keymap.set("n", "gd", vim.lsp.buf.definition, opts)

@@ -19,6 +19,7 @@ keybind = super+physical:five=text:\x025
 keybind = super+s=text:\x02s
 keybind = super+l=text:\x02L
 keybind = super+b=text:\x02b
+keybind = super+r=text:\x02r
 
 # padding
 window-padding-x = 0
