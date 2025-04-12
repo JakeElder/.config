@@ -26,11 +26,6 @@ return {
 			strategies = {
 				chat = {
 					adapter = "gemini",
-					keymaps = {
-						send = {
-							modes = { n = "<cr>", i = "<C-s>" },
-						},
-					},
 					slash_commands = {
 						["buffer"] = {
 							callback = "strategies.chat.slash_commands.buffer",

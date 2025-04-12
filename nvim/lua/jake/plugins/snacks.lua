@@ -87,7 +87,16 @@ return {
 		{
 			"<leader>h",
 			function()
-				Snacks.picker.help()
+				Snacks.picker.help({
+					confirm = function(picker, item)
+						picker:close()
+						if item then
+							vim.schedule(function()
+								vim.cmd("vertical help " .. item.text)
+							end)
+						end
+					end,
+				})
 			end,
 			desc = "Find help",
 		},

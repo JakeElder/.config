@@ -66,10 +66,13 @@ alias vim='nvim'
 alias mux='tmuxinator'
 
 # Git
+alias lg='lazygit'
 alias gst='git status'
 alias ga='git add'
-alias gd='git difftool'
-alias gdc='git difftool --cached'
+alias gd='git diff'
+alias gdt='git difftool'
+alias gdc='git diff --cached'
+alias gdtc='git difftool --cached'
 alias gp='git push'
 alias gc='git commit'
 
