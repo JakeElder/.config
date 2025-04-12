@@ -20,7 +20,13 @@ return {
 		{
 			"<CR>",
 			function()
-				Snacks.picker.smart()
+				Snacks.picker.smart({
+					multi = {
+						"buffers",
+						{ source = "recent", filter = { cwd = true } },
+						{ source = "files", filter = { cwd = true } },
+					},
+				})
 			end,
 			mode = { "n" },
 		},
@@ -57,16 +63,17 @@ return {
 			desc = "Command History",
 		},
 		{
-			"<leader>.",
-			function()
-				Snacks.picker.files({ hidden = true })
-			end,
-			desc = "Find files (inc hidden) in cwd",
-		},
-		{
 			"<leader>b",
 			function()
-				Snacks.picker.buffers()
+				Snacks.picker.buffers({
+					win = {
+						list = {
+							keys = {
+								["<c-x>"] = { "bufdelete", desc = "Delete Buffer" },
+							},
+						},
+					},
+				})
 			end,
 			desc = "Fuzzy find open buffers",
 		},

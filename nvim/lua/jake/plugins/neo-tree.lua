@@ -17,7 +17,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
-		-- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
+		{ "3rd/image.nvim", opts = {} },
 	},
 	lazy = false,
 	config = function()
@@ -62,10 +62,8 @@ return {
 					["/"] = "noop",
 					["<esc>"] = function()
 						if vim.api.nvim_get_mode().mode:match("i") then
-							-- In insert mode, let Escape work normally
-							return require("neo-tree.command").execute({}) -- Do nothing (pass through)
+							return require("neo-tree.command").execute({})
 						else
-							-- Not in insert mode, normal behavior (clear search or close Neo-tree)
 							if vim.v.hlsearch == 1 then
 								vim.cmd("nohlsearch")
 							else
