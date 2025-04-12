@@ -103,3 +103,6 @@ export FZF_DEFAULT_OPTS=" \
 if [[ -f  "$HOME/.zshrc" ]] then
   source "$HOME/.zshrc"
 fi
+
+# Use nvim for man
+export MANPAGER='nvim +Man!'
