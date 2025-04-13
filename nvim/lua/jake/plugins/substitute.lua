@@ -1,8 +1,12 @@
 return {
 	"gbprod/substitute.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = {
+		"BufReadPre",
+		"BufNewFile",
+	},
 	config = function()
 		local substitute = require("substitute")
+		local exchange = require("substitute.exchange")
 		local keymap = vim.keymap
 
 		substitute.setup()
@@ -11,5 +15,10 @@ return {
 		keymap.set("n", "ss", substitute.line, { desc = "Substitute line" })
 		keymap.set("n", "S", substitute.eol, { desc = "Substitute to end of line" })
 		keymap.set("x", "s", substitute.visual, { desc = "Substitute in visual mode" })
+
+		keymap.set("n", "sx", exchange.operator, { noremap = true })
+		keymap.set("n", "sxx", exchange.line, { noremap = true })
+		keymap.set("x", "X", exchange.visual, { noremap = true })
+		keymap.set("n", "sxc", exchange.cancel, { noremap = true })
 	end,
 }

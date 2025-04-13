@@ -11,15 +11,18 @@ keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>o", "<C-w>o", { desc = "Close other buffers" })
 keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Close window" })
-keymap.set("n", "<leader>w", ":write<CR>", { desc = "Save buffer" })
-keymap.set("n", "<leader>W", ":wall<CR>", { desc = "Save all buffers" })
 keymap.set("n", "<leader>e", ":edit<CR>", { desc = "Reload buffer from disk" })
 keymap.set("n", "<leader>E", ":edit!<CR>", { desc = "Reload buffer from disk" })
 keymap.set("n", "<M-h>", ":bprev<CR>", { desc = "Previous buffer" })
 keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
 
 -- clear search highlights
-keymap.set("n", "<esc>", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
+vim.keymap.set("n", "<esc>", function()
+	if vim.v.hlsearch == 1 then
+		vim.cmd("nohlsearch")
+	end
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
+end, { desc = "Clear search highlights and fallback", silent = true })
 keymap.set("n", "<leader>n", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
 
 -- display full file path

@@ -8,6 +8,9 @@ return {
 			-- transparent_background = true,
 			custom_highlights = function(colors)
 				return {
+					-- Chrome
+					MsgArea = { fg = colors.subtext1 },
+
 					-- Snacks
 					SnacksInputTitle = { link = "Comment" },
 					SnacksInputIcon = { fg = colors.yellow },
