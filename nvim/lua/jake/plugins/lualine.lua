@@ -49,7 +49,7 @@ return {
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status")
 
-		local mocha = require("catppuccin.palettes").get_palette("mocha")
+		local theme = require("catppuccin.palettes").get_palette("frappe")
 
 		lualine.setup({
 			options = {
@@ -82,7 +82,7 @@ return {
 					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
-						color = { fg = mocha.peach },
+						color = { fg = theme.peach },
 					},
 					{ "filetype" },
 				},
@@ -96,8 +96,18 @@ return {
 						lualine_a = { mode },
 						lualine_b = {},
 						lualine_c = {},
-						lualine_x = { codecompanion_current_model_name },
-						lualine_y = { codecompanion_adapter_name },
+						lualine_x = {
+							{
+								codecompanion_current_model_name,
+								color = { fg = theme.surface2 },
+							},
+						},
+						lualine_y = {
+							{
+								codecompanion_adapter_name,
+								color = { fg = theme.peach },
+							},
+						},
 						lualine_z = { "location" },
 					},
 				},

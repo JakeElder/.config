@@ -1,5 +1,5 @@
+vim.g.user_emmet_leader_key = "<null>"
 vim.g.user_emmet_install_global = 0
-vim.g.user_emmet_mode = "i"
 
 return {
 	"saghen/blink.cmp",
@@ -25,7 +25,8 @@ return {
 		},
 		snippets = { preset = "luasnip" },
 		completion = {
-			keyword = { range = "full" },
+			accept = { auto_brackets = { enabled = true } },
+			keyword = { range = "prefix" },
 			menu = {
 				auto_show = false,
 			},

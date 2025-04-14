@@ -70,6 +70,21 @@ return {
 			t({ "", "}" }),
 		})
 
+		local use_state_snippet = s("us", {
+			t("const ["),
+			i(1),
+			t(", set"),
+			f(function(args)
+				local name = args[1][1] or ""
+				return name:sub(1, 1):upper() .. name:sub(2)
+			end, { 1 }),
+			t("] = useState<"),
+			i(3, "any"),
+			t(">("),
+			i(2),
+			t(");"),
+		})
+
 		-- Snippets
 		ls.add_snippets("typescriptreact", {
 			import_snippet,
@@ -79,6 +94,7 @@ return {
 			if_statement_snippet,
 			function_snippet,
 			async_function_snippet,
+			use_state_snippet,
 		})
 		ls.add_snippets("typescript", {
 			import_snippet,
