@@ -8,6 +8,7 @@ opt.cursorline = true
 opt.termguicolors = true
 opt.signcolumn = "no"
 opt.laststatus = 3
+opt.conceallevel = 2
 
 -- tabs & indentation
 opt.tabstop = 2
