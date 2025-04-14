@@ -18,12 +18,10 @@ keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
 
 -- clear search highlights
 vim.keymap.set("n", "<esc>", function()
-	if vim.v.hlsearch == 1 then
-		vim.cmd("nohlsearch")
-	end
+	vim.cmd("nohlsearch")
+	vim.cmd("echo ''")
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
 end, { desc = "Clear search highlights and fallback", silent = true })
-keymap.set("n", "<leader>n", ":nohl<CR>", { desc = "Clear search highlights", silent = true })
 
 -- display full file path
 keymap.set("n", "<leader>p", ":echo expand('%:p')<CR>", { desc = "Show full file path" })

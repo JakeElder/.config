@@ -91,6 +91,7 @@ return {
 				"isort",
 				"black",
 				"pylint",
+				"shfmt",
 			},
 		})
 
@@ -103,6 +104,7 @@ return {
 				"graphql",
 				"pyright",
 				"jsonls",
+				"bashls",
 			},
 			automatic_installation = true,
 			handlers = {
