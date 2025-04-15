@@ -49,7 +49,50 @@ return {
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status")
 
+		local state = "idle"
+		local state_icons = {
+			idle = "󱚣",
+			requesting = "󱚟",
+			streaming = "󱚣",
+		}
+
 		local theme = require("catppuccin.palettes").get_palette("frappe")
+
+		local group = vim.api.nvim_create_augroup("CodeCompanionLualine", { clear = true })
+
+		vim.api.nvim_create_autocmd({ "User" }, {
+			pattern = "CodeCompanionRequestStarted",
+			group = group,
+			callback = function()
+				state = "requesting"
+				lualine.refresh()
+			end,
+		})
+		vim.api.nvim_create_autocmd({ "User" }, {
+			pattern = "CodeCompanionRequestFinished",
+			group = group,
+			callback = function()
+				state = "idle"
+				lualine.refresh()
+			end,
+		})
+
+		vim.api.nvim_create_autocmd({ "User" }, {
+			pattern = "CodeCompanionRequestStreaming",
+			group = group,
+			callback = function()
+				state = "streaming"
+				lualine.refresh()
+			end,
+		})
+
+		-- vim.api.nvim_create_autocmd({ "User" }, {
+		-- 	pattern = "CodeCompanionRequest*",
+		-- 	group = group,
+		-- 	callback = function(request)
+		-- 		print(request.match)
+		-- 	end,
+		-- })
 
 		lualine.setup({
 			options = {
@@ -108,7 +151,14 @@ return {
 								color = { fg = theme.peach },
 							},
 						},
-						lualine_z = { "location" },
+						lualine_z = {
+							{
+								"robot",
+								fmt = function()
+									return state_icons[state]
+								end,
+							},
+						},
 					},
 				},
 			},

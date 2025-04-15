@@ -25,7 +25,7 @@ return {
 			},
 			strategies = {
 				chat = {
-					adapter = "gemini",
+					adapter = "deepseek",
 					slash_commands = {
 						["buffer"] = {
 							callback = "strategies.chat.slash_commands.buffer",
