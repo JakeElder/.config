@@ -116,7 +116,7 @@ return {
 		ls.add_snippets("typescriptreact", {
 			s("cn", {
 				t('className={css["'),
-				i(1),
+				i(0),
 				t('"]}'),
 			}),
 		})

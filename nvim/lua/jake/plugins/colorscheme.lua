@@ -11,6 +11,9 @@ return {
 					-- Chrome
 					MsgArea = { fg = colors.subtext1 },
 
+					-- Flash
+					FlashLabel = { fg = colors.flamingo },
+
 					-- Snacks
 					SnacksInputTitle = { link = "Comment" },
 					SnacksInputIcon = { fg = colors.yellow },

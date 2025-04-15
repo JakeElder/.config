@@ -7,7 +7,7 @@ return {
 	dependencies = { "mattn/emmet-vim" },
 	init = function()
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "html", "css", "scss", "sass", "less" },
+			pattern = { "html", "css", "scss", "sass", "less", "typescriptreact" },
 			callback = function()
 				vim.cmd("EmmetInstall")
 			end,
@@ -63,20 +63,15 @@ return {
 			},
 			["<Tab>"] = {
 				function(cmp)
-					if
-						vim.tbl_contains({ "css", "scss", "sass", "less" }, vim.bo.filetype)
-						and vim.fn["emmet#isExpandable"]() == 1
-					then
+					if cmp.snippet_active() then
+						return cmp.accept()
+					elseif vim.fn["emmet#isExpandable"]() == 1 then
 						vim.api.nvim_feedkeys(
 							vim.api.nvim_replace_termcodes("<Plug>(emmet-expand-abbr)", true, true, true),
 							"",
 							true
 						)
 						return true
-					end
-
-					if cmp.snippet_active() then
-						return cmp.accept()
 					else
 						return cmp.select_and_accept()
 					end
