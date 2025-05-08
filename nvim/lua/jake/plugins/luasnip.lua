@@ -153,7 +153,7 @@ return {
 				t({ "", " */", "" }),
 				t({ "", "type " }),
 				rep(1),
-				t({ "Props = {", "\tchildren: React.ReactNode", "};", "" }),
+				t({ "Props = {", "\tchildren: React.ReactNode;", "};", "" }),
 				t({ "", "export const " }),
 				rep(1),
 				t(" = ({ children }: "),
@@ -164,7 +164,7 @@ return {
 				f(function(args)
 					return to_kebab_case(args[1][1])
 				end, { 1 }),
-				t('"]}>{children}</div>'),
+				t('"]}>{children}</div>;'),
 				t({ "", "};" }),
 			}),
 		})

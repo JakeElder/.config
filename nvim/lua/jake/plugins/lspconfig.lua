@@ -20,32 +20,14 @@ return {
 			callback = function(ev)
 				local opts = { buffer = ev.buf, silent = true }
 
-				-- opts.desc = "Show LSP references"
-				-- keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
-
 				opts.desc = "Go to definition"
 				keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-
-				-- opts.desc = "Show LSP definitions"
-				-- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-
-				opts.desc = "Show LSP implementations"
-				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-
-				opts.desc = "Show LSP type definitions"
-				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 				opts.desc = "See available code actions"
 				keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts)
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<space>r", vim.lsp.buf.rename, opts)
-
-				opts.desc = "Show buffer diagnostics"
-				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
-				-- opts.desc = "Show line diagnostics"
-				-- keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
 				opts.desc = "Go to previous diagnostic"
 				keymap.set("n", "<C-k>", function()

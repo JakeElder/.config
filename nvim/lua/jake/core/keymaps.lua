@@ -4,8 +4,8 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 
 -- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
+keymap.set("n", "<leader>j", "<C-a>", { desc = "Increment number" })
+keymap.set("n", "<leader>J", "<C-x>", { desc = "Decrement number" })
 
 -- window management
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
@@ -15,6 +15,7 @@ keymap.set("n", "<leader>e", ":edit<CR>", { desc = "Reload buffer from disk" })
 keymap.set("n", "<leader>E", ":edit!<CR>", { desc = "Reload buffer from disk" })
 keymap.set("n", "<M-h>", ":bprev<CR>", { desc = "Previous buffer" })
 keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<leader>\\", ":%bdelete<CR>", { desc = "Close all open buffers", silent = true })
 
 -- clear search highlights
 vim.keymap.set("n", "<esc>", function()

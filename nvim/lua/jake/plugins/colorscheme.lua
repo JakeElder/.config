@@ -12,7 +12,7 @@ return {
 					MsgArea = { fg = colors.subtext1 },
 
 					-- Flash
-					FlashLabel = { fg = colors.flamingo },
+					FlashLabel = { fg = colors.yellow },
 
 					-- Snacks
 					SnacksInputTitle = { link = "Comment" },

@@ -5,7 +5,16 @@ return {
 	---@type snacks.Config
 	opts = {
 		input = { enabled = true },
-		picker = { ui_select = true },
+		picker = {
+			ui_select = true,
+			win = {
+				input = {
+					keys = {
+						["<c-u>"] = { "<C-u>", mode = "i", expr = true, desc = "Clear Input Line" },
+					},
+				},
+			},
+		},
 	},
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
@@ -20,11 +29,56 @@ return {
 		{
 			"<CR>",
 			function()
+				if vim.bo.filetype == "qf" then
+					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, false, true), "n", false)
+					return
+				end
+
 				Snacks.picker.smart({
 					multi = {
 						"buffers",
 						{ source = "recent", filter = { cwd = true } },
 						{ source = "files", filter = { cwd = true } },
+					},
+					actions = {
+						copy_file_content = function(picker, item)
+							item = item or picker:current({ resolve = false })
+							if not item or not item.file then
+								Snacks.notify("No file selected or item has no file path.", vim.log.levels.WARN)
+								return
+							end
+
+							local target_bufnr = vim.api.nvim_win_get_buf(picker.main)
+							if not vim.api.nvim_buf_is_valid(target_bufnr) then
+								Snacks.notify("Original buffer is no longer valid.", vim.log.levels.ERROR)
+								return
+							end
+
+							local lines = vim.fn.readfile(item.file)
+							if vim.v.shell_error ~= 0 then
+								Snacks.notify("Error reading file: " .. item.file, vim.log.levels.ERROR)
+								return
+							end
+
+							-- Get cursor position in the original window/buffer
+							local cursor_pos = vim.api.nvim_win_get_cursor(picker.main)
+
+							-- Insert lines at the cursor position
+							vim.api.nvim_buf_set_lines(target_bufnr, cursor_pos[1] - 1, cursor_pos[1] - 1, false, lines)
+							Snacks.notify("Copied content from " .. vim.fn.fnamemodify(item.file, ":t"))
+							picker:close()
+						end,
+					},
+					win = {
+						input = {
+							keys = {
+								["<c-y>"] = {
+									"copy_file_content",
+									mode = { "n", "i" },
+									desc = "Copy File Content to Original Buffer",
+								},
+							},
+						},
 					},
 				})
 			end,
@@ -117,7 +171,25 @@ return {
 		{
 			"<leader>s",
 			function()
-				Snacks.picker.lsp_symbols()
+				Snacks.picker.lsp_symbols({
+					filter = {
+						default = {
+							"Class",
+							"Constructor",
+							"Enum",
+							"Field",
+							"Function",
+							"Interface",
+							"Method",
+							"Module",
+							"Namespace",
+							"Property",
+							"Struct",
+							"Trait",
+							"Constant",
+						},
+					},
+				})
 			end,
 			desc = "Find document symbols",
 		},
@@ -133,7 +205,7 @@ return {
 			function()
 				Snacks.lazygit()
 			end,
-			desc = "Find references",
+			desc = "Snacks Lazygit",
 		},
 		{
 			"<leader>*",
@@ -141,6 +213,13 @@ return {
 				Snacks.picker.lsp_references()
 			end,
 			desc = "Find references",
+		},
+		{
+			"<leader>d",
+			function()
+				Snacks.picker.qflist()
+			end,
+			desc = "Quickfix",
 		},
 	},
 }
