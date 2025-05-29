@@ -45,10 +45,10 @@ return {
 					},
 				},
 				inline = {
-					adapter = "gemini",
+					adapter = "deepseek",
 				},
 				cmd = {
-					adapter = "gemini",
+					adapter = "deepseek",
 				},
 			},
 			display = {

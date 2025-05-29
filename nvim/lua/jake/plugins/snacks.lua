@@ -217,9 +217,16 @@ return {
 		{
 			"<leader>d",
 			function()
+				Snacks.picker.diagnostics()
+			end,
+			desc = "Diagnostics",
+		},
+		{
+			"<leader>q",
+			function()
 				Snacks.picker.qflist()
 			end,
-			desc = "Quickfix",
+			desc = "Diagnostics",
 		},
 	},
 }

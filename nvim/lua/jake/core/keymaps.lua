@@ -10,7 +10,7 @@ keymap.set("n", "<leader>J", "<C-x>", { desc = "Decrement number" })
 -- window management
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>o", "<C-w>o", { desc = "Close other buffers" })
-keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Close window" })
+-- keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Close window" })
 keymap.set("n", "<leader>e", ":edit<CR>", { desc = "Reload buffer from disk" })
 keymap.set("n", "<leader>E", ":edit!<CR>", { desc = "Reload buffer from disk" })
 keymap.set("n", "<M-h>", ":bprev<CR>", { desc = "Previous buffer" })
