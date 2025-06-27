@@ -32,5 +32,5 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
-vim.opt.undodir = os.getenv("XDG_CACHE_HOME") .. "/nvim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undodir"
 vim.opt.undofile = true
