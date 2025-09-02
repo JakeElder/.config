@@ -107,4 +107,3 @@ return {
 		vim.api.nvim_set_keymap("n", "dcc", "dcl", { noremap = true })
 	end,
 }
-

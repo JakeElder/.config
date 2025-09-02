@@ -12,9 +12,9 @@ return {
 
 		-- keymap.set("n", "<leader>s", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" })
 		keymap.set("n", "<leader>Q", function()
-			vim.cmd("SessionSave")
+			vim.cmd("AutoSession save")
 			vim.cmd("qall")
 		end, { desc = "Save session for auto session root dir" })
-		keymap.set("n", "<leader>R", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
+		keymap.set("n", "<leader>R", "<cmd>AutoSession restore<CR>", { desc = "Restore session for cwd" })
 	end,
 }

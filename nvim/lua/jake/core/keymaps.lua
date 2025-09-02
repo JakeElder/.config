@@ -19,9 +19,9 @@ keymap.set("n", "<leader>\\", ":%bdelete<CR>", { desc = "Close all open buffers"
 
 -- clear search highlights
 vim.keymap.set("n", "<esc>", function()
-  vim.cmd("nohlsearch")
-  vim.cmd("echo ''")
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
+	vim.cmd("nohlsearch")
+	vim.cmd("echo ''")
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
 end, { desc = "Clear search highlights and fallback", silent = true })
 
 -- display full file path
@@ -32,9 +32,13 @@ keymap.set({ "n", "v" }, "<leader>I", "<cmd>InspectTree<cr>")
 
 -- quickfix
 keymap.set("n", "]]", function()
-  vim.cmd("silent! cnext")
+	vim.cmd("silent! cnext")
 end, { desc = "Next quickfix item", silent = true, noremap = true })
 
 keymap.set("n", "[[", function()
-  vim.cmd("silent! cprev")
+	vim.cmd("silent! cprev")
 end, { desc = "Previous quickfix item", silent = true, noremap = true })
+
+-- wrap
+keymap.set("n", "<leader>w", ":set wrap!<CR>", { desc = "Toggle line wrap", silent = true })
+keymap.set("n", "<leader>.", ":set list!<CR>", { desc = "Toggle hidden characters", silent = true })
