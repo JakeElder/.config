@@ -10,51 +10,43 @@ return {
 		"b0o/schemastore.nvim",
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
+		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
+		local mason_tool_installer = require("mason-tool-installer")
 
-		local keymap = vim.keymap
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+		local bind_lsp_keys = function(_, buffer)
+			local keymap = vim.keymap
+			local buf = vim.lsp.buf
+
+			local opts = function(unique_opts)
+				return vim.tbl_extend("force", { buffer = buffer, silent = true }, unique_opts)
+			end
+
+			keymap.set("n", "gd", buf.definition, opts({ desc = "Go to definition" }))
+			keymap.set({ "n", "v" }, "<leader>a", buf.code_action, opts({ desc = "See available code actions" }))
+			keymap.set("n", "<space>r", buf.rename, opts({ desc = "Smart rename" }))
+			keymap.set("n", "K", buf.hover, opts({ desc = "Show documentation for what is under cursor" }))
+			keymap.set("n", "<leader>|", ":LspRestart<CR>", opts({ desc = "Restart LSP" }))
+
+			keymap.set("n", "<C-k>", function()
+				vim.diagnostic.jump({ count = -1, float = true })
+			end, opts({ desc = "Go to previous diagnostic" }))
+
+			keymap.set("n", "<C-j>", function()
+				vim.diagnostic.jump({ count = 1, float = true })
+			end, opts({ desc = "Go to next diagnostic" }))
+		end
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-			callback = function(ev)
-				local opts = { buffer = ev.buf, silent = true }
-
-				opts.desc = "Go to definition"
-				keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-
-				opts.desc = "See available code actions"
-				keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts)
-
-				opts.desc = "Smart rename"
-				keymap.set("n", "<space>r", vim.lsp.buf.rename, opts)
-
-				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "<C-k>", function()
-					vim.diagnostic.jump({ count = -1, float = true })
-				end, opts)
-
-				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "<C-j>", function()
-					vim.diagnostic.jump({ count = 1, float = true })
-				end, opts)
-
-				opts.desc = "Show documentation for what is under cursor"
-				keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-				opts.desc = "Restart LSP"
-				keymap.set("n", "<leader>|", ":LspRestart<CR>", opts)
-			end,
+			callback = bind_lsp_keys,
 		})
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 		vim.diagnostic.config({
 			virtual_text = false,
 		})
-
-		local mason = require("mason")
-		local mason_tool_installer = require("mason-tool-installer")
 
 		mason.setup({
 			ui = {
@@ -87,47 +79,38 @@ return {
 				"pyright",
 				"jsonls",
 				"bashls",
+				"terraformls",
 			},
-			automatic_installation = true,
-			handlers = {
-				function(server_name)
-					lspconfig[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
-				["graphql"] = function()
-					lspconfig["graphql"].setup({
-						capabilities = capabilities,
-						filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-					})
-				end,
-				["jsonls"] = function()
-					lspconfig["jsonls"].setup({
-						capabilities = capabilities,
-						settings = {
-							json = {
-								schemas = require("schemastore").json.schemas(),
-								validate = { enable = true },
-							},
-						},
-					})
-				end,
-				["lua_ls"] = function()
-					lspconfig["lua_ls"].setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-								},
-								completion = {
-									callSnippet = "Replace",
-								},
-							},
-						},
-					})
-				end,
+			automatic_enable = true,
+		})
+
+		vim.lsp.config("lua_ls", {
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
 			},
+		})
+
+		vim.lsp.config("jsonls", {
+			capabilities = capabilities,
+			settings = {
+				json = {
+					schemas = require("schemastore").json.schemas(),
+					validate = { enable = true },
+				},
+			},
+		})
+
+		vim.lsp.config("graphql", {
+			capabilities = capabilities,
+			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
 		})
 	end,
 }

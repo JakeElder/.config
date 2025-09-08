@@ -21,6 +21,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				sh = { "shfmt" },
+				terraform = { "terraform_fmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
