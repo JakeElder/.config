@@ -73,7 +73,7 @@ alias gc='git commit'
 # Bat
 if command -v bat &> /dev/null; then
   export BAT_THEME='Catppuccin Frappe'
-    alias cat='bat'
+  alias cat='bat'
 fi
 
 # Shell integrations
