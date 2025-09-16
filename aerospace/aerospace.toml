@@ -198,6 +198,18 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
+if.app-id = 'org.chromium.Chromium'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.adobe.acc.AdobeCreativeCloud'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace B'
 
@@ -226,9 +238,13 @@ if.app-id = 'com.tinyapp.TablePlus'
 run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
-if.app-id = 'org.chromium.Chromium'
-run = 'layout floating'
+if.app-id = 'com.mongodb.compass'
+run = 'move-node-to-workspace M'
 
 [[on-window-detected]]
-if.app-id = 'com.electron.dockerdesktop'
-run = 'layout floating'
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace S'
+
+[[on-window-detected]]
+if.app-id = 'ch.protonvpn.mac'
+run = 'move-node-to-workspace V'
