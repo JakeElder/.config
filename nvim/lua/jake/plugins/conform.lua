@@ -21,7 +21,14 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				sh = { "shfmt" },
+				zsh = { "beautysh" },
 				terraform = { "terraform_fmt" },
+			},
+			formatters = {
+				beautysh = {
+					command = "beautysh",
+					args = { "--indent-size", "2", "-" },
+				},
 			},
 			format_on_save = {
 				lsp_fallback = true,

@@ -98,6 +98,11 @@ return {
 			},
 		})
 
+		vim.lsp.config("bashls", {
+			capabilities = capabilities,
+			filetypes = { "sh", "bash", "zsh" },
+		})
+
 		vim.lsp.config("jsonls", {
 			capabilities = capabilities,
 			settings = {
