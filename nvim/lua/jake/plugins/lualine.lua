@@ -56,8 +56,6 @@ return {
 			streaming = "󱚣",
 		}
 
-		local theme = require("catppuccin.palettes").get_palette("frappe")
-
 		local group = vim.api.nvim_create_augroup("CodeCompanionLualine", { clear = true })
 
 		vim.api.nvim_create_autocmd({ "User" }, {
@@ -125,7 +123,9 @@ return {
 					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
-						color = { fg = theme.peach },
+						color = {
+							fg = vim.fn.synIDattr(vim.fn.hlID("DiagnosticWarn"), "fg"),
+						},
 					},
 					{ "filetype" },
 				},
@@ -142,20 +142,24 @@ return {
 						lualine_x = {
 							{
 								codecompanion_current_model_name,
-								color = { fg = theme.surface2 },
+								color = {
+									fg = vim.fn.synIDattr(vim.fn.hlID("Comment"), "fg"),
+								},
 							},
 						},
 						lualine_y = {
 							{
 								codecompanion_adapter_name,
-								color = { fg = theme.peach },
+								color = {
+									fg = vim.fn.synIDattr(vim.fn.hlID("Comment"), "fg"),
+								},
 							},
 						},
 						lualine_z = {
 							{
 								"robot",
 								fmt = function()
-									return state_icons[state]
+									return state_icons[state] .. " "
 								end,
 							},
 						},

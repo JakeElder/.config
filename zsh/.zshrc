@@ -3,6 +3,9 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Local bins
+export PATH="$HOME/.local/bin:$PATH"
+
 # Setup Zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -77,8 +80,6 @@ if command -v bat &> /dev/null; then
 fi
 
 # Shell integrations
-export FZF_CTRL_R_OPTS="--layout=reverse --bind=ctrl-y:accept"
-source <(fzf --zsh)
 
 if command -v direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
@@ -89,12 +90,31 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 # FZF
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
---color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
---color=marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284 \
---color=selected-bg:#51576d \
---color=border:#414559,label:#c6d0f5"
+source <(fzf --zsh)
+export FZF_CTRL_R_OPTS="--bind=ctrl-y:accept"
+functions[__fzf_defaults_orig]=$functions[__fzf_defaults]
+
+__fzf_defaults() {
+  if [ -f "${HOME}/Code/ttyc/generated/env.sh" ]; then
+    source "${HOME}/Code/ttyc/generated/env.sh"
+
+    export FZF_DEFAULT_OPTS="
+    --border=rounded
+    --margin=1
+    --layout=reverse
+    --color=fg:${THM_SUBTLE},bg:${THM_BASE},hl:${THM_ROSE}
+    --color=fg+:${THM_TEXT},bg+:${THM_OVERLAY},hl+:${THM_ROSE}
+    --color=border:${THM_HIGHLIGHT_MED},header:${THM_PINE},gutter:${THM_BASE}
+    --color=spinner:${THM_GOLD},info:${THM_FOAM}
+    --color=pointer:${THM_IRIS},marker:${THM_LOVE},prompt:${THM_SUBTLE}"
+
+    if [ -n "$TMUX" ]; then
+      tmux set-environment -g FZF_DEFAULT_OPTS "${FZF_DEFAULT_OPTS}"
+    fi
+
+    __fzf_defaults_orig "$@"
+  fi
+}
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -108,3 +128,4 @@ fi
 
 # Use nvim for man
 export MANPAGER='nvim +Man!'
+
