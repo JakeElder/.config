@@ -1,3 +1,6 @@
+# Ensure XDG used for portable apps
+export XDG_CONFIG_HOME=$HOME/.config
+
 # Load homebrew if it's there
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -44,6 +47,7 @@ HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -98,18 +102,28 @@ __fzf_defaults() {
   if [ -f "${HOME}/Code/ttyc/generated/env.sh" ]; then
     source "${HOME}/Code/ttyc/generated/env.sh"
 
-    export FZF_DEFAULT_OPTS="
-    --border=rounded
-    --margin=1
-    --layout=reverse
-    --color=fg:${THM_SUBTLE},bg:${THM_BASE},hl:${THM_ROSE}
-    --color=fg+:${THM_TEXT},bg+:${THM_OVERLAY},hl+:${THM_ROSE}
-    --color=border:${THM_HIGHLIGHT_MED},header:${THM_PINE},gutter:${THM_BASE}
-    --color=spinner:${THM_GOLD},info:${THM_FOAM}
-    --color=pointer:${THM_IRIS},marker:${THM_LOVE},prompt:${THM_SUBTLE}"
+    if [ "$THM_DIALECT" = "rose-pine" ]; then
+      export FZF_DEFAULT_OPTS="
+      --border=rounded
+      --margin=1
+      --layout=reverse
+      --color=fg:${THM_SUBTLE},bg:${THM_BASE},hl:${THM_ROSE}
+      --color=fg+:${THM_TEXT},bg+:${THM_OVERLAY},hl+:${THM_ROSE}
+      --color=border:${THM_HIGHLIGHT_MED},header:${THM_PINE},gutter:${THM_BASE}
+      --color=spinner:${THM_GOLD},info:${THM_FOAM}
+      --color=pointer:${THM_IRIS},marker:${THM_LOVE},prompt:${THM_SUBTLE}"
+    fi
 
-    if [ -n "$TMUX" ]; then
-      tmux set-environment -g FZF_DEFAULT_OPTS "${FZF_DEFAULT_OPTS}"
+    if [ "$THM_DIALECT" = "catppuccin" ]; then
+      export FZF_DEFAULT_OPTS="
+      --border=rounded
+      --margin=1
+      --layout=reverse
+      --color=bg+:${THM_SURFACE0},bg:${THM_BASE},spinner:${THM_ROSEWATER},hl:${THM_RED}
+      --color=fg:${THM_TEXT},header:${THM_RED},info:${THM_MAUVE},pointer:${THM_ROSEWATER}
+      --color=marker:${THM_LAVENDER},fg+:${THM_TEXT},prompt:${THM_MAUVE},hl+:${THM_RED}
+      --color=selected-bg:${THM_SURFACE1}
+      --color=border:${THM_OVERLAY0},label:${THM_TEXT}"
     fi
 
     __fzf_defaults_orig "$@"
@@ -121,11 +135,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# Source system specific config
-if [[ -f  "$HOME/.zshrc" ]] then
-  source "$HOME/.zshrc"
-fi
+# Brew
+HOMEBREW_NO_ENV_HINTS=true
 
 # Use nvim for man
 export MANPAGER='nvim +Man!'
+export EDITOR='nvim'
 
+
+# system specific config
+[ -s "$HOME/.zshrc" ] && source "$HOME/.zshrc"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# continue fns
+[ -s "$HOME/.config/zsh/.zshrc.continue" ] && source "$HOME/.config/zsh/.zshrc.continue"

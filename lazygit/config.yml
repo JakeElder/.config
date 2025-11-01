@@ -5,4 +5,4 @@ gui:
 git:
   paging:
     colorArg: always
-    pager: delta --paging=never --syntax-theme 'Catppuccin Frappe' --side-by-side --tabs 2
+    pager: delta --paging=never --side-by-side --tabs 2

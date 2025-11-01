@@ -84,13 +84,24 @@ return {
 			end,
 		})
 
-		-- vim.api.nvim_create_autocmd({ "User" }, {
-		-- 	pattern = "CodeCompanionRequest*",
-		-- 	group = group,
-		-- 	callback = function(request)
-		-- 		print(request.match)
-		-- 	end,
-		-- })
+		local function colors()
+			local is_catppuccin_active = vim.g.colors_name and string.find(vim.g.colors_name, "^catppuccin") ~= nil
+
+			if is_catppuccin_active then
+				local catppuccin_palettes = require("catppuccin.palettes")
+				local theme_colors = catppuccin_palettes.get_palette("frappe")
+
+				return {
+					lazy_updates = theme_colors.blue,
+					codecompanion = theme_colors.comment,
+				}
+			end
+
+			return {
+				lazy_updates = vim.fn.synIDattr(vim.fn.hlID("DiagnosticWarn"), "fg"),
+				codecompanion = vim.fn.synIDattr(vim.fn.hlID("Comment"), "fg"),
+			}
+		end
 
 		lualine.setup({
 			options = {
@@ -123,9 +134,10 @@ return {
 					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
-						color = {
-							fg = vim.fn.synIDattr(vim.fn.hlID("DiagnosticWarn"), "fg"),
-						},
+						color = function()
+							local c = colors()
+							return { fg = c.lazy_updates }
+						end,
 					},
 					{ "filetype" },
 				},

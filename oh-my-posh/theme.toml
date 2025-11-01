@@ -8,8 +8,8 @@ final_space = true
   background = 'transparent'
 
 [transient_prompt]
-  template = '{{ .PWD }} 󰅂 '
-  foreground = 'brightWhite'
+  template = '{{ .PWD }} > '
+  foreground = 'darkGray'
   background = 'transparent'
 
 [[blocks]]
@@ -32,7 +32,7 @@ final_space = true
 
   [[blocks.segments]]
     template = '{{ .Path }} '
-    foreground = 'darkGray'
+    foreground = 'brightWhite'
     background = 'transparent'
     type = 'path'
     style = 'plain'
@@ -45,7 +45,7 @@ final_space = true
   alignment = 'left'
 
   [[blocks.segments]]
-    template = '󰅂'
+    template = '>'
     foreground = 'blue'
     background = 'transparent'
     type = 'text'

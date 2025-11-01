@@ -80,6 +80,7 @@ return {
 				"jsonls",
 				"bashls",
 				"terraformls",
+				"taplo",
 			},
 			automatic_enable = true,
 		})

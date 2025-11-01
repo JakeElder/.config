@@ -1,3 +1,5 @@
+vim.g.codecompanion_yolo_mode = true
+
 return {
 	"olimorris/codecompanion.nvim",
 	config = true,
@@ -7,37 +9,64 @@ return {
 		"echasnovski/mini.diff",
 	},
 	init = function()
-		require("mini.diff").setup({
-			view = { style = "sign" },
+		local diff = require("mini.diff")
+		diff.setup({
+			source = diff.gen_source.none(),
 		})
 
 		require("codecompanion").setup({
+			adapters = {
+				http = {
+					deepseek = function()
+						return require("codecompanion.adapters").extend("deepseek", {
+							schema = {
+								model = {
+									default = "deepseek-chat",
+								},
+							},
+						})
+					end,
+					zai = function()
+						return require("codecompanion.adapters").extend("openai_compatible", {
+							formatted_name = "Z.AI Coding Plan",
+							env = {
+								url = "https://api.z.ai/api/coding/paas/v4",
+								api_key = vim.env.ZHIPU_API_KEY,
+								chat_url = "/chat/completions",
+							},
+							schema = {
+								model = {
+									default = "glm-4.6",
+								},
+							},
+						})
+					end,
+					openrouter = function()
+						return require("codecompanion.adapters").extend("openai_compatible", {
+							formatted_name = "OpenRouter",
+							env = {
+								url = "https://openrouter.ai/api",
+								api_key = vim.env.OPENROUTER_API_KEY,
+								chat_url = "/v1/chat/completions",
+							},
+							schema = {
+								model = {
+									default = "qwen/qwen3-coder-30b-a3b-instruct",
+								},
+							},
+						})
+					end,
+				},
+			},
 			strategies = {
 				chat = {
-					adapter = "deepseek",
-					slash_commands = {
-						["buffer"] = {
-							callback = "strategies.chat.slash_commands.buffer",
-							opts = { provider = "snacks" },
-						},
-						["help"] = {
-							callback = "strategies.chat.slash_commands.help",
-							opts = { provider = "snacks" },
-						},
-						["file"] = {
-							callback = "strategies.chat.slash_commands.file",
-							opts = {
-								provider = "snacks",
-								contains_code = true,
-							},
-						},
-					},
+					adapter = "zai",
 				},
 				inline = {
-					adapter = "deepseek",
+					adapter = "zai",
 				},
 				cmd = {
-					adapter = "deepseek",
+					adapter = "zai",
 				},
 			},
 			display = {
@@ -47,10 +76,7 @@ return {
 					},
 				},
 				diff = {
-					enabled = true,
-					provider = "mini_diff",
-					close_chat_at = 240,
-					layout = "vertical",
+					enabled = false,
 				},
 			},
 		})

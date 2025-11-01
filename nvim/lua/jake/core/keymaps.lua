@@ -10,6 +10,9 @@ keymap.set("n", "<leader>J", "<C-x>", { desc = "Decrement number" })
 -- window management
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>o", "<C-w>o", { desc = "Close other buffers" })
+keymap.set("n", "<C-h>", "<C-w>h", { desc = "Select pane to left" })
+keymap.set("n", "<C-l>", "<C-w>l", { desc = "Select pane to right" })
+keymap.set("n", "<leader>o", "<C-w>o", { desc = "Close other buffers" })
 keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Close window" })
 keymap.set("n", "<leader>e", ":edit<CR>", { desc = "Reload buffer from disk" })
 keymap.set("n", "<leader>E", ":edit!<CR>", { desc = "Reload buffer from disk" })
@@ -42,3 +45,6 @@ end, { desc = "Previous quickfix item", silent = true, noremap = true })
 -- wrap
 keymap.set("n", "<leader>w", ":set wrap!<CR>", { desc = "Toggle line wrap", silent = true })
 keymap.set("n", "<leader>.", ":set list!<CR>", { desc = "Toggle hidden characters", silent = true })
+
+-- select last paste
+keymap.set("n", "gp", "`[v`]", { desc = "Select last paste" })

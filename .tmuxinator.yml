@@ -1,4 +1,5 @@
-name: "Config"
+name: "config"
+tmux_options: -L config
 
 windows:
   - Vim: vim

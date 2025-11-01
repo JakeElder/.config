@@ -57,6 +57,7 @@ return {
 				},
 			},
 			window = {
+				position = "current",
 				mappings = {
 					["/"] = "noop",
 					["<esc>"] = function()

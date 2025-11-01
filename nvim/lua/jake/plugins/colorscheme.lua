@@ -21,6 +21,7 @@ return {
 					palette = { main = colors.palette },
 				})
 
+				vim.cmd.colorscheme("rose-pine")
 				vim.defer_fn(function()
 					vim.cmd.colorscheme("rose-pine")
 				end, 0)
@@ -31,14 +32,14 @@ return {
 			if colors.dialect == "catppuccin" then
 				local catppuccin = require("catppuccin")
 				catppuccin.setup({
-					flavor = "mocha",
+					flavor = "frappe",
 					color_overrides = {
 						all = colors.palette,
 					},
 					custom_highlights = function(p)
 						return {
 							-- Chrome
-							MsgArea = { fg = p.subtext1 },
+							MsgArea = { fg = p.subtext0 },
 
 							-- Flash
 							FlashLabel = { fg = p.yellow },
@@ -63,6 +64,7 @@ return {
 					end,
 				})
 
+				vim.cmd.colorscheme("catppuccin")
 				vim.defer_fn(function()
 					vim.cmd.colorscheme("catppuccin")
 				end, 0)

@@ -38,7 +38,13 @@ return {
 					multi = {
 						"buffers",
 						{ source = "recent", filter = { cwd = true } },
-						{ source = "files", filter = { cwd = true } },
+						{
+							source = "files",
+							filter = { cwd = true },
+							hidden = true,
+							ignored = true,
+							exclude = { "node_modules", ".git", "dist", "build" },
+						},
 					},
 					actions = {
 						copy_file_content = function(picker, item)

@@ -9,3 +9,18 @@ vim.cmd([[
     au WinLeave * setlocal nocursorline
   augroup END
 ]])
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	group = vim.api.nvim_create_augroup("HelmFiletype", { clear = true }),
+	pattern = {
+		"*/templates/*.yaml",
+		"*/templates/*.yml",
+		"*/templates/*.tpl",
+		"*.gotmpl",
+		"Chart.yaml",
+		"helmfile*.yaml",
+	},
+	callback = function()
+		vim.opt_local.filetype = "helm"
+	end,
+})
