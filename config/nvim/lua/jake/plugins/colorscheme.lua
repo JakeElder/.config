@@ -19,6 +19,12 @@ return {
 				rose_pine.setup({
 					variant = "main",
 					palette = { main = colors.palette },
+					highlight_groups = {
+						Directory = { bold = false },
+						NeoTreeFileName = { bold = false },
+						CursorLine = { blend = 30 },
+						WinSeparator = { fg = "highlight_low" },
+					},
 				})
 
 				vim.cmd.colorscheme("rose-pine")

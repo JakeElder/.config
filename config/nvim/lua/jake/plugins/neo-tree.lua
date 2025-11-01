@@ -1,17 +1,4 @@
 return {
-	-- If you want neo-tree's file operations to work with LSP (updating imports, etc.), you can use a plugin like
-	-- https://github.com/antosha417/nvim-lsp-file-operations:
-	-- {
-	--   "antosha417/nvim-lsp-file-operations",
-	--   dependencies = {
-	--     "nvim-lua/plenary.nvim",
-	--     "nvim-neo-tree/neo-tree.nvim",
-	--   },
-	--   config = function()
-	--     require("lsp-file-operations").setup()
-	--   end,
-	-- },
-	-- {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
 	dependencies = {
@@ -21,18 +8,30 @@ return {
 	lazy = false,
 	config = function()
 		require("neo-tree").setup({
+			hide_root_node = true,
 			use_popups_for_input = false,
 			popup_border_style = "rounded",
 			enable_git_status = false,
 			filesystem = {
+				renderers = {
+					directory = {
+						{ "indent" },
+						{ "icon" },
+						{ "current_filter" },
+						{ "name" },
+					},
+					file = {
+						{ "indent" },
+						{ "icon" },
+						{ "name" },
+					},
+				},
 				filtered_items = {
 					visible = true,
 					hide_dotfiles = false,
 					hide_gitignored = false,
 					hide_hidden = false,
-					never_show = {
-						".DS_Store",
-					},
+					never_show = { ".DS_Store" },
 				},
 			},
 			default_component_configs = {
@@ -42,11 +41,11 @@ return {
 				icon = {
 					enabled = true,
 					default = "",
-					folder_closed = "",
-					folder_open = "",
-					folder_empty = "",
-					folder_empty_open = "",
-					provider = function() end,
+					folder_closed = "",
+					folder_open = "",
+					folder_empty = "",
+					folder_empty_open = "",
+					-- provider = function() end,
 				},
 				last_modified = {
 					format = "relative",

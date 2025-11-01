@@ -1,5 +1,5 @@
-name: "config"
-tmux_options: -L config
+name: "core"
+tmux_options: -L core
 
 windows:
   - Vim: vim
