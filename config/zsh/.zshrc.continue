@@ -1,7 +1,0 @@
-function update-deployment-image {
-  SERVICE=$1
-  IMAGE_NAME=$2
-  kubectl set image deployment/$SERVICE-depl $SERVICE=031993826214.dkr.ecr.eu-west-1.amazonaws.com/continue/$SERVICE-svc:${IMAGE_NAME}
-}
-
-export AWS_PROFILE=dev-cli-escalated

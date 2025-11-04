@@ -1,9 +1,9 @@
 local
 fontforge
 cache
-config/tmux/plugins
-config/zsh/.zcompdump
-config/zsh/.zsh_sessions
-config/nvim/lazy-lock.json
-config/ookla
-config/neofetch
+tmux/plugins
+zsh/.zcompdump
+zsh/.zsh_sessions
+nvim/lazy-lock.json
+ookla
+neofetch

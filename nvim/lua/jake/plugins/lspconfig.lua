@@ -71,16 +71,17 @@ return {
 
 		mason_lspconfig.setup({
 			ensure_installed = {
-				"ts_ls",
-				"html",
-				"cssls",
-				"lua_ls",
-				"graphql",
-				"pyright",
-				"jsonls",
 				"bashls",
-				"terraformls",
+				"cssls",
+				"gopls",
+				"graphql",
+				"html",
+				"jsonls",
+				"lua_ls",
+				"pyright",
 				"taplo",
+				"terraformls",
+				"ts_ls",
 			},
 			automatic_enable = true,
 		})

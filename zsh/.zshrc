@@ -6,6 +6,11 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Go bin path
+if [[ -f "/opt/homebrew/bin/go" ]] then
+  export PATH="$PATH:$(go env GOPATH)/bin"
+fi
+
 # Local bins
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -76,19 +81,27 @@ alias gdc='git diff --cached'
 alias gdtc='git difftool --cached'
 alias gp='git push'
 alias gc='git commit'
+alias gf='git fetch'
+alias gri='git rebase --interactive'
+alias grhh="git reset --hard HEAD"
+
+# Core
+core() {
+  go run $HOME/core/controller "$@"
+}
+compdef core=go
 
 # Bat
 if command -v bat &> /dev/null; then
-  export BAT_THEME='Catppuccin Frappe'
   alias cat='bat'
 fi
 
-# Shell integrations
-
+# Direnv
 if command -v direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
+# Oh My Posh
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.toml)"
 fi
@@ -141,7 +154,6 @@ HOMEBREW_NO_ENV_HINTS=true
 # Use nvim for man
 export MANPAGER='nvim +Man!'
 export EDITOR='nvim'
-
 
 # system specific config
 [ -s "$HOME/.zshrc" ] && source "$HOME/.zshrc"

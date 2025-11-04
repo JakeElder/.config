@@ -1,4 +1,4 @@
-name: "core"
+name: "config"
 tmux_options: -L core
 
 windows:
