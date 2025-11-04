@@ -45,7 +45,7 @@ return {
 					folder_open = "",
 					folder_empty = "",
 					folder_empty_open = "",
-					-- provider = function() end,
+					provider = function() end,
 				},
 				last_modified = {
 					format = "relative",

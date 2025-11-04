@@ -43,7 +43,13 @@ return {
 							filter = { cwd = true },
 							hidden = true,
 							ignored = true,
-							exclude = { "node_modules", ".git", "dist", "build" },
+							exclude = {
+								"node_modules",
+								".git",
+								"dist",
+								"build",
+								".reference",
+							},
 						},
 					},
 					actions = {
