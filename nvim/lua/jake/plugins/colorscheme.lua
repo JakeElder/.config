@@ -66,6 +66,8 @@ return {
 							NeoTreeRootName = { link = "Comment" },
 							NeoTreeDirectoryIcon = { link = "Conceal" },
 							NeoTreeExpander = { link = "Conceal" },
+
+							CursorLineNr = { fg = p.sapphire },
 						}
 					end,
 				})

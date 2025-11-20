@@ -119,5 +119,10 @@ return {
 			capabilities = capabilities,
 			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
 		})
+
+		vim.lsp.config("terraformls", {
+			capabilities = capabilities,
+			filetypes = { "terraform", "tf", "tfvars", "hcl" },
+		})
 	end,
 }

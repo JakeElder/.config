@@ -153,7 +153,15 @@ return {
 		{
 			"<leader>g",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({
+					exclude = {
+						"node_modules",
+						".git",
+						"dist",
+						"build",
+						".reference",
+					},
+				})
 			end,
 			desc = "Find string in cwd",
 		},

@@ -34,3 +34,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undodir"
 vim.opt.undofile = true
+
+-- disable mode in cmd bar
+vim.opt.showmode = false

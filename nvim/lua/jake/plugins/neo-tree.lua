@@ -8,10 +8,12 @@ return {
 	lazy = false,
 	config = function()
 		require("neo-tree").setup({
-			hide_root_node = true,
 			use_popups_for_input = false,
 			popup_border_style = "rounded",
 			enable_git_status = false,
+			clipboard = {
+				sync = "universal",
+			},
 			filesystem = {
 				renderers = {
 					directory = {
@@ -19,11 +21,13 @@ return {
 						{ "icon" },
 						{ "current_filter" },
 						{ "name" },
+						{ "clipboard" },
 					},
 					file = {
 						{ "indent" },
 						{ "icon" },
 						{ "name" },
+						{ "clipboard" },
 					},
 				},
 				filtered_items = {
@@ -99,6 +103,7 @@ return {
 					event = "neo_tree_buffer_enter",
 					handler = function()
 						vim.opt_local.relativenumber = true
+						vim.opt_local.number = true
 					end,
 				},
 			},

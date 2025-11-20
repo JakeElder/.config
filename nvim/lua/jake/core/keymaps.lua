@@ -27,8 +27,13 @@ vim.keymap.set("n", "<esc>", function()
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", false)
 end, { desc = "Clear search highlights and fallback", silent = true })
 
--- display full file path
+-- file path
 keymap.set("n", "<leader>p", ":echo expand('%:p')<CR>", { desc = "Show full file path" })
+keymap.set("n", "<leader>P", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	vim.notify("Path copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Copy full file path to clipboard" })
 
 -- Inspect
 keymap.set({ "n", "v" }, "<leader>I", "<cmd>InspectTree<cr>")

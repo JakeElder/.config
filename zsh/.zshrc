@@ -1,6 +1,9 @@
 # Ensure XDG used for portable apps
 export XDG_CONFIG_HOME=$HOME/.config
 
+# TERM
+export TERM="xterm-256color"
+
 # Load homebrew if it's there
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -35,7 +38,7 @@ bindkey -M vicmd V edit-command-line
 # Load completions
 autoload -Uz compinit
 zmodload -i zsh/complist
-compinit
+compinit -d ~/.cache/zsh/zcompdump
 zinit cdreplay -q
 
 # Speed up escape key to cancel selection
@@ -46,6 +49,10 @@ bindkey '^y' autosuggest-accept
 bindkey '^ ' forward-word
 bindkey '^[[Z' reverse-menu-complete
 bindkey -M menuselect '^[' undo
+bindkey '^k' up-history
+bindkey '^j' down-history
+bindkey '^p' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
 
 # History
 HISTSIZE=5000
@@ -85,12 +92,6 @@ alias gf='git fetch'
 alias gri='git rebase --interactive'
 alias grhh="git reset --hard HEAD"
 
-# Core
-core() {
-  go run $HOME/core/controller "$@"
-}
-compdef core=go
-
 # Bat
 if command -v bat &> /dev/null; then
   alias cat='bat'
@@ -117,6 +118,7 @@ __fzf_defaults() {
 
     if [ "$THM_DIALECT" = "rose-pine" ]; then
       export FZF_DEFAULT_OPTS="
+      --info=right
       --border=rounded
       --margin=1
       --layout=reverse
@@ -129,6 +131,7 @@ __fzf_defaults() {
 
     if [ "$THM_DIALECT" = "catppuccin" ]; then
       export FZF_DEFAULT_OPTS="
+      --info=right
       --border=rounded
       --margin=1
       --layout=reverse

@@ -1,4 +1,5 @@
 name: "config"
+attach: false
 tmux_options: -L core
 
 windows:

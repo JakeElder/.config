@@ -2,83 +2,96 @@ return {
 	"chrisgrieser/nvim-various-textobjs",
 	config = function()
 		require("various-textobjs").setup({
-			keymaps = {
-				useDefaults = false,
-			},
+			keymaps = { useDefaults = false },
 		})
 
-		-- Delete surrounding indentation
-		vim.keymap.set("n", "dsi", function()
-			-- select outer indentation
+		local function map(...)
+			vim.keymap.set(...)
+		end
+
+		map("n", "dsi", function()
 			require("various-textobjs").indentation("outer", "outer")
 
-			-- plugin only switches to visual mode when a textobj has been found
 			local indentationFound = vim.fn.mode():find("V")
 			if not indentationFound then
 				return
 			end
 
-			-- dedent indentation
 			vim.cmd.normal({ "<", bang = true })
 
-			-- delete surrounding lines
 			local endBorderLn = vim.api.nvim_buf_get_mark(0, ">")[1]
 			local startBorderLn = vim.api.nvim_buf_get_mark(0, "<")[1]
-			vim.cmd(tostring(endBorderLn) .. " delete") -- delete end first so line index is not shifted
+			vim.cmd(tostring(endBorderLn) .. " delete")
 			vim.cmd(tostring(startBorderLn) .. " delete")
 		end, { desc = "Delete Surrounding Indentation" })
 
 		-- Entire buffer motion
-		vim.keymap.set({ "o", "x" }, "ae", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
+		map({ "o", "x" }, "ae", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
 
 		-- Indentation text objects
-		vim.keymap.set({ "o", "x" }, "ii", '<cmd>lua require("various-textobjs").indentation("inner", "inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "ai", '<cmd>lua require("various-textobjs").indentation("outer", "outer")<CR>')
+		map({ "o", "x" }, "ii", '<cmd>lua require("various-textobjs").indentation("inner", "inner")<CR>')
+		map({ "o", "x" }, "ai", '<cmd>lua require("various-textobjs").indentation("outer", "outer")<CR>')
 
 		-- Value text objects (between = and ,)
-		vim.keymap.set({ "o", "x" }, "iv", '<cmd>lua require("various-textobjs").value("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "av", '<cmd>lua require("various-textobjs").value("outer")<CR>')
+		map({ "o", "x" }, "iv", '<cmd>lua require("various-textobjs").value("inner")<CR>')
+		map({ "o", "x" }, "av", '<cmd>lua require("various-textobjs").value("outer")<CR>')
 
 		-- Key text objects (for key-value pairs)
-		vim.keymap.set({ "o", "x" }, "ik", '<cmd>lua require("various-textobjs").key("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "ak", '<cmd>lua require("various-textobjs").key("outer")<CR>')
+		map({ "o", "x" }, "ik", '<cmd>lua require("various-textobjs").key("inner")<CR>')
+		map({ "o", "x" }, "ak", '<cmd>lua require("various-textobjs").key("outer")<CR>')
 
 		-- Number text objects
-		vim.keymap.set({ "o", "x" }, "in", '<cmd>lua require("various-textobjs").number("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "an", '<cmd>lua require("various-textobjs").number("outer")<CR>')
+		map({ "o", "x" }, "in", '<cmd>lua require("various-textobjs").number("inner")<CR>')
+		map({ "o", "x" }, "an", '<cmd>lua require("various-textobjs").number("outer")<CR>')
 
 		-- Rest of indent (from cursor to end of indentation)
-		vim.keymap.set({ "o", "x" }, "ir", '<cmd>lua require("various-textobjs").restOfIndentation()<CR>')
+		map({ "o", "x" }, "ir", '<cmd>lua require("various-textobjs").restOfIndentation()<CR>')
 
 		-- Subword text objects (for camelCase/snake_case parts)
-		vim.keymap.set({ "o", "x" }, "iS", '<cmd>lua require("various-textobjs").subword("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "aS", '<cmd>lua require("various-textobjs").subword("outer")<CR>')
+		map({ "o", "x" }, "iS", '<cmd>lua require("various-textobjs").subword("inner")<CR>')
+		map({ "o", "x" }, "aS", '<cmd>lua require("various-textobjs").subword("outer")<CR>')
 
 		-- Line text objects (without indentation)
-		vim.keymap.set({ "o", "x" }, "il", '<cmd>lua require("various-textobjs").lineCharacterwise("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "al", '<cmd>lua require("various-textobjs").lineCharacterwise("outer")<CR>')
+		map({ "o", "x" }, "il", '<cmd>lua require("various-textobjs").lineCharacterwise("inner")<CR>')
+		map({ "o", "x" }, "al", '<cmd>lua require("various-textobjs").lineCharacterwise("outer")<CR>')
 
 		-- URL/URI text objects
-		vim.keymap.set({ "o", "x" }, "iu", '<cmd>lua require("various-textobjs").url()<CR>')
+		map({ "o", "x" }, "iu", '<cmd>lua require("various-textobjs").url()<CR>')
 
 		-- Function arguments/parameters
-		vim.keymap.set({ "o", "x" }, "i,", '<cmd>lua require("various-textobjs").argument("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "a,", '<cmd>lua require("various-textobjs").argument("outer")<CR>')
+		map({ "o", "x" }, "i,", '<cmd>lua require("various-textobjs").argument("inner")<CR>')
+		map({ "o", "x" }, "a,", '<cmd>lua require("various-textobjs").argument("outer")<CR>')
 
 		-- HTML attribute
-		vim.keymap.set({ "o", "x" }, "ix", '<cmd>lua require("various-textobjs").htmlAttribute("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "ax", '<cmd>lua require("various-textobjs").htmlAttribute("outer")<CR>')
-
-		-- CSS selector
-		vim.keymap.set({ "o", "x" }, "ic", '<cmd>lua require("various-textobjs").cssSelector("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "ac", '<cmd>lua require("various-textobjs").cssSelector("outer")<CR>')
+		map({ "o", "x" }, "ix", '<cmd>lua require("various-textobjs").htmlAttribute("inner")<CR>')
+		map({ "o", "x" }, "ax", '<cmd>lua require("various-textobjs").htmlAttribute("outer")<CR>')
 
 		-- Pipe
-		vim.keymap.set({ "o", "x" }, "iP", '<cmd>lua require("various-textobjs").shellPipe("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "aP", '<cmd>lua require("various-textobjs").shellPipe("outer")<CR>')
+		map({ "o", "x" }, "iP", '<cmd>lua require("various-textobjs").shellPipe("inner")<CR>')
+		map({ "o", "x" }, "aP", '<cmd>lua require("various-textobjs").shellPipe("outer")<CR>')
 
 		-- Any quote
-		vim.keymap.set({ "o", "x" }, "iq", '<cmd>lua require("various-textobjs").anyQuote("inner")<CR>')
-		vim.keymap.set({ "o", "x" }, "aq", '<cmd>lua require("various-textobjs").anyQuote("outer")<CR>')
+		map({ "o", "x" }, "iq", '<cmd>lua require("various-textobjs").anyQuote("inner")<CR>')
+		map({ "o", "x" }, "aq", '<cmd>lua require("various-textobjs").anyQuote("outer")<CR>')
+
+		-- Chain member
+		map({ "o", "x" }, "im", '<cmd>lua require("various-textobjs").chainMember("inner")<CR>')
+		map({ "o", "x" }, "am", '<cmd>lua require("various-textobjs").chainMember("outer")<CR>')
+
+		-- File path
+		map({ "o", "x" }, "iF", '<cmd>lua require("various-textobjs").filepath("inner")<CR>')
+		map({ "o", "x" }, "aF", '<cmd>lua require("various-textobjs").filepath("outer")<CR>')
+
+		-- Next closing bracket
+		map({ "o", "x" }, "C", '<cmd>lua require("various-textobjs").toNextClosingBracket()<CR>')
+
+		-- Next quotation mark
+		map({ "o", "x" }, "Q", '<cmd>lua require("various-textobjs").toNextQuotationMark()<CR>')
+
+		-- Emoji
+		map({ "o", "x" }, ".", '<cmd>lua require("various-textobjs").emoji()<CR>')
+
+		-- Paragraph linewise
+		map({ "o", "x" }, "p", '<cmd>lua require("various-textobjs").restOfParagraph()<CR>')
 	end,
 }

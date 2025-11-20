@@ -25,5 +25,6 @@ cursor-style = block
 # misc
 adjust-cell-height = 5%
 adjust-cursor-height = 5%
+macos-option-as-alt = true
 
 config-file = ?~/Code/ttyc/generated/ghostty.conf
