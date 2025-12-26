@@ -1,0 +1,23 @@
+[delta "tc"]
+	width = variable
+	blame-palette = "#282c34 #24272e #1d1f21 #2d3139 #353a44"
+	commit-decoration-style = "#666666" bold box ul
+	dark = true
+	file-decoration-style = "#666666"
+	file-style = "#ffffff"
+	hunk-header-decoration-style = "#666666" box ul
+	hunk-header-file-style = bold
+	hunk-header-line-number-style = bold "#c4c8c6"
+	hunk-header-style = file line-number syntax
+	line-numbers = true
+	line-numbers-left-style = "#666666"
+	line-numbers-minus-style = bold "#d54e53"
+	line-numbers-plus-style = bold "#b6bd68"
+	line-numbers-right-style = "#666666"
+	line-numbers-zero-style = "#666666"
+	minus-emph-style = bold syntax "#5c3a3a"
+	minus-style = syntax "#3d2d2d"
+	plus-emph-style = bold syntax "#3d4a3d"
+	plus-style = syntax "#2d3a2d"
+	side-by-side = true
+	navigate = true

@@ -1,5 +1,4 @@
 aliases:
-  ds: daemonsets
   dp: deployments
   sec: v1/secrets
   jo: jobs

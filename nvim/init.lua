@@ -1,2 +1,3 @@
-require("jake.core")
-require("jake.lazy")
+require("options")
+require("keymaps")
+require("init.lazy")

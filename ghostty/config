@@ -1,6 +1,7 @@
 # font
 font-size = 14
-font-family = "SFMono Nerd Font"
+font-family = "Liga SFMono Nerd Font"
+font-feature = -calt, -liga, -dlig
 font-thicken = true
 font-thicken-strength = 0
 
@@ -11,7 +12,6 @@ window-padding-y = 4
 # window
 macos-titlebar-style = hidden
 macos-window-shadow = false
-window-inherit-working-directory = false
 
 # behaviour
 confirm-close-surface = false
@@ -23,8 +23,9 @@ cursor-style-blink = false
 cursor-style = block
 
 # misc
-adjust-cell-height = 5%
-adjust-cursor-height = 5%
+# adjust-cell-height = 5%
+# adjust-cursor-height = 5%
 macos-option-as-alt = true
 
-config-file = ?~/Code/ttyc/generated/ghostty.conf
+# keybinds
+keybind = shift+enter=text:\x1b\r
