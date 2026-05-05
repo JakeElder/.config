@@ -15,8 +15,11 @@ return {
           DiagnosticUnderlineWarn = { undercurl = true, sp = colors.yellow },
           DiagnosticUnderlineInfo = { undercurl = true, sp = colors.blue },
           DiagnosticUnderlineHint = { undercurl = true, sp = colors.teal },
+          WinSeparator = { fg = colors.mantle },
           MsgArea = { fg = colors.subtext1 },
           Visual = { bg = colors.surface2 },
+          ["@string.special.url"] = { underline = false },
+          ["@string.special.url.tsx"] = { underline = false },
         }
       end,
       color_overrides = {

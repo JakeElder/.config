@@ -3,6 +3,10 @@ local opt = vim.opt
 -- leader key
 vim.g.mapleader = " "
 
+-- disable netrw (use neo-tree instead)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- misc
 opt.winborder = "rounded"
 opt.relativenumber = true

@@ -1,5 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
@@ -9,6 +10,9 @@ return {
   },
   opts = {
     use_popups_for_input = false,
+    clipboard = {
+      sync = "universal",
+    },
     event_handlers = {
       {
         event = "file_open_requested",
@@ -35,7 +39,8 @@ return {
     },
     window = {
       mappings = {
-        ["<Esc>"] = "close_window",
+        ["<esc>"] = "close_window",
+        ["/"] = "none",
         ["P"] = function(state)
           local node = state.tree:get_node()
           local parent_id = node:get_parent_id()

@@ -8,6 +8,7 @@ PROMPT='%F{white}%~%f %F{blue}>%f '
 # paths
 export XDG_CONFIG_HOME=$HOME/.config
 export PATH="$HOME/.local/bin:$PATH"
+export COLIMA_HOME="$HOME/.colima"
 
 # ls colors
 export CLICOLOR=1
@@ -44,7 +45,7 @@ if command -v brew &>/dev/null; then
   [[ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
     source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
   bindkey "^y" autosuggest-accept
-  bindkey "^ " forward-word
+  bindkey "^@" forward-word
 fi
 
 # git aliases
@@ -59,7 +60,14 @@ alias gst="git status"
 if command -v nvim &>/dev/null; then
   export MANPAGER='nvim +Man!'
   export EDITOR='nvim'
-  alias vim="nvim"
+  vim() {
+    while true; do
+      command nvim "$@"
+      [[ $? -eq 100 ]] || break
+      set -- -c 'AutoSession restore'
+    done
+  }
+  alias nvim="vim"
 fi
 
 # fzf
@@ -91,8 +99,31 @@ if [[ -n "$BREW_PREFIX" && -f "$BREW_PREFIX/share/forgit/forgit.plugin.zsh" ]]; 
   alias fgb='forgit::blame'
 fi
 
+# tmuxinator
+if command -v tmuxinator &>/dev/null; then
+  alias mux='tmuxinator'
+fi
+
+# smart dot - run ./start if exists, otherwise source
+.() {
+  if [[ $# -eq 0 && -x ./start ]]; then
+    ./start
+  else
+    builtin source "$@"
+  fi
+}
+
 # system specific config
 [ -s "$HOME/.zshrc" ] && source "$HOME/.zshrc"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# google cloud sdk
+[ -s "$HOME/google-cloud-sdk/path.zsh.inc" ] && source "$HOME/google-cloud-sdk/path.zsh.inc"
+[ -s "$HOME/google-cloud-sdk/completion.zsh.inc" ] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"

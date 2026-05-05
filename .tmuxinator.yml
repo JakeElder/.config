@@ -3,5 +3,9 @@ attach: false
 tmux_options: -L core
 
 windows:
-  - Vim: vim
+  - Vim:
+      layout: even-horizontal
+      panes:
+        - vim
+        - claude --dangerously-skip-permissions --resume
   - Terminal:

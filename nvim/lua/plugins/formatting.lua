@@ -14,7 +14,7 @@ return {
       "<leader>F",
       function()
         vim.b.format_on_save_disabled = not vim.b.format_on_save_disabled
-        vim.notify("Format on save: " .. (vim.b.format_on_save_disabled and "OFF" or "ON"))
+        vim.notify("format-on-save " .. (vim.b.format_on_save_disabled and "off" or "on"))
       end,
       desc = "Toggle format on save",
     },
@@ -27,7 +27,10 @@ return {
       javascript = { "prettier" },
       javascriptreact = { "prettier" },
       json = { "prettier" },
+      jsonc = { "prettier" },
       yaml = { "prettier" },
+      markdown = { "prettier" },
+      mdx = { "prettier" },
       terraform = { "terraform_fmt" },
       zsh = { "shfmt" },
       sh = { "shfmt" },

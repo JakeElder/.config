@@ -79,6 +79,7 @@ return {
       vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
       vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "Code action" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+      vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<cr>", { desc = "Go to references" })
       vim.keymap.set("n", "<leader>d", function()
         local diag = vim.diagnostic.get_next({ cursor_position = vim.api.nvim_win_get_cursor(0) })
         if diag then
