@@ -3,8 +3,9 @@ local keymap = vim.keymap
 
 -- window management
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", '<leader>"', "<C-w>s", { desc = "Split window vertically" })
+keymap.set("n", '<leader>"', "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>o", "<C-w>o", { desc = "Close other buffers" })
+keymap.set("n", "<leader>=", "<C-w>o", { desc = "Make windows equal" })
 keymap.set("n", "<M-h>", function()
   utils.tmux_navigate("h")
 end, { desc = "Navigate left" })

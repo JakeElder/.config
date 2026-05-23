@@ -30,6 +30,7 @@ return {
         "ts_ls",
         "lua_ls",
         "emmet_ls",
+        "html",
         "cssls",
         "jsonls",
         "yamlls",
@@ -63,6 +64,7 @@ return {
       vim.lsp.enable("ts_ls")
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("emmet_ls")
+      vim.lsp.enable("html")
       vim.lsp.enable("cssls")
       vim.lsp.enable("jsonls")
       vim.lsp.enable("yamlls")

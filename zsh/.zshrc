@@ -3,7 +3,11 @@ export TERM="xterm-256color"
 [ -s "$HOME/.config/tc/.tc" ] && source "$HOME/.config/tc/.tc"
 
 # prompt
-PROMPT='%F{white}%~%f %F{blue}>%f '
+if [[ $(hostname) == "pi" ]]; then
+  PROMPT='%F{magenta}%f %F{white}%~%f %F{blue}>%f '
+else
+  PROMPT='%F{white}%~%f %F{blue}>%f '
+fi
 
 # paths
 export XDG_CONFIG_HOME=$HOME/.config
@@ -11,8 +15,12 @@ export PATH="$HOME/.local/bin:$PATH"
 export COLIMA_HOME="$HOME/.colima"
 
 # ls colors
-export CLICOLOR=1
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
+if [[ "$(uname)" == "Darwin" ]]; then
+  export CLICOLOR=1
+  export LSCOLORS="Gxfxcxdxbxegedabagacad"
+else
+  alias ls='ls --color=auto'
+fi
 
 # vi mode
 bindkey -v

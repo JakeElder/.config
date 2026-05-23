@@ -194,6 +194,8 @@ return {
     local prev_non_ascii = ts_repeat.make_repeatable_move(function()
       vim.fn.search("[^\\x00-\\x7F]", "bW")
     end)
+
+    -- Unicode chars
     vim.keymap.set({ "n", "x", "o" }, "]u", next_non_ascii, { desc = "Next non-ASCII", silent = true })
     vim.keymap.set({ "n", "x", "o" }, "[u", prev_non_ascii, { desc = "Prev non-ASCII", silent = true })
   end,

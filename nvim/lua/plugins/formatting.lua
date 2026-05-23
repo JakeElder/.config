@@ -31,6 +31,8 @@ return {
       yaml = { "prettier" },
       markdown = { "prettier" },
       mdx = { "prettier" },
+      html = { "prettier" },
+      css = { "prettier" },
       terraform = { "terraform_fmt" },
       zsh = { "shfmt" },
       sh = { "shfmt" },
