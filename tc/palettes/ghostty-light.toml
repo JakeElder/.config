@@ -1,0 +1,47 @@
+# ghostty-light - Ghostty's bundled "Tomorrow" theme (Chris Kempson's
+# original light Tomorrow, paired with the dark variant we use as
+# ghostty-dark) mapped into the Catppuccin 26-slot semantic system.
+#
+# Anchor colors from the bundled theme file:
+#   /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Tomorrow
+#
+# Asymmetry from ghostty-dark: Ghostty's built-in defaults are dark-only;
+# there is no built-in light. The bundled Tomorrow theme has 6 accent
+# hues (no normal/bright pairs), so the 14 Catppuccin accent slots have
+# more aliases than ghostty-dark.
+#
+# Slots without a direct Tomorrow source are derived:
+#   - mantle, crust, surface1, overlay0..2, subtext0..1   interpolated on the neutral ramp
+#   - pink, flamingo, rosewater, peach, teal              derived (no equivalent in Tomorrow)
+#   - maroon, blue, lavender                              aliased to red, sapphire, mauve
+
+[colors]
+# --- neutrals (lightest to darkest) ---
+base      = "#ffffff"  # tomorrow background
+mantle    = "#f5f5f5"  # interpolated
+crust     = "#ebebeb"  # interpolated
+surface0  = "#d6d6d6"  # tomorrow selection-background
+surface1  = "#c8c8c8"  # interpolated
+surface2  = "#bfbfbf"  # tomorrow palette[7]  white
+overlay0  = "#a8a8a8"  # interpolated
+overlay1  = "#8e8e8e"  # interpolated
+overlay2  = "#707070"  # interpolated
+subtext0  = "#5e5e5e"  # interpolated
+subtext1  = "#555555"  # interpolated
+text      = "#4d4d4c"  # tomorrow foreground
+
+# --- accents ---
+rosewater = "#c4715a"  # derived: warm coral
+flamingo  = "#c46050"  # derived: coral
+pink      = "#b94288"  # derived: pink-magenta (between red and mauve)
+mauve     = "#8959a8"  # tomorrow palette[5]  magenta
+red       = "#c82829"  # tomorrow palette[1]  red
+maroon    = "#c82829"  # alias: Tomorrow has only one red
+peach     = "#d97e2c"  # derived: orange (between red and yellow)
+yellow    = "#eab700"  # tomorrow palette[3]  yellow
+green     = "#718c00"  # tomorrow palette[2]  green
+teal      = "#3e8c7e"  # derived: between green and sky
+sky       = "#3e999f"  # tomorrow palette[6]  cyan
+sapphire  = "#4271ae"  # tomorrow palette[4]  blue
+blue      = "#4271ae"  # alias: Tomorrow has only one blue
+lavender  = "#8959a8"  # alias: Tomorrow has only one magenta

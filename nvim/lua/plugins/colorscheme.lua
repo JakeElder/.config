@@ -22,43 +22,36 @@ return {
           ["@string.special.url.tsx"] = { underline = false },
         }
       end,
+      -- Palette comes from tc via env vars set in ~/.config/tc/.tc,
+      -- sourced by zsh on shell startup. Restart nvim to pick up changes.
       color_overrides = {
         mocha = {
-          -- backgrounds (Ghostty base)
-          base = "#282c34",
-          mantle = "#24272e",
-          crust = "#1d1f21",
-
-          -- surfaces
-          surface0 = "#2d3139",
-          surface1 = "#353a44",
-          surface2 = "#44495a",
-
-          -- text
-          text = "#ffffff",
-          subtext1 = "#eaeaea",
-          subtext0 = "#c4c8c6",
-
-          -- overlay
-          overlay2 = "#c4c8c6",
-          overlay1 = "#999999",
-          overlay0 = "#666666",
-
-          -- accents (Ghostty palette)
-          red = "#d54e53",
-          maroon = "#cc6566",
-          peach = "#f0c674",
-          yellow = "#e7c547",
-          green = "#b6bd68",
-          teal = "#70c0b1",
-          sky = "#8abeb7",
-          sapphire = "#7aa6da",
-          blue = "#82a2be",
-          lavender = "#c397d8",
-          mauve = "#b294bb",
-          pink = "#cc6666",
-          flamingo = "#cc6666",
-          rosewater = "#eaeaea",
+          base      = vim.env.TC_BASE,
+          mantle    = vim.env.TC_MANTLE,
+          crust     = vim.env.TC_CRUST,
+          surface0  = vim.env.TC_SURFACE0,
+          surface1  = vim.env.TC_SURFACE1,
+          surface2  = vim.env.TC_SURFACE2,
+          overlay0  = vim.env.TC_OVERLAY0,
+          overlay1  = vim.env.TC_OVERLAY1,
+          overlay2  = vim.env.TC_OVERLAY2,
+          subtext0  = vim.env.TC_SUBTEXT0,
+          subtext1  = vim.env.TC_SUBTEXT1,
+          text      = vim.env.TC_TEXT,
+          rosewater = vim.env.TC_ROSEWATER,
+          flamingo  = vim.env.TC_FLAMINGO,
+          pink      = vim.env.TC_PINK,
+          mauve     = vim.env.TC_MAUVE,
+          red       = vim.env.TC_RED,
+          maroon    = vim.env.TC_MAROON,
+          peach     = vim.env.TC_PEACH,
+          yellow    = vim.env.TC_YELLOW,
+          green     = vim.env.TC_GREEN,
+          teal      = vim.env.TC_TEAL,
+          sky       = vim.env.TC_SKY,
+          sapphire  = vim.env.TC_SAPPHIRE,
+          blue      = vim.env.TC_BLUE,
+          lavender  = vim.env.TC_LAVENDER,
         },
       },
     })

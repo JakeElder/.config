@@ -1,0 +1,45 @@
+# ghostty-dark - Ghostty's built-in default colors (a modified Tomorrow
+# Night Bright with Atom-like #282c34 background) mapped into the
+# Catppuccin 26-slot semantic system.
+#
+# Anchor colors verified against ghostty source (NOT the bundled
+# "Tomorrow Night Bright" theme file, which differs):
+#   src/config/Config.zig:597,601    (background, foreground)
+#   src/terminal/color.zig:312-334   (16-color palette, with normal/bright pairs)
+#
+# Slots without a direct Ghostty source are derived:
+#   - mantle, surface0..2, overlay1     interpolated on the neutral ramp
+#   - subtext0                          midpoint of overlay2 and subtext1
+#   - pink                              maroon lifted toward bright_white
+#   - flamingo, rosewater               warm tints (no Ghostty equivalent)
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#1d1f21"  # ghostty palette[0]  black
+mantle    = "#24272e"  # interpolated
+base      = "#282c34"  # ghostty background
+surface0  = "#2d3139"  # interpolated
+surface1  = "#353a44"  # interpolated
+surface2  = "#4d4d4d"  # interpolated
+overlay0  = "#666666"  # ghostty palette[8]  bright_black
+overlay1  = "#999999"  # interpolated
+overlay2  = "#c5c8c6"  # ghostty palette[7]  white
+subtext0  = "#d8d9d8"  # midpoint(overlay2, subtext1)
+subtext1  = "#eaeaea"  # ghostty palette[15] bright_white
+text      = "#ffffff"  # ghostty foreground
+
+# --- accents ---
+rosewater = "#e5c8b9"  # derived: peachy off-white
+flamingo  = "#e1c2c2"  # derived: pink off-white
+pink      = "#dba8a8"  # derived: lifted maroon
+mauve     = "#b294bb"  # ghostty palette[5]  magenta
+red       = "#d54e53"  # ghostty palette[9]  bright_red
+maroon    = "#cc6666"  # ghostty palette[1]  red
+peach     = "#f0c674"  # ghostty palette[3]  yellow
+yellow    = "#e7c547"  # ghostty palette[11] bright_yellow
+green     = "#b5bd68"  # ghostty palette[2]  green
+teal      = "#70c0b1"  # ghostty palette[14] bright_cyan
+sky       = "#8abeb7"  # ghostty palette[6]  cyan
+sapphire  = "#7aa6da"  # ghostty palette[12] bright_blue
+blue      = "#81a2be"  # ghostty palette[4]  blue
+lavender  = "#c397d8"  # ghostty palette[13] bright_magenta
