@@ -1,0 +1,50 @@
+# one-half-light - Ghostty's bundled "One Half Light" theme (Atom's
+# light counterpart to One Half Dark) mapped into the Catppuccin
+# 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/One Half Light
+#
+# Same accent convention as ghostty-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.). Neutral ramp inverts: base is
+# lightest, text is darkest.
+#
+# Quirks of the source palette:
+#   - palette[0] black (#383a42) is identical to foreground
+#   - palette[9..14] are imported from One Half Dark - "bright" here
+#     means "the dark-scheme accents", used for emphasis on light bg
+#   - palette[7] white (#bababa) is a mid-light gray
+#
+# Derived slots:
+#   - mantle, crust, surface0..1, overlay0..2, subtext1   interpolated
+#   - pink, rosewater, flamingo                           dark warm tints
+
+[colors]
+# --- neutrals (light to dark) ---
+base      = "#fafafa"  # one-half-light background
+mantle    = "#f0f0f0"  # interpolated
+crust     = "#e5e5e5"  # interpolated
+surface0  = "#d8d8d8"  # interpolated
+surface1  = "#c8c8c8"  # interpolated
+surface2  = "#bababa"  # one-half-light palette[7]  white
+overlay0  = "#9a9ca8"  # interpolated
+overlay1  = "#777b88"  # interpolated
+overlay2  = "#5e6171"  # interpolated
+subtext0  = "#4f525e"  # one-half-light palette[8]  bright_black
+subtext1  = "#45474f"  # interpolated
+text      = "#383a42"  # one-half-light foreground / palette[0]
+
+# --- accents ---
+rosewater = "#b07a6c"  # derived: warm dark off-color
+flamingo  = "#b48282"  # derived: pink dark off-color
+pink      = "#d33682"  # derived: saturated pink for light bg
+mauve     = "#a626a4"  # one-half-light palette[5]  magenta (rich purple)
+red       = "#e06c75"  # one-half-light palette[9]  bright_red (soft, from dark)
+maroon    = "#e45649"  # one-half-light palette[1]  red (rich)
+peach     = "#c18401"  # one-half-light palette[3]  yellow (orange-gold)
+yellow    = "#d8b36e"  # one-half-light palette[11] bright_yellow
+green     = "#50a14f"  # one-half-light palette[2]  green
+teal      = "#56b6c2"  # one-half-light palette[14] bright_cyan (from dark)
+sky       = "#0997b3"  # one-half-light palette[6]  cyan (saturated teal)
+sapphire  = "#61afef"  # one-half-light palette[12] bright_blue (from dark)
+blue      = "#0184bc"  # one-half-light palette[4]  blue (saturated)
+lavender  = "#c678dd"  # one-half-light palette[13] bright_magenta (from dark)

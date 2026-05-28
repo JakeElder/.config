@@ -1,0 +1,56 @@
+# xcode-dark-hc - Ghostty's bundled "Xcode Dark hc" (high-contrast)
+# theme mapped into the Catppuccin 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Xcode Dark hc
+#
+# Xcode's ANSI assignments are unusual: palette[6] "cyan" (#cda1ff)
+# is actually a deep purple, and palette[14] "bright_cyan" (#e5cfff)
+# is a light lavender. To preserve perceptual roles across the tc
+# palette set, this palette uses perceptual mapping rather than
+# strict slot mapping:
+#   - pink         -> #ff85b8 (Xcode's magenta - a hot pink)
+#   - mauve        -> #cda1ff (Xcode's "cyan" - deep lavender)
+#   - lavender     -> #e5cfff (Xcode's "bright_cyan" - light lavender)
+#   - peach/yellow swapped to match perceptual roles:
+#     peach = palette[11] (#ffa14f orange), yellow = palette[3] (#d9c668 mustard)
+#   - blue/sky/sapphire all alias Xcode's cyan-blues (no deeper blue)
+#   - teal       -> #b1faeb (Xcode's bright_green - mint)
+#
+# Other quirks:
+#   - foreground, palette[7], palette[15] all #ffffff (pure white)
+#   - selection-background and palette[0] are both #43454b
+#
+# Derived slots:
+#   - crust, mantle, surface0..1, overlay1..2, subtext0..1   interpolated
+#   - rosewater, flamingo                                    warm tints
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#0a0a0d"  # interpolated, darker than base
+mantle    = "#14141a"  # interpolated
+base      = "#1f1f24"  # xcode-dark-hc background
+surface0  = "#2a2a30"  # interpolated
+surface1  = "#36363c"  # interpolated
+surface2  = "#43454b"  # xcode-dark-hc palette[0] / selection-background
+overlay0  = "#838991"  # xcode-dark-hc palette[8]  bright_black
+overlay1  = "#a5abb2"  # interpolated
+overlay2  = "#c5c9cf"  # interpolated
+subtext0  = "#e0e2e6"  # interpolated
+subtext1  = "#f2f3f5"  # interpolated
+text      = "#ffffff"  # xcode-dark-hc foreground / palette[7]/[15]
+
+# --- accents ---
+rosewater = "#ffc8b0"  # derived: warm off-white
+flamingo  = "#ffbab8"  # derived: pink off-white
+pink      = "#ff85b8"  # xcode-dark-hc palette[5]  magenta (hot pink)
+mauve     = "#cda1ff"  # xcode-dark-hc palette[6]  cyan (deep lavender)
+red       = "#ff8a7a"  # xcode-dark-hc palette[9]  bright_red (same as red)
+maroon    = "#ff8a7a"  # xcode-dark-hc palette[1]  red (salmon)
+peach     = "#ffa14f"  # xcode-dark-hc palette[11] bright_yellow (orange)
+yellow    = "#d9c668"  # xcode-dark-hc palette[3]  yellow (mustard)
+green     = "#83c9bc"  # xcode-dark-hc palette[2]  green (sage-cyan)
+teal      = "#b1faeb"  # xcode-dark-hc palette[10] bright_green (mint)
+sky       = "#4ec4e6"  # xcode-dark-hc palette[4]  blue (cyan-blue)
+sapphire  = "#6bdfff"  # xcode-dark-hc palette[12] bright_blue
+blue      = "#4ec4e6"  # alias: sky (no deeper blue in source)
+lavender  = "#e5cfff"  # xcode-dark-hc palette[14] bright_cyan (light lavender)

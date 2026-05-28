@@ -1,0 +1,48 @@
+# rose-pine - Rose Pine main (the dark default variant) mapped into the
+# Catppuccin 26-slot semantic system.
+#
+# Source palette: https://rosepinetheme.com/palette/ingredients/
+#
+# Rose Pine has 13 named tokens (vs Catppuccin's 26), so the mapping
+# leans on aliases and a few interpolated neutrals.
+#
+# Slots without a direct Rose Pine source:
+#   - crust, mantle, subtext0, subtext1   interpolated on the neutral ramp
+#   - flamingo, pink                      aliased to rose (one pink in source)
+#   - maroon                              aliased to love (one red in source)
+#   - peach                               aliased to gold (one yellow in source)
+#   - green                               aliased to foam (no green in source;
+#                                         foam fills the success role)
+#   - sapphire, blue                      aliased to pine (one blue in source)
+#   - lavender                            aliased to iris (one purple in source)
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#11101b"  # interpolated, darker than base
+mantle    = "#15131f"  # interpolated, between crust and base
+base      = "#191724"  # rose-pine base
+surface0  = "#1f1d2e"  # rose-pine surface
+surface1  = "#26233a"  # rose-pine overlay
+surface2  = "#403d52"  # rose-pine highlight_med
+overlay0  = "#524f67"  # rose-pine highlight_high
+overlay1  = "#6e6a86"  # rose-pine muted
+overlay2  = "#908caa"  # rose-pine subtle
+subtext0  = "#b8b3c8"  # interpolated
+subtext1  = "#cdc9e1"  # interpolated
+text      = "#e0def4"  # rose-pine text
+
+# --- accents ---
+rosewater = "#ebbcba"  # rose-pine rose
+flamingo  = "#ebbcba"  # alias: rose
+pink      = "#ebbcba"  # alias: rose
+mauve     = "#c4a7e7"  # rose-pine iris
+red       = "#eb6f92"  # rose-pine love
+maroon    = "#eb6f92"  # alias: love
+peach     = "#f6c177"  # alias: gold
+yellow    = "#f6c177"  # rose-pine gold
+green     = "#9ccfd8"  # alias: foam (no green in source; success role)
+teal      = "#31748f"  # rose-pine pine
+sky       = "#9ccfd8"  # rose-pine foam
+sapphire  = "#31748f"  # alias: pine
+blue      = "#31748f"  # alias: pine
+lavender  = "#c4a7e7"  # alias: iris

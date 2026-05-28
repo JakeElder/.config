@@ -1,0 +1,52 @@
+# broadcast - Ghostty's bundled "Broadcast" theme mapped into the
+# Catppuccin 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Broadcast
+#
+# Same accent convention as ghostty-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.).
+#
+# Quirks of the source palette:
+#   - palette[5] magenta (#d0d0ff) is an unusually light lilac
+#   - palette[13] bright_magenta is pure white - useless as lavender,
+#     so lavender is derived from mauve
+#   - palette[4] blue and palette[6] cyan are near-duplicates
+#     (#6d9cbe / #6e9cbe), as are palette[12]/palette[14]
+#   - foreground (#e6e1dc) is a warm cream; text uses it directly
+#     since palette[7]/palette[15] are pure white and would break
+#     the warm tone if mapped to text
+#
+# Derived slots:
+#   - mantle, surface0..2, overlay1..2, subtext0..1   interpolated
+#   - pink, rosewater, flamingo, lavender             warm tints
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#000000"  # broadcast palette[0]  black
+mantle    = "#1d1d1d"  # interpolated
+base      = "#2b2b2b"  # broadcast background
+surface0  = "#333333"  # interpolated
+surface1  = "#3d3d3d"  # interpolated
+surface2  = "#494949"  # interpolated
+overlay0  = "#585858"  # broadcast palette[8]  bright_black
+overlay1  = "#7e7e7e"  # interpolated
+overlay2  = "#a3a3a3"  # interpolated
+subtext0  = "#c4bfb8"  # interpolated, warm-shifted toward fg
+subtext1  = "#d5cfc8"  # interpolated, warm-shifted toward fg
+text      = "#e6e1dc"  # broadcast foreground
+
+# --- accents ---
+rosewater = "#e0c7b5"  # derived: warm off-white aligned with cream fg
+flamingo  = "#dab8b8"  # derived: pink off-white
+pink      = "#ff9c8a"  # derived: lifted bright_red
+mauve     = "#d0d0ff"  # broadcast palette[5]  magenta (light lilac)
+red       = "#ff7b6b"  # broadcast palette[9]  bright_red
+maroon    = "#da4939"  # broadcast palette[1]  red
+peach     = "#ffd24a"  # broadcast palette[3]  yellow (warm gold)
+yellow    = "#ffff7c"  # broadcast palette[11] bright_yellow
+green     = "#519f50"  # broadcast palette[2]  green
+teal      = "#a0cef0"  # broadcast palette[14] bright_cyan
+sky       = "#6e9cbe"  # broadcast palette[6]  cyan
+sapphire  = "#9fcef0"  # broadcast palette[12] bright_blue
+blue      = "#6d9cbe"  # broadcast palette[4]  blue
+lavender  = "#c9c9ff"  # derived: slightly more saturated than mauve

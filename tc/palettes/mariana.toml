@@ -1,0 +1,44 @@
+# mariana - Ghostty's bundled "Mariana" theme (the Sublime Text
+# default dark scheme) mapped into the Catppuccin 26-slot semantic
+# system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Mariana
+#
+# Same accent convention as ghostty-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.). Mariana has a clean, balanced
+# palette with distinct normal/bright pairs throughout.
+#
+# Derived slots:
+#   - mantle, surface0..2, overlay1..2, subtext0   interpolated
+#   - pink, rosewater, flamingo                    warm tints
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#000000"  # mariana palette[0]  black
+mantle    = "#1b2127"  # interpolated
+base      = "#343d46"  # mariana background
+surface0  = "#3e4750"  # interpolated
+surface1  = "#4a525b"  # interpolated
+surface2  = "#565d65"  # interpolated
+overlay0  = "#666666"  # mariana palette[8]  bright_black
+overlay1  = "#888d92"  # interpolated
+overlay2  = "#aab1b8"  # interpolated
+subtext0  = "#c5cad2"  # interpolated
+subtext1  = "#d8dee9"  # mariana foreground
+text      = "#f7f7f7"  # mariana palette[7]  white
+
+# --- accents ---
+rosewater = "#d5b8a8"  # derived: warm off-white
+flamingo  = "#d2afaf"  # derived: pink off-white
+pink      = "#e8a3c5"  # derived: lifted from mauve family
+mauve     = "#c695c6"  # mariana palette[5]  magenta
+red       = "#f97b58"  # mariana palette[9]  bright_red (orange-tilted)
+maroon    = "#ec5f66"  # mariana palette[1]  red
+peach     = "#f9ae58"  # mariana palette[3]  yellow (warm orange)
+yellow    = "#fac761"  # mariana palette[11] bright_yellow
+green     = "#99c794"  # mariana palette[2]  green (sage)
+teal      = "#82c4c4"  # mariana palette[14] bright_cyan
+sky       = "#5fb4b4"  # mariana palette[6]  cyan
+sapphire  = "#85add6"  # mariana palette[12] bright_blue
+blue      = "#6699cc"  # mariana palette[4]  blue (muted)
+lavender  = "#d8b6d8"  # mariana palette[13] bright_magenta

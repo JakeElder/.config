@@ -1,0 +1,38 @@
+# rose-pine-dawn - Rose Pine Dawn (the official light variant) mapped
+# into the Catppuccin 26-slot semantic system.
+#
+# Source palette: https://rosepinetheme.com/palette/ingredients/
+#
+# Same mapping logic as rose-pine main; only the source hexes differ
+# and the neutral ramp goes from light (base) to dark (text).
+
+[colors]
+# --- neutrals (lightest to darkest) ---
+base      = "#faf4ed"  # rose-pine-dawn base
+mantle    = "#f3ede5"  # interpolated, slightly darker than base
+crust     = "#ebe5dd"  # interpolated, darker still
+surface0  = "#f4ede8"  # rose-pine-dawn highlight_low
+surface1  = "#f2e9e1"  # rose-pine-dawn overlay
+surface2  = "#dfdad9"  # rose-pine-dawn highlight_med
+overlay0  = "#cecacd"  # rose-pine-dawn highlight_high
+overlay1  = "#9893a5"  # rose-pine-dawn muted
+overlay2  = "#797593"  # rose-pine-dawn subtle
+subtext0  = "#6c6786"  # interpolated
+subtext1  = "#615c80"  # interpolated
+text      = "#575279"  # rose-pine-dawn text
+
+# --- accents ---
+rosewater = "#d7827e"  # rose-pine-dawn rose
+flamingo  = "#d7827e"  # alias: rose
+pink      = "#d7827e"  # alias: rose
+mauve     = "#907aa9"  # rose-pine-dawn iris
+red       = "#b4637a"  # rose-pine-dawn love
+maroon    = "#b4637a"  # alias: love
+peach     = "#ea9d34"  # alias: gold
+yellow    = "#ea9d34"  # rose-pine-dawn gold
+green     = "#56949f"  # alias: foam (no green in source; success role)
+teal      = "#286983"  # rose-pine-dawn pine
+sky       = "#56949f"  # rose-pine-dawn foam
+sapphire  = "#286983"  # alias: pine
+blue      = "#286983"  # alias: pine
+lavender  = "#907aa9"  # alias: iris

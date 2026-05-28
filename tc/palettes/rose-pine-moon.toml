@@ -1,0 +1,41 @@
+# rose-pine-moon - Rose Pine Moon (lighter, cooler-tilted dark variant)
+# mapped into the Catppuccin 26-slot semantic system.
+#
+# Source palette: https://rosepinetheme.com/palette/ingredients/
+#
+# Same mapping logic as rose-pine (the main variant); only the source
+# hexes differ. Notable shifts from main:
+#   base    #191724 -> #232136 (lighter, cooler)
+#   rose    #ebbcba -> #ea9a97 (more saturated, peachier)
+#   pine    #31748f -> #3e8fb0 (brighter blue)
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#1a1828"  # interpolated, darker than base
+mantle    = "#1e1c30"  # interpolated, between crust and base
+base      = "#232136"  # rose-pine-moon base
+surface0  = "#2a273f"  # rose-pine-moon surface
+surface1  = "#393552"  # rose-pine-moon overlay
+surface2  = "#44415a"  # rose-pine-moon highlight_med
+overlay0  = "#56526e"  # rose-pine-moon highlight_high
+overlay1  = "#6e6a86"  # rose-pine-moon muted
+overlay2  = "#908caa"  # rose-pine-moon subtle
+subtext0  = "#b8b3c8"  # interpolated
+subtext1  = "#cdc9e1"  # interpolated
+text      = "#e0def4"  # rose-pine-moon text
+
+# --- accents ---
+rosewater = "#ea9a97"  # rose-pine-moon rose
+flamingo  = "#ea9a97"  # alias: rose
+pink      = "#ea9a97"  # alias: rose
+mauve     = "#c4a7e7"  # rose-pine-moon iris
+red       = "#eb6f92"  # rose-pine-moon love
+maroon    = "#eb6f92"  # alias: love
+peach     = "#f6c177"  # alias: gold
+yellow    = "#f6c177"  # rose-pine-moon gold
+green     = "#9ccfd8"  # alias: foam (no green in source; success role)
+teal      = "#3e8fb0"  # rose-pine-moon pine
+sky       = "#9ccfd8"  # rose-pine-moon foam
+sapphire  = "#3e8fb0"  # alias: pine
+blue      = "#3e8fb0"  # alias: pine
+lavender  = "#c4a7e7"  # alias: iris

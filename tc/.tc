@@ -66,3 +66,28 @@ export TC_FZF_INFO="$TC_SKY"
 export TC_FZF_POINTER="$TC_MAUVE"
 export TC_FZF_MARKER="$TC_RED"
 export TC_FZF_PROMPT="$TC_MAUVE"
+
+# --- OSC: re-paint terminal palette to match this scheme ---
+# Sourcing this file repaints the connected terminal via OSC sequences.
+# Guarded to skip non-interactive shells so scripts do not emit escapes.
+if [[ -t 1 ]]; then
+  printf '\e]10;%s\a' "#ffffff"
+  printf '\e]11;%s\a' "#282c34"
+  printf '\e]12;%s\a' "#e5c8b9"
+  printf '\e]4;0;%s\a'  "#353a44"
+  printf '\e]4;1;%s\a'  "#d54e53"
+  printf '\e]4;2;%s\a'  "#b5bd68"
+  printf '\e]4;3;%s\a'  "#e7c547"
+  printf '\e]4;4;%s\a'  "#81a2be"
+  printf '\e]4;5;%s\a'  "#dba8a8"
+  printf '\e]4;6;%s\a'  "#70c0b1"
+  printf '\e]4;7;%s\a'  "#eaeaea"
+  printf '\e]4;8;%s\a'  "#4d4d4d"
+  printf '\e]4;9;%s\a'  "#d54e53"
+  printf '\e]4;10;%s\a' "#b5bd68"
+  printf '\e]4;11;%s\a' "#e7c547"
+  printf '\e]4;12;%s\a' "#81a2be"
+  printf '\e]4;13;%s\a' "#dba8a8"
+  printf '\e]4;14;%s\a' "#70c0b1"
+  printf '\e]4;15;%s\a' "#d8d9d8"
+fi

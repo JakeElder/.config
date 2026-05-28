@@ -1,0 +1,52 @@
+# chalk - Ghostty's bundled "Chalk" theme mapped into the Catppuccin
+# 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Chalk
+#
+# Same accent convention as ghostty-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.).
+#
+# Quirks of the source palette:
+#   - palette[0] (#7d8b8f) is a mid-gray, not a true black. It does
+#     not fit the dark end of the neutral ramp; mechanical OSC mapping
+#     (palette 0 = surface1) overrides this anyway.
+#   - palette[5] magenta (#bd4f5a) and palette[13] bright_magenta
+#     (#fc5275) are both pink-reds, not purples. Chalk has no real
+#     purple, so mauve/lavender will read as muted pink-reds.
+#   - palette[7] white, palette[15] bright_white, and foreground are
+#     all #d2d8d9.
+#
+# Derived slots:
+#   - crust, mantle, surface0..2, overlay2, subtext0..1   interpolated
+#   - pink, rosewater, flamingo                           warm tints
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#1a1c1d"  # interpolated, darker than base
+mantle    = "#232526"  # interpolated
+base      = "#2b2d2e"  # chalk background
+surface0  = "#353738"  # interpolated
+surface1  = "#444647"  # interpolated
+surface2  = "#5e6062"  # interpolated
+overlay0  = "#7d8b8f"  # chalk palette[0]  (cool mid-gray)
+overlay1  = "#888888"  # chalk palette[8]  bright_black
+overlay2  = "#a8adae"  # interpolated
+subtext0  = "#bdc2c3"  # interpolated
+subtext1  = "#c8cdce"  # interpolated
+text      = "#d2d8d9"  # chalk foreground
+
+# --- accents ---
+rosewater = "#c8b8b0"  # derived: warm off-white against cool fg
+flamingo  = "#c8a8a8"  # derived: pink off-white
+pink      = "#ff8a85"  # derived: lifted bright_red
+mauve     = "#bd4f5a"  # chalk palette[5]  magenta (reads as pink-red)
+red       = "#f24840"  # chalk palette[9]  bright_red
+maroon    = "#b23a52"  # chalk palette[1]  red
+peach     = "#b9ac4a"  # chalk palette[3]  yellow (mustard)
+yellow    = "#ffeb62"  # chalk palette[11] bright_yellow
+green     = "#789b6a"  # chalk palette[2]  green
+teal      = "#53cdbd"  # chalk palette[14] bright_cyan
+sky       = "#44a799"  # chalk palette[6]  cyan
+sapphire  = "#4196ff"  # chalk palette[12] bright_blue
+blue      = "#2a7fac"  # chalk palette[4]  blue
+lavender  = "#fc5275"  # chalk palette[13] bright_magenta (reads as pink-red)

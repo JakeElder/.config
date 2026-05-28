@@ -1,0 +1,52 @@
+# one-half-dark - Ghostty's bundled "One Half Dark" theme (Sonph's
+# port of Atom's One Half) mapped into the Catppuccin 26-slot
+# semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/One Half Dark
+#
+# Same accent convention as ghostty-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.).
+#
+# Quirks of the source palette:
+#   - palette[0] black (#282c34) is identical to background, so crust
+#     is interpolated darker
+#   - All normal/bright pairs are identical (One Half makes no
+#     brightness distinction)
+#   - palette[7] white is identical to foreground
+#   - cursor-color (#a3b3cc) and selection-background (#474e5d) are
+#     used to anchor extra neutral slots
+#
+# Derived slots:
+#   - crust, mantle, surface0..1, overlay1, subtext0   interpolated
+#   - pink, rosewater, flamingo                        warm tints
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#1c1f25"  # interpolated, darker than base
+mantle    = "#22262e"  # interpolated
+base      = "#282c34"  # one-half-dark background / palette[0]
+surface0  = "#2d3138"  # interpolated
+surface1  = "#353a44"  # interpolated
+surface2  = "#474e5d"  # one-half-dark selection-background
+overlay0  = "#5d677a"  # one-half-dark palette[8]  bright_black
+overlay1  = "#7e8696"  # interpolated
+overlay2  = "#a3b3cc"  # one-half-dark cursor-color
+subtext0  = "#c5cad2"  # interpolated
+subtext1  = "#dcdfe4"  # one-half-dark foreground / palette[7]
+text      = "#e9ecf1"  # one-half-dark cursor-text
+
+# --- accents ---
+rosewater = "#d5b8a8"  # derived: warm off-white
+flamingo  = "#d2afaf"  # derived: pink off-white
+pink      = "#e69ba1"  # derived: lifted from red
+mauve     = "#c678dd"  # one-half-dark palette[5]  magenta (Atom purple)
+red       = "#e06c75"  # one-half-dark palette[9]  bright_red (same as red)
+maroon    = "#e06c75"  # one-half-dark palette[1]  red
+peach     = "#e5c07b"  # one-half-dark palette[3]  yellow (Atom gold)
+yellow    = "#e5c07b"  # one-half-dark palette[11] bright_yellow (same)
+green     = "#98c379"  # one-half-dark palette[2]  green
+teal      = "#56b6c2"  # one-half-dark palette[14] bright_cyan (same)
+sky       = "#56b6c2"  # one-half-dark palette[6]  cyan
+sapphire  = "#61afef"  # one-half-dark palette[12] bright_blue (same)
+blue      = "#61afef"  # one-half-dark palette[4]  blue
+lavender  = "#c678dd"  # one-half-dark palette[13] bright_magenta (same as mauve)

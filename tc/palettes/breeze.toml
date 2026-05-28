@@ -1,0 +1,53 @@
+# breeze - Ghostty's bundled "Breeze" theme (KDE Plasma palette) mapped
+# into the Catppuccin 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Breeze
+#
+# Same accent convention as ghostty-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.).
+#
+# Quirks of the source palette:
+#   - palette[0] black (#31363b) is identical to background, so crust
+#     is interpolated darker
+#   - Breeze inverts the usual bright/normal brightness for several
+#     accents: palette[9] bright_red is darker/more muted than
+#     palette[1] red. This is KDE's house style. Slot mapping is kept
+#     mechanical (palette[1]=maroon, palette[9]=red) for consistency
+#     across the tc palette set; visual roles will read differently
+#     than in other palettes.
+#
+# Derived slots:
+#   - crust, mantle, surface0..2, overlay1..2, subtext0   interpolated
+#   - pink, rosewater, flamingo                           warm tints
+#                                                         (no pink in source)
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#1d2024"  # interpolated, darker than base
+mantle    = "#272a2e"  # interpolated
+base      = "#31363b"  # breeze background / palette[0] black
+surface0  = "#3a3f44"  # interpolated
+surface1  = "#464b50"  # interpolated
+surface2  = "#5d6266"  # interpolated
+overlay0  = "#7f8c8d"  # breeze palette[8]  bright_black
+overlay1  = "#999fa2"  # interpolated
+overlay2  = "#b3b8bb"  # interpolated
+subtext0  = "#d2d4d5"  # interpolated
+subtext1  = "#eff0f1"  # breeze foreground / palette[7] white
+text      = "#fcfcfc"  # breeze palette[15] bright_white
+
+# --- accents ---
+rosewater = "#e4c7c0"  # derived: muted warm off-white
+flamingo  = "#e0bcbc"  # derived: pink off-white
+pink      = "#ff5e7f"  # derived: hot pink from red family
+mauve     = "#9b59b6"  # breeze palette[5]  magenta
+red       = "#c0392b"  # breeze palette[9]  bright_red (darker brick)
+maroon    = "#ed1515"  # breeze palette[1]  red (bright pure)
+peach     = "#f67400"  # breeze palette[3]  yellow (orange)
+yellow    = "#fdbc4b"  # breeze palette[11] bright_yellow
+green     = "#11d116"  # breeze palette[2]  green
+teal      = "#16a085"  # breeze palette[14] bright_cyan (deep teal)
+sky       = "#1abc9c"  # breeze palette[6]  cyan
+sapphire  = "#3daee9"  # breeze palette[12] bright_blue
+blue      = "#1d99f3"  # breeze palette[4]  blue
+lavender  = "#8e44ad"  # breeze palette[13] bright_magenta (deep purple)

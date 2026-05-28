@@ -1,0 +1,54 @@
+# doom-one - Ghostty's bundled "Doom One" theme (Doom Emacs' signature
+# scheme) mapped into the Catppuccin 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Doom One
+#
+# Doom One's ANSI assignments are unusual: palette[4] "blue" is
+# actually purple (#a9a1e1) and palette[6] "cyan" is actually blue
+# (#51afef). To keep TC_BLUE perceptually blue across themes, this
+# palette uses perceptual mapping rather than mechanical slot mapping:
+#   - blue/sapphire/sky  -> #51afef (Doom's real blue, source palette[6])
+#   - lavender           -> #a9a1e1 (Doom's purple-blue, source palette[4])
+#   - mauve              -> #c678dd (Doom's purple, source palette[5])
+#
+# Other quirks of the source palette:
+#   - palette[3]==[11], [5]==[13], [4]==[12], [6]==[14] - Doom does not
+#     distinguish normal/bright for most accents
+#   - palette[7] white (#bbc2cf) is identical to foreground
+#   - palette[15] bright_white (#bfbfbf) is barely brighter than fg
+#
+# Derived slots:
+#   - mantle, surface0..2, overlay1..2, subtext0..1   interpolated
+#   - pink, rosewater, flamingo                       warm tints
+#   - teal                                            derived from sky
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#000000"  # doom-one palette[0]  black
+mantle    = "#1b1e24"  # interpolated
+base      = "#282c34"  # doom-one background
+surface0  = "#32363d"  # interpolated
+surface1  = "#3d4047"  # interpolated
+surface2  = "#4a4d54"  # interpolated
+overlay0  = "#595959"  # doom-one palette[8]  bright_black
+overlay1  = "#6a6e76"  # interpolated
+overlay2  = "#7a7f88"  # interpolated
+subtext0  = "#999fa9"  # interpolated
+subtext1  = "#aab1be"  # interpolated
+text      = "#bbc2cf"  # doom-one foreground
+
+# --- accents ---
+rosewater = "#d6c5b8"  # derived: warm off-white
+flamingo  = "#d2bcb8"  # derived: pink off-white
+pink      = "#f3a3b5"  # derived: lifted from red family
+mauve     = "#c678dd"  # doom-one palette[5]  magenta (Doom purple)
+red       = "#ff6655"  # doom-one palette[9]  bright_red
+maroon    = "#ff6c6b"  # doom-one palette[1]  red
+peach     = "#ecbe7b"  # doom-one palette[3]  yellow (Doom gold)
+yellow    = "#ecbe7b"  # doom-one palette[11] bright_yellow (same as peach)
+green     = "#98be65"  # doom-one palette[2]  green
+teal      = "#4cb6c2"  # derived: cooler variant of Doom blue
+sky       = "#51afef"  # doom-one palette[6]  cyan (Doom's real blue)
+sapphire  = "#51afef"  # alias: Doom's real blue (no separate sapphire)
+blue      = "#51afef"  # alias: Doom's real blue (palette[4] is purple)
+lavender  = "#a9a1e1"  # doom-one palette[4]  blue (Doom's purple-blue)

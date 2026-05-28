@@ -1,0 +1,43 @@
+# bluloco-light - Ghostty's bundled "Bluloco Light" theme mapped into
+# the Catppuccin 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Bluloco Light
+#
+# Same accent convention as bluloco-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.). Neutral ramp inverts: base is
+# lightest, text is darkest.
+#
+# Slots without a direct source are derived:
+#   - mantle, crust, surface2..overlay0, subtext0..1   interpolated
+#   - pink, rosewater, flamingo                        warm tints
+
+[colors]
+# --- neutrals (light to dark) ---
+base      = "#f9f9f9"  # bluloco background
+mantle    = "#f0f0f0"  # interpolated
+crust     = "#e6e6e6"  # interpolated
+surface0  = "#d3d3d3"  # bluloco palette[15] bright_white (lightest grey)
+surface1  = "#babbc2"  # bluloco palette[7]  white
+surface2  = "#a0a3aa"  # interpolated
+overlay0  = "#8a8d96"  # interpolated
+overlay1  = "#777a85"  # interpolated
+overlay2  = "#676a77"  # bluloco palette[8]  bright_black
+subtext0  = "#535661"  # interpolated
+subtext1  = "#45484f"  # interpolated
+text      = "#373a41"  # bluloco foreground / palette[0] black
+
+# --- accents ---
+rosewater = "#c47a6b"  # derived: warm reddish off-dark
+flamingo  = "#c08080"  # derived: pink off-dark
+pink      = "#e94f8e"  # derived: saturated hot pink
+mauve     = "#823ff1"  # bluloco palette[5]  magenta
+red       = "#ff6480"  # bluloco palette[9]  bright_red
+maroon    = "#d52753"  # bluloco palette[1]  red
+peach     = "#df631c"  # bluloco palette[3]  yellow (orange)
+yellow    = "#c5a332"  # bluloco palette[11] bright_yellow
+green     = "#23974a"  # bluloco palette[2]  green
+teal      = "#6d93bb"  # bluloco palette[14] bright_cyan
+sky       = "#27618d"  # bluloco palette[6]  cyan
+sapphire  = "#0099e1"  # bluloco palette[12] bright_blue
+blue      = "#275fe4"  # bluloco palette[4]  blue
+lavender  = "#ce33c0"  # bluloco palette[13] bright_magenta

@@ -1,0 +1,48 @@
+# liquid-carbon - Ghostty's bundled "Liquid Carbon" theme mapped into
+# the Catppuccin 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Liquid Carbon
+#
+# Same accent convention as ghostty-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.).
+#
+# Quirks of the source palette:
+#   - All normal/bright pairs are identical (Liquid Carbon makes no
+#     distinction between palette[N] and palette[N+8] for N in 1..7)
+#   - palette[7] white and palette[15] bright_white are both #bccccc
+#     (slightly brighter than the cool cyan-tinted foreground)
+#
+# Derived slots:
+#   - mantle, surface0..2, overlay1..2, subtext0     interpolated
+#   - pink, rosewater, flamingo                      warm off-whites
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#000000"  # liquid-carbon palette[0]  black
+mantle    = "#1c1c1c"  # interpolated
+base      = "#303030"  # liquid-carbon background
+surface0  = "#3a3a3a"  # interpolated
+surface1  = "#454545"  # interpolated
+surface2  = "#525252"  # interpolated
+overlay0  = "#595959"  # liquid-carbon palette[8]  bright_black
+overlay1  = "#767878"  # interpolated
+overlay2  = "#939c9c"  # interpolated
+subtext0  = "#a3b1b1"  # interpolated
+subtext1  = "#afc2c2"  # liquid-carbon foreground
+text      = "#bccccc"  # liquid-carbon palette[7]/[15] white
+
+# --- accents ---
+rosewater = "#d6b8a8"  # derived: warm off-white against cool fg
+flamingo  = "#cca8a0"  # derived: pink off-white
+pink      = "#ff8a9c"  # derived: lifted from red
+mauve     = "#cc69c8"  # liquid-carbon palette[5]  magenta
+red       = "#ff3030"  # liquid-carbon palette[9]  bright_red (same as red)
+maroon    = "#ff3030"  # liquid-carbon palette[1]  red
+peach     = "#ccac00"  # liquid-carbon palette[3]  yellow (gold)
+yellow    = "#ccac00"  # liquid-carbon palette[11] bright_yellow (same)
+green     = "#559a70"  # liquid-carbon palette[2]  green
+teal      = "#7ac4cc"  # liquid-carbon palette[14] bright_cyan (same)
+sky       = "#7ac4cc"  # liquid-carbon palette[6]  cyan
+sapphire  = "#0099cc"  # liquid-carbon palette[12] bright_blue (same)
+blue      = "#0099cc"  # liquid-carbon palette[4]  blue
+lavender  = "#cc69c8"  # liquid-carbon palette[13] bright_magenta (same as mauve)

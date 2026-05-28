@@ -1,0 +1,52 @@
+# light-owl - Ghostty's bundled "Light Owl" theme (Night Owl's light
+# variant by Sarah Drasner) mapped into the Catppuccin 26-slot
+# semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Light Owl
+#
+# Same accent convention as ghostty-dark (maroon = palette[1] red,
+# red = palette[9] bright_red, etc.). Neutral ramp inverts: base is
+# lightest, text is darkest.
+#
+# Quirks of the source palette:
+#   - palette[0] black (#403f53) is identical to foreground - both are
+#     the navy-purple Light Owl uses for text
+#   - Most normal/bright pairs are identical (only palette[3]/[11]
+#     differ slightly in gold tone)
+#   - palette[5] magenta is a pink-magenta (#d6438a), no real purple
+#     in the palette
+#
+# Derived slots:
+#   - mantle, crust, surface0..1, overlay1..2, subtext0..1  interpolated
+#   - pink, rosewater, flamingo                             warm dark tints
+
+[colors]
+# --- neutrals (light to dark) ---
+base      = "#fbfbfb"  # light-owl background
+mantle    = "#f4f4f4"  # interpolated
+crust     = "#ededed"  # interpolated
+surface0  = "#e3e3e3"  # interpolated
+surface1  = "#d4d4d4"  # interpolated
+surface2  = "#bdbdbd"  # light-owl palette[7]  white
+overlay0  = "#989fb1"  # light-owl palette[8]  bright_black
+overlay1  = "#7a8093"  # interpolated
+overlay2  = "#62687a"  # interpolated
+subtext0  = "#54546a"  # interpolated
+subtext1  = "#494760"  # interpolated
+text      = "#403f53"  # light-owl foreground / palette[0]
+
+# --- accents ---
+rosewater = "#b8867a"  # derived: warm dark off-color
+flamingo  = "#b87878"  # derived: pink dark off-color
+pink      = "#c66191"  # derived: muted pink from lavender family
+mauve     = "#d6438a"  # light-owl palette[5]  magenta (pink-magenta)
+red       = "#de3d3b"  # light-owl palette[9]  bright_red (same as red)
+maroon    = "#de3d3b"  # light-owl palette[1]  red
+peach     = "#e0af02"  # light-owl palette[3]  yellow (gold)
+yellow    = "#daaa01"  # light-owl palette[11] bright_yellow
+green     = "#08916a"  # light-owl palette[2]  green
+teal      = "#2aa298"  # light-owl palette[14] bright_cyan
+sky       = "#2aa298"  # light-owl palette[6]  cyan (same as teal)
+sapphire  = "#288ed7"  # light-owl palette[12] bright_blue
+blue      = "#288ed7"  # light-owl palette[4]  blue (same as sapphire)
+lavender  = "#d6438a"  # light-owl palette[13] bright_magenta (same as mauve)

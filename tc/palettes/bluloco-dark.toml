@@ -1,0 +1,57 @@
+# bluloco-dark - Ghostty's bundled "Bluloco Dark" theme mapped into the
+# Catppuccin 26-slot semantic system.
+#
+# Source: /Applications/Ghostty.app/Contents/Resources/ghostty/themes/Bluloco Dark
+#
+# Same convention as ghostty-dark:
+#   - maroon = palette[1]   red       (normal)
+#   - red    = palette[9]   bright_red
+#   - peach  = palette[3]   yellow    (orange in bluloco)
+#   - yellow = palette[11]  bright_yellow
+#   - teal   = palette[14]  bright_cyan
+#   - sky    = palette[6]   cyan
+#   - sapphire = palette[12] bright_blue
+#   - blue   = palette[4]   blue
+#   - lavender = palette[13] bright_magenta
+#   - mauve  = palette[5]   magenta
+#
+# Bluloco's foreground (#b9c0cb) sits between palette[7] white (#cdd4e0)
+# and palette[8] bright_black (#8f9aae). To keep the neutral ramp
+# monotonic, text is lifted to palette[15] bright_white (#ffffff) and
+# foreground is used as subtext0.
+#
+# Slots without a direct source are derived:
+#   - mantle, surface0..1, overlay1   interpolated on the neutral ramp
+#   - surface2                        palette[0] (lifts above base)
+#   - pink, rosewater, flamingo       warm tints (no Bluloco equivalent)
+
+[colors]
+# --- neutrals (dark to light) ---
+crust     = "#1d2026"  # interpolated, darker than base
+mantle    = "#22262e"  # interpolated
+base      = "#282c34"  # bluloco background
+surface0  = "#2d313a"  # interpolated
+surface1  = "#363a44"  # interpolated
+surface2  = "#41444d"  # bluloco palette[0]  black
+overlay0  = "#5f636d"  # interpolated
+overlay1  = "#757a87"  # interpolated
+overlay2  = "#8f9aae"  # bluloco palette[8]  bright_black
+subtext0  = "#b9c0cb"  # bluloco foreground
+subtext1  = "#cdd4e0"  # bluloco palette[7]  white
+text      = "#ffffff"  # bluloco palette[15] bright_white
+
+# --- accents ---
+rosewater = "#f0d5c4"  # derived: peachy off-white
+flamingo  = "#ecc0c0"  # derived: pink off-white
+pink      = "#ff9bb4"  # derived: lifted red
+mauve     = "#7a82da"  # bluloco palette[5]  magenta
+red       = "#ff6480"  # bluloco palette[9]  bright_red
+maroon    = "#fc2f52"  # bluloco palette[1]  red
+peach     = "#ff936a"  # bluloco palette[3]  yellow (orange)
+yellow    = "#f9c859"  # bluloco palette[11] bright_yellow
+green     = "#25a45c"  # bluloco palette[2]  green
+teal      = "#5fb9bc"  # bluloco palette[14] bright_cyan
+sky       = "#4483aa"  # bluloco palette[6]  cyan
+sapphire  = "#10b1fe"  # bluloco palette[12] bright_blue
+blue      = "#3476ff"  # bluloco palette[4]  blue
+lavender  = "#ff78f8"  # bluloco palette[13] bright_magenta
