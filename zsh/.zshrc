@@ -5,6 +5,8 @@ export TERM="xterm-256color"
 # prompt
 if [[ $(hostname) == "pi" ]]; then
   PROMPT='%F{magenta}%f %F{white}%~%f %F{blue}>%f '
+elif [[ $(hostname) == "relay" ]]; then
+  PROMPT='%F{magenta}󰖂%f %F{white}%~%f %F{blue}>%f '
 else
   PROMPT='%F{white}%~%f %F{blue}>%f '
 fi
@@ -21,6 +23,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
 else
   alias ls='ls --color=auto'
 fi
+
+# cursor reset after every command
+reset_cursor() { printf '\033[?25h\033[0 q'; }
+# reset_cursor() { printf '\u0e1f\u0e31\u0e04\u0e22\u0e39\u0e40\u0e19\u0e2a\u0e42\u0e01'; }
+precmd_functions+=(reset_cursor)
 
 # vi mode
 bindkey -v

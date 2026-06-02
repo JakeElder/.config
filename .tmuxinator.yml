@@ -7,5 +7,5 @@ windows:
       layout: even-horizontal
       panes:
         - vim
-        - claude --dangerously-skip-permissions --resume
+        - pi
   - Terminal:
