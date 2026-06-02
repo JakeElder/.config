@@ -6,14 +6,14 @@ export TERM="xterm-256color"
 if [[ $(hostname) == "pi" ]]; then
   PROMPT='%F{magenta}%f %F{white}%~%f %F{blue}>%f '
 elif [[ $(hostname) == "relay" ]]; then
-  PROMPT='%F{magenta}󰖂%f %F{white}%~%f %F{blue}>%f '
+  PROMPT='%F{yellow}󰖂%f %F{white}%~%f %F{blue}>%f '
 else
   PROMPT='%F{white}%~%f %F{blue}>%f '
 fi
 
 # paths
 export XDG_CONFIG_HOME=$HOME/.config
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
 export COLIMA_HOME="$HOME/.colima"
 
 # ls colors
@@ -34,6 +34,7 @@ bindkey -v
 autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd V edit-command-line
+bindkey "^G" edit-command-line
 
 # history
 HISTSIZE=5000
@@ -44,8 +45,11 @@ setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_find_no_dups
-bindkey "^k" up-history
-bindkey "^j" down-history
+bindkey "^K" up-history
+bindkey "^J" down-history
+
+# completions
+autoload -Uz compinit && compinit
 
 # homebrew
 for p in /opt/homebrew /usr/local /home/linuxbrew/.linuxbrew; do
@@ -55,21 +59,22 @@ done
 if command -v brew &>/dev/null; then
   BREW_PREFIX="$(brew --prefix)"
   fpath=($BREW_PREFIX/share/zsh/site-functions $fpath)
-  autoload -Uz compinit && compinit
-
-  [[ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
-    source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  bindkey "^y" autosuggest-accept
-  bindkey "^@" forward-word
 fi
 
+# autosuggestions — Homebrew or system package
+autosuggestions="${BREW_PREFIX:-/usr}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f "$autosuggestions" ]] && source "$autosuggestions"
+unset autosuggestions
+bindkey "^Y" autosuggest-accept
+bindkey "^@" forward-word
+
 # git aliases
-alias ga="git add"
-alias gc="git commit"
-alias gd="git diff"
-alias gdt="git difftool"
-alias gdtc="git difftool --cached"
-alias gst="git status"
+alias ga='git add'
+alias gc='git commit'
+alias gd='git diff'
+alias gdt='git difftool'
+alias gdtc='git difftool --cached'
+alias gst='git status'
 
 # nvim
 if command -v nvim &>/dev/null; then
@@ -82,7 +87,7 @@ if command -v nvim &>/dev/null; then
       set -- -c 'AutoSession restore'
     done
   }
-  alias nvim="vim"
+  alias nvim='vim'
 fi
 
 # fzf
@@ -101,7 +106,6 @@ if command -v fzf &>/dev/null; then
     --color=pointer:$TC_FZF_POINTER,marker:$TC_FZF_MARKER,prompt:$TC_FZF_PROMPT"
 fi
 
-# forgit
 if [[ -n "$BREW_PREFIX" && -f "$BREW_PREFIX/share/forgit/forgit.plugin.zsh" ]]; then
   export FORGIT_NO_ALIASES=1
   export FORGIT_LOG_FORMAT="%C(yellow)%h %C(white)%s %C($TC_MAUVE)%cr%C(reset)"
@@ -118,6 +122,15 @@ fi
 if command -v tmuxinator &>/dev/null; then
   alias mux='tmuxinator'
 fi
+
+# ssh - repaint local palette on exit (a remote host's .tc may have
+# repainted this terminal to its own colors for the session)
+ssh() {
+  command ssh "$@"
+  local ret=$?
+  command -v tc &>/dev/null && tc reload
+  return $ret
+}
 
 # smart dot - run ./start if exists, otherwise source
 .() {
