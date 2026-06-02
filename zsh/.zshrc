@@ -6,7 +6,7 @@ export TERM="xterm-256color"
 if [[ $(hostname) == "pi" ]]; then
   PROMPT='%F{magenta}%f %F{white}%~%f %F{blue}>%f '
 elif [[ $(hostname) == "relay" ]]; then
-  PROMPT='%F{magenta}󰖂%f %F{white}%~%f %F{blue}>%f '
+  PROMPT='%F{yellow}󰖂%f %F{white}%~%f %F{blue}>%f '
 else
   PROMPT='%F{white}%~%f %F{blue}>%f '
 fi
